@@ -1,5 +1,5 @@
 //
-//  BNCDataBaseTableColumnProtocol.h
+//  BNCSQLiteTableColumnProtocol.h
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.

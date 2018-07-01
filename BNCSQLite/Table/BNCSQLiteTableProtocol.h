@@ -1,5 +1,5 @@
 //
-//  BNCDataBaseTableProtocol.h
+//  BNCSQLiteTableProtocol.h
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.
@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BNCDataBaseTableColumnProtocol.h"
+#import "BNCSQLiteTableColumnProtocol.h"
 
 @protocol BNCSQLiteTableProtocol <NSObject>
 
@@ -17,7 +17,7 @@
 
 - (NSString *)tableName;
 
-- (NSDictionary< id<BNCDataBaseTableColumnProtocol> > *)columnInfo;
+- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)columnInfo;
 
 - (Class)recordClass;
 
