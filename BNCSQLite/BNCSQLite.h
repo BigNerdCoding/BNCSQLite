@@ -18,3 +18,5 @@ FOUNDATION_EXPORT const unsigned char BNCSQLiteVersionString[];
 
 #import <BNCSQLite/BNCDataBase.h>
 #import <BNCSQLite/BNCDataBaseStatement.h>
+#import <BNCSQLite/BNCDataBaseStatement+Bind.h>
+#import <BNCSQLite/BNCDataBaseStatement+Take.h>

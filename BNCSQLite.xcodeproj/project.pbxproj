@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		47584C0020E6817000173F5F /* BNCSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47584BF620E6817000173F5F /* BNCSQLite.framework */; };
-		47584C0520E6817000173F5F /* BNCSQLiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C0420E6817000173F5F /* BNCSQLiteTests.m */; };
 		47584C0720E6817000173F5F /* BNCSQLite.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584BF920E6817000173F5F /* BNCSQLite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C1520E6825400173F5F /* BNCDataBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C1320E6825400173F5F /* BNCDataBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C1620E6825400173F5F /* BNCDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C1420E6825400173F5F /* BNCDataBase.m */; };
 		47584C1A20E8A32A00173F5F /* BNCDataBaseStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C1820E8A32A00173F5F /* BNCDataBaseStatement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C1B20E8A32A00173F5F /* BNCDataBaseStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C1920E8A32A00173F5F /* BNCDataBaseStatement.m */; };
+		47584C1E20E8E95A00173F5F /* BNCDataBaseUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C1D20E8E95A00173F5F /* BNCDataBaseUnitTest.m */; };
+		47584C2220E8EA6400173F5F /* BNCDataBaseStatement+Bind.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C2020E8EA6400173F5F /* BNCDataBaseStatement+Bind.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47584C2320E8EA6400173F5F /* BNCDataBaseStatement+Bind.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C2120E8EA6400173F5F /* BNCDataBaseStatement+Bind.m */; };
+		47584C2620E8EA7200173F5F /* BNCDataBaseStatement+Take.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C2420E8EA7200173F5F /* BNCDataBaseStatement+Take.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47584C2720E8EA7200173F5F /* BNCDataBaseStatement+Take.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C2520E8EA7200173F5F /* BNCDataBaseStatement+Take.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,12 +35,16 @@
 		47584BF920E6817000173F5F /* BNCSQLite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLite.h; sourceTree = "<group>"; };
 		47584BFA20E6817000173F5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47584BFF20E6817000173F5F /* BNCSQLiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BNCSQLiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		47584C0420E6817000173F5F /* BNCSQLiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteTests.m; sourceTree = "<group>"; };
 		47584C0620E6817000173F5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47584C1320E6825400173F5F /* BNCDataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCDataBase.h; sourceTree = "<group>"; };
 		47584C1420E6825400173F5F /* BNCDataBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCDataBase.m; sourceTree = "<group>"; };
 		47584C1820E8A32A00173F5F /* BNCDataBaseStatement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCDataBaseStatement.h; sourceTree = "<group>"; };
 		47584C1920E8A32A00173F5F /* BNCDataBaseStatement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCDataBaseStatement.m; sourceTree = "<group>"; };
+		47584C1D20E8E95A00173F5F /* BNCDataBaseUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCDataBaseUnitTest.m; sourceTree = "<group>"; };
+		47584C2020E8EA6400173F5F /* BNCDataBaseStatement+Bind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BNCDataBaseStatement+Bind.h"; sourceTree = "<group>"; };
+		47584C2120E8EA6400173F5F /* BNCDataBaseStatement+Bind.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BNCDataBaseStatement+Bind.m"; sourceTree = "<group>"; };
+		47584C2420E8EA7200173F5F /* BNCDataBaseStatement+Take.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BNCDataBaseStatement+Take.h"; sourceTree = "<group>"; };
+		47584C2520E8EA7200173F5F /* BNCDataBaseStatement+Take.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BNCDataBaseStatement+Take.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +88,9 @@
 		47584BF820E6817000173F5F /* BNCSQLite */ = {
 			isa = PBXGroup;
 			children = (
+				47584C1F20E8EA3D00173F5F /* Core */,
 				47584BF920E6817000173F5F /* BNCSQLite.h */,
 				47584BFA20E6817000173F5F /* Info.plist */,
-				47584C1320E6825400173F5F /* BNCDataBase.h */,
-				47584C1420E6825400173F5F /* BNCDataBase.m */,
-				47584C1820E8A32A00173F5F /* BNCDataBaseStatement.h */,
-				47584C1920E8A32A00173F5F /* BNCDataBaseStatement.m */,
 			);
 			path = BNCSQLite;
 			sourceTree = "<group>";
@@ -93,8 +98,8 @@
 		47584C0320E6817000173F5F /* BNCSQLiteTests */ = {
 			isa = PBXGroup;
 			children = (
-				47584C0420E6817000173F5F /* BNCSQLiteTests.m */,
 				47584C0620E6817000173F5F /* Info.plist */,
+				47584C1D20E8E95A00173F5F /* BNCDataBaseUnitTest.m */,
 			);
 			path = BNCSQLiteTests;
 			sourceTree = "<group>";
@@ -106,6 +111,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		47584C1F20E8EA3D00173F5F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				47584C1320E6825400173F5F /* BNCDataBase.h */,
+				47584C1420E6825400173F5F /* BNCDataBase.m */,
+				47584C1820E8A32A00173F5F /* BNCDataBaseStatement.h */,
+				47584C1920E8A32A00173F5F /* BNCDataBaseStatement.m */,
+				47584C2020E8EA6400173F5F /* BNCDataBaseStatement+Bind.h */,
+				47584C2120E8EA6400173F5F /* BNCDataBaseStatement+Bind.m */,
+				47584C2420E8EA7200173F5F /* BNCDataBaseStatement+Take.h */,
+				47584C2520E8EA7200173F5F /* BNCDataBaseStatement+Take.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -115,6 +135,8 @@
 			files = (
 				47584C1A20E8A32A00173F5F /* BNCDataBaseStatement.h in Headers */,
 				47584C0720E6817000173F5F /* BNCSQLite.h in Headers */,
+				47584C2620E8EA7200173F5F /* BNCDataBaseStatement+Take.h in Headers */,
+				47584C2220E8EA6400173F5F /* BNCDataBaseStatement+Bind.h in Headers */,
 				47584C1520E6825400173F5F /* BNCDataBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				47584C1B20E8A32A00173F5F /* BNCDataBaseStatement.m in Sources */,
+				47584C2720E8EA7200173F5F /* BNCDataBaseStatement+Take.m in Sources */,
 				47584C1620E6825400173F5F /* BNCDataBase.m in Sources */,
+				47584C2320E8EA6400173F5F /* BNCDataBaseStatement+Bind.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47584C0520E6817000173F5F /* BNCSQLiteTests.m in Sources */,
+				47584C1E20E8E95A00173F5F /* BNCDataBaseUnitTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

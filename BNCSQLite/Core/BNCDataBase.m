@@ -55,6 +55,10 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
     return self;
 }
 
+- (void)dealloc {
+    [self closeDatabase];
+}
+
 - (void)closeDatabase {
     if (@available(iOS 8.2, *)) {
         sqlite3_close_v2(_database);
@@ -70,8 +74,22 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
     return sqlite3_last_insert_rowid(_database);
 }
 
+- (UInt64)changes {
+    return sqlite3_changes(_database);
+}
+
 - (UInt64)totalChanges {
     return sqlite3_total_changes(_database);
+}
+
+- (void)executeSQLWithTransaction:(void(^)(void))transaction {
+    @try {
+        [self executeSQL:@"BEGIN TRANSACTION" bind:nil rowHandle:nil error:nil];
+        transaction();
+        [self executeSQL:@"COMMIT" bind:nil rowHandle:nil error:nil];
+    } @catch (NSException *exception) {
+        [self executeSQL:@"ROLLBACK" bind:nil rowHandle:nil error:nil];
+    }
 }
 
 - (BOOL)executeSQL:(NSString *)sqlString bind:(BindBlock)bind rowHandle:(RowHandleBlock)rowHandle error:(NSError *__autoreleasing *)error {
@@ -88,7 +106,7 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
     }
     
     // Execute
-    NSInteger result = [sqlStatement stepStatament];
+    NSInteger result = [sqlStatement stepStatement];
     if (result != SQLITE_DONE && result!= SQLITE_ROW) {
         NSString *sqliteErrorString = [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding];
         
@@ -110,7 +128,7 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
         }
         
         rowNum += 1;
-        result = [sqlStatement stepStatament];
+        result = [sqlStatement stepStatement];
     }
     
     [sqlStatement finalizeStatement];
