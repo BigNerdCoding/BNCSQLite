@@ -1,5 +1,5 @@
 //
-//  BNCDataBaseProtocol.h
+//  BNCSQLiteDataBaseProtocol.h
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.
@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BNCDataBaseMigratorProtocol.h"
+#import "BNCSQLiteDataBaseMigratorProtocol.h"
 
-@protocol BNCDataBaseProtocol <NSObject>
+@protocol BNCSQLiteDataBaseProtocol <NSObject>
 
 @required
 - (NSString *)databaseFilePath;
 
 @optional
-- (id<BNCDataBaseMigratorProtocol>)databaseMigrator;
+- (id<BNCSQLiteMigratorProtocol>)databaseMigrator;
 
 @end

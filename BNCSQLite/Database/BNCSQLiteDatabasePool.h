@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BNCDataBase.h"
 
 @interface BNCSQLiteDatabasePool : NSObject
+
+- (instancetype)sharedInstance;
+
+- (BNCDataBase *)databaseWith:(NSString *)filePath;
+
+- (void)closeDatabase:(NSString *)filePath;
+
+- (void)closeAllDatabase;
 
 @end
