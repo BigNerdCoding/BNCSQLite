@@ -1,14 +1,14 @@
 //
-//  BNCDataBaseStatement+Take.h
+//  BNCSQLiteDataBaseStatement+Take.h
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.
 //  Copyright © 2018年 Karsa Wu. All rights reserved.
 //
 
-#import "BNCDataBaseStatement.h"
+#import "BNCSQLiteDataBaseStatement.h"
 
-@interface BNCDataBaseStatement (Take)
+@interface BNCSQLiteDataBaseStatement (Take)
 
 /**
  get the all value for the statement

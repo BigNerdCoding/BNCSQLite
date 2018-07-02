@@ -1,14 +1,14 @@
 //
-//  BNCDataBaseStatement+Bind.h
+//  BNCSQLiteDataBaseStatement+Bind.h
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.
 //  Copyright © 2018年 Karsa Wu. All rights reserved.
 //
 
-#import "BNCDataBaseStatement.h"
+#import "BNCSQLiteDataBaseStatement.h"
 
-@interface BNCDataBaseStatement (Bind)
+@interface BNCSQLiteDataBaseStatement (Bind)
 
 #pragma mark - Bind With Position
 /**

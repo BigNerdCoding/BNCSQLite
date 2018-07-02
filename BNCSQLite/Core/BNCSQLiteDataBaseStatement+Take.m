@@ -1,14 +1,14 @@
 //
-//  BNCDataBaseStatement+Take.m
+//  BNCSQLiteDataBaseStatement+Take.m
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.
 //  Copyright © 2018年 Karsa Wu. All rights reserved.
 //
 
-#import "BNCDataBaseStatement+Take.h"
+#import "BNCSQLiteDataBaseStatement+Take.h"
 
-@implementation BNCDataBaseStatement (Take)
+@implementation BNCSQLiteDataBaseStatement (Take)
 
 - (NSDictionary *)takeAllColumn {
     NSInteger columnConut = [self columnCount];

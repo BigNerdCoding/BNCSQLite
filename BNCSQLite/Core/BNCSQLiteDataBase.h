@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-@class BNCDataBaseStatement;
+@class BNCSQLiteDataBaseStatement;
 
-typedef void(^BindBlock)(BNCDataBaseStatement *statement);
-typedef void(^RowHandleBlock)(BNCDataBaseStatement *statement, uint64_t rowID);
+typedef void(^BindBlock)(BNCSQLiteDataBaseStatement *statement);
+typedef void(^RowHandleBlock)(BNCSQLiteDataBaseStatement *statement, uint64_t rowID);
 
 extern NSString * const kBNCSQLiteErrorDomain;
 
 
 
-@interface BNCDataBase : NSObject
+@interface BNCSQLiteDataBase : NSObject
 
 /**
 *  The database used for SQLite library,'sqlite3' pointer

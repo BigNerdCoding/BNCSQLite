@@ -17,7 +17,7 @@
 
 @implementation BNCSQLiteDatabasePool
 
-- (instancetype)sharedInstance {
++ (instancetype)sharedInstance {
     static BNCSQLiteDatabasePool *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -42,7 +42,7 @@
     [self closeAllDatabase];
 }
 
-- (BNCDataBase *)databaseWith:(NSString *)filePath {
+- (BNCSQLiteDataBase *)databaseWith:(NSString *)filePath {
     NSAssert(filePath != nil, @"database filepath must not be nil");
     
     if (filePath == nil) {
@@ -51,14 +51,14 @@
     
     NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread],filePath];
     
-    BNCDataBase *dbConnect = [self.dbCache getCacheForKey:key];
+    BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
     
     if (dbConnect) {
         return dbConnect;
     }
     
     NSError *error = nil;
-    dbConnect = [[BNCDataBase alloc] initWithPath:filePath error:&error];
+    dbConnect = [[BNCSQLiteDataBase alloc] initWithPath:filePath error:&error];
     
     if (error) {
         NSLog(@"Error at %s:[%d]:%@", __FILE__, __LINE__, error);
@@ -80,7 +80,7 @@
     }
     
     for (NSString *key in databaseToClose) {
-        BNCDataBase *dbConnect = [self.dbCache getCacheForKey:key];
+        BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
         [dbConnect closeDatabase];
         [self.dbCache removeCacheObjectForKey:key];
     }
@@ -88,7 +88,7 @@
 
 - (void)closeAllDatabase {
     for (NSString *key in self.dbCache.getAllCacheKeys) {
-        BNCDataBase *dbConnect = [self.dbCache getCacheForKey:key];
+        BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
         [dbConnect closeDatabase];
     }
     
@@ -108,7 +108,7 @@
     }
     
     for (NSString *key in databaseToClose) {
-        BNCDataBase *dbConnect = [self.dbCache getCacheForKey:key];
+        BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
         [dbConnect closeDatabase];
         [self.dbCache removeCacheObjectForKey:key];
     }

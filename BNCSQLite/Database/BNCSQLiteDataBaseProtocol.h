@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BNCSQLiteDataBaseMigratorProtocol.h"
+#import "BNCSQLiteMigratorProtocol.h"
 
 @protocol BNCSQLiteDataBaseProtocol <NSObject>
 

@@ -6,19 +6,19 @@
 //  Copyright © 2018年 Karsa Wu. All rights reserved.
 //
 
-#import "BNCDataBase.h"
-#import "BNCDataBaseStatement.h"
+#import "BNCSQLiteDataBase.h"
+#import "BNCSQLiteDataBaseStatement.h"
 
 NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
 
-@interface BNCDataBase()
+@interface BNCSQLiteDataBase()
 
 @property (nonatomic, unsafe_unretained, readwrite) sqlite3 *database;
 @property (nonatomic, copy) NSString *databaseFilePath;
 
 @end
 
-@implementation BNCDataBase
+@implementation BNCSQLiteDataBase
 
 - (instancetype)initWithPath:(NSString *)filePath error:(NSError *__autoreleasing *)error {
     self = [super init];
@@ -93,7 +93,7 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
 }
 
 - (BOOL)executeSQL:(NSString *)sqlString bind:(BindBlock)bind rowHandle:(RowHandleBlock)rowHandle error:(NSError *__autoreleasing *)error {
-    BNCDataBaseStatement *sqlStatement = [[BNCDataBaseStatement alloc] initWithSQLString:sqlString database:self error:error];
+    BNCSQLiteDataBaseStatement *sqlStatement = [[BNCSQLiteDataBaseStatement alloc] initWithSQLString:sqlString database:self error:error];
     
     if (!sqlStatement || error) {
         [sqlStatement finalizeStatement];
