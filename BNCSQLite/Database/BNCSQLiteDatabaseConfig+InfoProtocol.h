@@ -11,6 +11,12 @@
 
 @interface BNCSQLiteDatabaseConfig (InfoProtocol)
 
+/**
+ crate a config instance using `id<BNCSQLiteDatabaseInfoProtocol>` object
+
+ @param infoProtocol an instance that conform BNCSQLiteDatabaseInfoProtocol
+ @return a config instance
+ */
 - (instancetype)initWithProtocol:(id<BNCSQLiteDatabaseInfoProtocol>)infoProtocol;
 
 @end

@@ -12,9 +12,20 @@
 @protocol BNCSQLiteDatabaseInfoProtocol <NSObject>
 
 @required
+/**
+ the path of database file. like /xxx/data/Library/test.sqlite
+
+ @return the file path
+ */
 - (NSString *)databaseFilePath;
 
 @optional
+
+/**
+ the database migrator
+
+ @return an instance the comform `BNCSQLiteMigratorProtocol` prtocol
+ */
 - (id<BNCSQLiteMigratorProtocol>)databaseMigrator;
 
 @end

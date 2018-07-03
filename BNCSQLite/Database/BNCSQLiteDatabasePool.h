@@ -12,12 +12,31 @@
 
 @interface BNCSQLiteDatabasePool : NSObject
 
+/**
+ return the singleton instance
+
+ @return return the singleton instance
+ */
 + (instancetype)sharedInstance;
 
+/**
+ create database connect using config
+
+ @param config database config
+ @return a database connect
+ */
 - (BNCSQLiteDatabase *)databaseWithConfig:(BNCSQLiteDatabaseConfig *)config;
 
+/**
+ close the database by filePath
+
+ @param filePath of the database
+ */
 - (void)closeDatabase:(NSString *)filePath;
 
+/**
+ close all database connection
+ */
 - (void)closeAllDatabase;
 
 @end

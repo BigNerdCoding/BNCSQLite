@@ -95,8 +95,10 @@ extern NSString * const kBNCSQLiteInitVersion;
 
  @param transaction Block to be executed inside transaction
  @param lockType the lock type of transaction, use BNCSQLiteTransactionLockTypeDeferred if you are not sure which lock to use
+ 
+ @return NO if fails 
  */
-- (void)executeSQLWithTransaction:(void (^)(void))transaction lockType:(BNCSQLiteTransactionLockType)lockType;
+- (BOOL)executeSQLWithTransaction:(void (^)(void))transaction lockType:(BNCSQLiteTransactionLockType)lockType;
 
 /**
  Execute the given sqlString

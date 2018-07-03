@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteTableProtocol.h"
 
+/**
+ This is an abstract class that conform `BNCSQLiteTableProtocol` protocol, don't use it directly
+ 
+ You can inherit `BNCSQLiteTable` or define your own class the conform `BNCSQLiteTableProtocol` protocol
+ */
 @interface BNCSQLiteTable : NSObject <BNCSQLiteTableProtocol>
 
 @end
