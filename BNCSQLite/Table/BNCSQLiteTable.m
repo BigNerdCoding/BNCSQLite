@@ -42,8 +42,20 @@
     BNCSQLiteDataBase *dbConnect = [[BNCSQLiteDatabasePool sharedInstance] databaseWith:filePath];
     
     NSString *creatTableSQL = [NSString createTable:[self tableName] withColumns:[self columnInfo]];
-    
     [dbConnect executeSQL:creatTableSQL bind:nil rowHandle:nil error:nil];
+    
+    if (![self respondsToSelector:@selector(indexList)]) {
+        return;
+    }
+    
+    // Crate table index if not exist
+    NSArray *indexArr = [self performSelector:@selector(indexList)];
+    for (id<BNCSQLiteTableColumnIndexProtocol> columnIndex in indexArr) {
+        NSString *crateTableIndex = [NSString addIndex:columnIndex tableName:[self tableName]];
+        [dbConnect executeSQL:crateTableIndex bind:nil rowHandle:nil error:nil];
+    }
+    
+    return;
 }
 
 

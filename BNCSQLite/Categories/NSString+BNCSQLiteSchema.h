@@ -8,9 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteTableColumnProtocol.h"
+#import "BNCSQLiteTableColumnIndexProtocol.h"
 
 @interface NSString (BNCSQLiteSchema)
 
 + (instancetype)createTable:(NSString *)tableName withColumns:(NSArray<id<BNCSQLiteTableColumnProtocol> > *)columns;
+
++ (instancetype)dropTable:(NSString *)tableName;
+
++ (instancetype)addColumn:(id<BNCSQLiteTableColumnProtocol>)column tableName:(NSString *)tableName;
+
++ (instancetype)addIndex:(id<BNCSQLiteTableColumnIndexProtocol>)tableIndex tableName:(NSString *)tableName;
+
++ (instancetype)dropIndex:(NSString *)indexName;
+
++ (instancetype)columnInfoWithTableName:(NSString *)tableName;
 
 @end

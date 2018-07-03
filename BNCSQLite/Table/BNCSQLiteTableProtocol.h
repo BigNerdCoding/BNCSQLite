@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteTableColumnProtocol.h"
+#import "BNCSQLiteTableColumnIndexProtocol.h"
 
 @protocol BNCSQLiteTableProtocol <NSObject>
 
@@ -20,5 +21,8 @@
 - (NSArray< id<BNCSQLiteTableColumnProtocol> > *)columnInfo;
 
 - (Class)recordClass;
+
+@optional
+- (NSArray< id<BNCSQLiteTableColumnIndexProtocol> > *)indexList;
 
 @end
