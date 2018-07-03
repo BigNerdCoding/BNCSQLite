@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BNCSQLiteDataBase.h"
+#import "BNCSQLiteDatabase.h"
 
 @protocol BNCSQLiteMigrationStepProtocol <NSObject>
 
@@ -21,7 +21,7 @@
  @param dbConnect BNCSQLiteDataBase instance
  @return NO if migration up fails
  */
-- (BOOL)goUpWithQueryCommand:(BNCSQLiteDataBase *)dbConnect;
+- (BOOL)goUpWithQueryCommand:(BNCSQLiteDatabase *)dbConnect;
 
 /**
  go lower version
@@ -31,6 +31,6 @@
  @param dbConnect BNCSQLiteDataBase instance
  @return NO if migration down fails
  */
-- (BOOL)goDownWithQueryCommand:(BNCSQLiteDataBase *)dbConnect;
+- (BOOL)goDownWithQueryCommand:(BNCSQLiteDatabase *)dbConnect;
 
 @end

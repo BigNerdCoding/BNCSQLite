@@ -8,12 +8,12 @@
 
 #import <XCTest/XCTest.h>
 #import "BNCSQLite.h"
-#import "BNCSQLiteDataBaseConfig.h"
+#import "BNCSQLiteDatabaseConfig.h"
 
 @interface BNCSQLiteCoreTest : XCTestCase
 
 @property(nonatomic,strong) NSString *filePath;
-@property(nonatomic,strong) BNCSQLiteDataBase *db;
+@property(nonatomic,strong) BNCSQLiteDatabase *db;
 
 @end
 
@@ -24,10 +24,10 @@
     
     self.filePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"BNCSQLiteCoreTest.sqlite"];
     
-    BNCSQLiteDataBaseConfig *config = [[BNCSQLiteDataBaseConfig alloc] init];
+    BNCSQLiteDatabaseConfig *config = [[BNCSQLiteDatabaseConfig alloc] init];
     config.filePath = self.filePath;
     
-    self.db = [[BNCSQLiteDataBase alloc] initWithConfig:config error:nil];
+    self.db = [[BNCSQLiteDatabase alloc] initWithConfig:config error:nil];
 }
 
 - (void)tearDown {
@@ -66,7 +66,7 @@
     // Insert with bind
     sql = @"INSERT INTO contacts (first_name, last_name, email, phone) VALUES (:first_name,'Doe','john.doe2@sqlitetutorial.net','xxxxxxx2'); ";
     
-    isSuccess = [self.db executeSQL:sql bind:^(BNCSQLiteDataBaseStatement *statement) {
+    isSuccess = [self.db executeSQL:sql bind:^(BNCSQLiteDatabaseStatement *statement) {
         [statement bindColumn:@":first_name" withTextValue:@"John2"];
     } rowHandle:nil error:nil];
     
@@ -80,7 +80,7 @@
     
     NSString *sql = @"SELECT * FROM contacts; ";
     
-    BOOL isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDataBaseStatement *statement, uint64_t rowID) {
+    BOOL isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
         NSDictionary *dic = [statement takeAllColumn];
         XCTAssert(dic.allKeys.count == 5);
         [arr addObject:dic];
@@ -92,7 +92,7 @@
     [arr removeAllObjects];
     sql = @"SELECT first_name,last_name FROM contacts; ";
     
-    isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDataBaseStatement *statement, uint64_t rowID) {
+    isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
         NSDictionary *dic = [statement takeAllColumn];
         XCTAssert(dic.allKeys.count == 2);
         [arr addObject:dic];
@@ -104,9 +104,9 @@
     [arr removeAllObjects];
     sql = @"SELECT first_name,last_name FROM contacts WHERE first_name = :first_name; ";
     
-    isSuccess = [self.db executeSQL:sql bind:^(BNCSQLiteDataBaseStatement *statement) {
+    isSuccess = [self.db executeSQL:sql bind:^(BNCSQLiteDatabaseStatement *statement) {
         [statement bindColumn:@":first_name" withTextValue:@"John"];
-    } rowHandle:^(BNCSQLiteDataBaseStatement *statement, uint64_t rowID) {
+    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
         NSDictionary *dic = [statement takeAllColumn];
         XCTAssert(dic.allKeys.count == 2);
         [arr addObject:dic];

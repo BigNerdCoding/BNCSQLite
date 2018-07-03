@@ -1,5 +1,5 @@
 //
-//  BNCSQLiteDataBaseConfig.h
+//  BNCSQLiteDatabaseConfig.h
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/3.
@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class BNCSQLiteDataBase;
+@class BNCSQLiteDatabase;
 
-typedef BOOL (^MigrationBlock)(BNCSQLiteDataBase *dbConnect);
+typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 
-@interface BNCSQLiteDataBaseConfig : NSObject
+@interface BNCSQLiteDatabaseConfig : NSObject
 
 @property(nonatomic, strong) NSString *filePath;
 @property(nonatomic, strong) NSString *latestSchemaVersion;

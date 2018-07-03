@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteTableColumnProtocol.h"
 #import "BNCSQLiteTableColumnIndexProtocol.h"
+#import "BNCSQLiteDatabaseInfoProtocol.h"
 
 @protocol BNCSQLiteTableProtocol <NSObject>
 
 @required
 
-- (Class)databaseClass;
+- (id<BNCSQLiteDatabaseInfoProtocol>)databaseInfo;
 
 - (NSString *)tableName;
 

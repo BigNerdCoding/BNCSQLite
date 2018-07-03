@@ -16,7 +16,7 @@ FOUNDATION_EXPORT const unsigned char BNCSQLiteVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <BNCSQLite/PublicHeader.h>
 
-#import <BNCSQLite/BNCSQLiteDataBase.h>
-#import <BNCSQLite/BNCSQLiteDataBaseStatement.h>
-#import <BNCSQLite/BNCSQLiteDataBaseStatement+Bind.h>
-#import <BNCSQLite/BNCSQLiteDataBaseStatement+Take.h>
+#import <BNCSQLite/BNCSQLiteDatabase.h>
+#import <BNCSQLite/BNCSQLiteDatabaseStatement.h>
+#import <BNCSQLite/BNCSQLiteDatabaseStatement+Bind.h>
+#import <BNCSQLite/BNCSQLiteDatabaseStatement+Take.h>

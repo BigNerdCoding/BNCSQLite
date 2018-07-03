@@ -1,5 +1,5 @@
 //
-//  BNCDataBase.h
+//  BNCSQLiteDatabase.h
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/6/29.
@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-@class BNCSQLiteDataBaseStatement,BNCSQLiteDataBaseConfig;
+@class BNCSQLiteDatabaseStatement,BNCSQLiteDatabaseConfig;
 
-typedef void(^BindBlock)(BNCSQLiteDataBaseStatement *statement);
-typedef void(^RowHandleBlock)(BNCSQLiteDataBaseStatement *statement, uint64_t rowID);
+typedef void(^BindBlock)(BNCSQLiteDatabaseStatement *statement);
+typedef void(^RowHandleBlock)(BNCSQLiteDatabaseStatement *statement, uint64_t rowID);
 
 extern NSString * const kBNCSQLiteErrorDomain;
 extern NSString * const kBNCSQLiteInitVersion;
 
-@interface BNCSQLiteDataBase : NSObject
+@interface BNCSQLiteDatabase : NSObject
 
 /**
 *  The database used for SQLite library,'sqlite3' pointer
@@ -32,7 +32,7 @@ extern NSString * const kBNCSQLiteInitVersion;
  @param error the error when create databse fails
  @return an instance of BNCDataBase
  */
-- (instancetype)initWithConfig:(BNCSQLiteDataBaseConfig *)config error:(NSError *__autoreleasing *)error;
+- (instancetype)initWithConfig:(BNCSQLiteDatabaseConfig *)config error:(NSError *__autoreleasing *)error;
 
 /**
  Close the database connection

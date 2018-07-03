@@ -1,39 +1,39 @@
 //
-//  BNCSQLiteDataBaseConfig+Protocol.m
+//  BNCSQLiteDatabaseConfig+InfoProtocol.m
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/3.
 //  Copyright © 2018年 Karsa Wu. All rights reserved.
 //
 
-#import "BNCSQLiteDataBaseConfig+Protocol.h"
-#import "BNCSQLiteDataBase.h"
+#import "BNCSQLiteDatabaseConfig+InfoProtocol.h"
+#import "BNCSQLiteDatabase.h"
 
-@implementation BNCSQLiteDataBaseConfig (Protocol)
+@implementation BNCSQLiteDatabaseConfig (InfoProtocol)
 
-- (instancetype)initWithProtocol:(id<BNCSQLiteDataBaseProtocol>)protocol {
+- (instancetype)initWithProtocol:(id<BNCSQLiteDatabaseInfoProtocol>)infoProtocol {
     self = [super init];
     if (self) {
-        self.filePath = [protocol databaseFilePath];
-        self.latestSchemaVersion = [self latestVersionWithConfig:protocol];
-        self.migrationAction = [self generateMigrationWithConfig:protocol];
+        self.filePath = [infoProtocol databaseFilePath];
+        self.latestSchemaVersion = [self latestVersionWithConfig:infoProtocol];
+        self.migrationAction = [self generateMigrationWithConfig:infoProtocol];
     }
     
     return self;
 }
 
 #pragma mark - Migration Action
--(NSString *)latestVersionWithConfig:(id<BNCSQLiteDataBaseProtocol>)config {
+-(NSString *)latestVersionWithConfig:(id<BNCSQLiteDatabaseInfoProtocol>)infoProtocol {
     NSString *schemaVersion = kBNCSQLiteInitVersion;
     
-    if(![config respondsToSelector:@selector(databaseMigrator)]) {
+    if(![infoProtocol respondsToSelector:@selector(databaseMigrator)]) {
         // Don't Need Migrator
         return schemaVersion;
     }
     
     id<BNCSQLiteMigratorProtocol> migrator = nil;
     
-    migrator = [config performSelector:@selector(databaseMigrator)];
+    migrator = [infoProtocol performSelector:@selector(databaseMigrator)];
     
     NSArray *versionList = [migrator migrationVersionList];
     
@@ -44,21 +44,21 @@
     return schemaVersion;
 }
 
--(MigrationBlock)generateMigrationWithConfig:(id<BNCSQLiteDataBaseProtocol>)config {
+-(MigrationBlock)generateMigrationWithConfig:(id<BNCSQLiteDatabaseInfoProtocol>)infoProtocol {
     
-    if(![config respondsToSelector:@selector(databaseMigrator)]) {
+    if(![infoProtocol respondsToSelector:@selector(databaseMigrator)]) {
         // Don't Need Migrator
         return nil;
     }
     
-    if (![config respondsToSelector:@selector(migrationStepDictionary)]) {
+    if (![infoProtocol respondsToSelector:@selector(migrationStepDictionary)]) {
         // Don't Need Migrator
         return nil;
     }
     
     id<BNCSQLiteMigratorProtocol> migrator = nil;
     
-    migrator = [config performSelector:@selector(databaseMigrator)];
+    migrator = [infoProtocol performSelector:@selector(databaseMigrator)];
     
     NSArray *versionList = [migrator migrationVersionList];
     NSDictionary *stepDictionary = [migrator migrationStepDictionary];
@@ -66,10 +66,11 @@
     NSAssert(versionList.count == stepDictionary.allKeys.count, @"migrationVersionList & migrationStepDictionary quantity must be equal ");
     
     if (versionList.count != stepDictionary.allKeys.count) {
+        // Not Equal Don't Do Migrator
         return nil;
     }
     
-    MigrationBlock action = ^(BNCSQLiteDataBase *dbConnct) {
+    MigrationBlock action = ^(BNCSQLiteDatabase *dbConnct) {
         // Do Version Migration
         BOOL shouldMigration = NO;
         
@@ -79,7 +80,7 @@
                 
                 if (![step goUpWithQueryCommand:dbConnct]) {
                     [step goDownWithQueryCommand:dbConnct];
-                    return NO;
+                    break;
                 }
                 
                 [dbConnct updateSchemaVersion:version];
@@ -89,8 +90,6 @@
                 shouldMigration = YES;
             }
         }
-        
-        return YES;
     };
     
     return action;

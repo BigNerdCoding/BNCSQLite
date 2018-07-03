@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteDataBaseProtocol.h"
 
-@interface BNCSQLiteTestDatabase : NSObject <BNCSQLiteDataBaseProtocol>
+@interface BNCSQLiteTestDatabase : NSObject <BNCSQLiteDatabaseProtocol>
 
 @end

@@ -1,16 +1,16 @@
 //
-//  BNCSQLiteDataBaseStatement+Bind.m
+//  BNCSQLiteDatabaseStatement+Bind.m
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.
 //  Copyright © 2018年 Karsa Wu. All rights reserved.
 //
 
-#import "BNCSQLiteDataBaseStatement+Bind.h"
-#import "BNCSQLiteDataBase.h"
+#import "BNCSQLiteDatabaseStatement+Bind.h"
+#import "BNCSQLiteDatabase.h"
 #import <UIKit/UIKit.h>
 
-@implementation BNCSQLiteDataBaseStatement (Bind)
+@implementation BNCSQLiteDatabaseStatement (Bind)
 
 #pragma mark - Bind With Position
 - (void)bindNullAt:(int)position {

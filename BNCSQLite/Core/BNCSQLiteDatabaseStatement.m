@@ -1,24 +1,24 @@
 //
-//  BNCSQLiteDataBaseStatement.m
+//  BNCSQLiteDatabaseStatement.m
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.
 //  Copyright © 2018年 Karsa Wu. All rights reserved.
 //
 
-#import "BNCSQLiteDataBaseStatement.h"
-#import "BNCSQLiteDataBase.h"
+#import "BNCSQLiteDatabaseStatement.h"
+#import "BNCSQLiteDatabase.h"
 
-@interface BNCSQLiteDataBaseStatement()
+@interface BNCSQLiteDatabaseStatement()
 
 @property (nonatomic, unsafe_unretained, readwrite) sqlite3_stmt *statement;
 @property (nonatomic, unsafe_unretained, readwrite) sqlite3 *database;
 
 @end
 
-@implementation BNCSQLiteDataBaseStatement
+@implementation BNCSQLiteDatabaseStatement
 
-- (instancetype)initWithSQLString:(NSString *)sqlString database:(BNCSQLiteDataBase *)database error:(NSError *__autoreleasing *)error {
+- (instancetype)initWithSQLString:(NSString *)sqlString database:(BNCSQLiteDatabase *)database error:(NSError *__autoreleasing *)error {
     self = [super init];
     if (self) {
         

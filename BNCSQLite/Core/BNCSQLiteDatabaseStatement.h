@@ -1,5 +1,5 @@
 //
-//  BNCSQLiteDataBaseStatement.h
+//  BNCSQLiteDatabaseStatement.h
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/7/1.
@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-@class BNCSQLiteDataBase;
+@class BNCSQLiteDatabase;
 
-@interface BNCSQLiteDataBaseStatement : NSObject
+@interface BNCSQLiteDatabaseStatement : NSObject
 
 /**
  *  A prepared statement object
@@ -27,12 +27,12 @@
  A wrapper a prepared statement object
 
  @param sqlString the sql string to be prepared
- @param database a BNCDataBase instance
+ @param database a BNCSQLiteDatabase instance
  @param error the error when prepared statement fails
  @return a BNCDataBaseStatement instance
  */
 - (instancetype)initWithSQLString:(NSString *)sqlString
-                         database:(BNCSQLiteDataBase *)database
+                         database:(BNCSQLiteDatabase *)database
                             error:(NSError *__autoreleasing *)error;
 
 /**

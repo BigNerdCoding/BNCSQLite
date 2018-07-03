@@ -7,10 +7,10 @@
 //
 
 #import "BNCSQLiteTable.h"
-#import "BNCSQLiteDataBaseProtocol.h"
-#import "BNCSQLiteDatabasePool.h"
 #import "NSString+BNCSQLiteSchema.h"
-#import "BNCSQLiteDataBaseConfig+Protocol.h"
+#import "BNCSQLiteDatabasePool.h"
+#import "BNCSQLiteDataBaseConfig+InfoProtocol.h"
+#import "BNCSQLiteRecordProtocol.h"
 
 @implementation BNCSQLiteTable
 
@@ -18,31 +18,27 @@
     self = [super init];
     
     if (self) {
-        id database = [[[self databaseClass] alloc] init];
-        if (![database conformsToProtocol:@protocol(BNCSQLiteDataBaseProtocol)]) {
-            NSException *exception =[NSException exceptionWithName:@"BNCSQLiteTableProtocol databaseClass must conform BNCSQLiteDataBaseProtocol" reason:@"databaseClass must conform BNCSQLiteDataBaseProtocol" userInfo:nil];
+        id record = [[[self recordClass] alloc] init];
+        if (![record conformsToProtocol:@protocol(BNCSQLiteRecordProtocol)]) {
+            NSException *exception =[NSException exceptionWithName:@"BNCSQLiteTableProtocol recordClass must conform BNCSQLiteRecordProtocol" reason:@"recordClass must conform BNCSQLiteRecordProtocol" userInfo:nil];
             
             @throw exception;
         }
     
         // Create Table & Index
-        [self initTableWith:database];
-        
-        // Migration
-        
-        
+        [self initTableWith:self.databaseInfo];
     }
     
     return self;
 }
 
-- (void)initTableWith:(id<BNCSQLiteDataBaseProtocol>)database {
-    NSString *filePath = [database databaseFilePath];
+- (void)initTableWith:(id<BNCSQLiteDatabaseInfoProtocol>)databaseInfo {
+    NSString *filePath = [databaseInfo databaseFilePath];
     NSAssert(filePath != nil, @"database filePath must not be nil");
     
     // Setup Connect
-    BNCSQLiteDataBaseConfig *config = [[BNCSQLiteDataBaseConfig alloc] initWithProtocol:database];
-    BNCSQLiteDataBase *dbConnect = [[BNCSQLiteDatabasePool sharedInstance] databaseWithConfig:config];
+    BNCSQLiteDatabaseConfig *config = [[BNCSQLiteDatabaseConfig alloc] initWithProtocol:databaseInfo];
+    BNCSQLiteDatabase *dbConnect = [[BNCSQLiteDatabasePool sharedInstance] databaseWithConfig:config];
     
     // Crate Table
     NSString *creatTableSQL = [NSString createTable:[self tableName] withColumns:[self columnInfo]];
@@ -64,7 +60,7 @@
 
 
 #pragma mark - BNCSQLiteTableProtocol
-- (Class)databaseClass {
+- (id<BNCSQLiteDatabaseInfoProtocol>)databaseInfo {
     NSException *exception =[NSException exceptionWithName:@"BNCSQLiteTableProtocol methods must be override" reason:@"databaseClass must be override" userInfo:nil];
     
     @throw exception;

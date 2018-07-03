@@ -42,11 +42,11 @@
     [self closeAllDatabase];
 }
 
-- (BNCSQLiteDataBase *)databaseWithConfig:(BNCSQLiteDataBaseConfig *)config {
+- (BNCSQLiteDatabase *)databaseWithConfig:(BNCSQLiteDatabaseConfig *)config {
 
     NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread],config.filePath];
     
-    BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
+    BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:key];
     
     if (dbConnect) {
         return dbConnect;
@@ -54,7 +54,7 @@
     
     NSError *error = nil;
     
-    dbConnect = [[BNCSQLiteDataBase alloc] initWithConfig:config error:&error];
+    dbConnect = [[BNCSQLiteDatabase alloc] initWithConfig:config error:&error];
     
     if (error) {
         NSLog(@"Error at %s:[%d]:%@", __FILE__, __LINE__, error);
@@ -76,7 +76,7 @@
     }
     
     for (NSString *key in databaseToClose) {
-        BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
+        BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:key];
         [dbConnect closeDatabase];
         [self.dbCache removeCacheObjectForKey:key];
     }
@@ -84,7 +84,7 @@
 
 - (void)closeAllDatabase {
     for (NSString *key in self.dbCache.getAllCacheKeys) {
-        BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
+        BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:key];
         [dbConnect closeDatabase];
     }
     
@@ -104,7 +104,7 @@
     }
     
     for (NSString *key in databaseToClose) {
-        BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
+        BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:key];
         [dbConnect closeDatabase];
         [self.dbCache removeCacheObjectForKey:key];
     }

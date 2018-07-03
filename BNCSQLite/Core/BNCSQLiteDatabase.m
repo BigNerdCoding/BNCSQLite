@@ -1,29 +1,29 @@
 //
-//  BNCDataBase.m
+//  BNCSQLiteDatabase.m
 //  BNCSQLite
 //
 //  Created by Karsa Wu on 2018/6/29.
 //  Copyright © 2018年 Karsa Wu. All rights reserved.
 //
 
-#import "BNCSQLiteDataBase.h"
-#import "BNCSQLiteDataBaseStatement.h"
-#import "BNCSQLiteDataBaseStatement+Take.h"
-#import "BNCSQLiteDataBaseConfig.h"
+#import "BNCSQLiteDatabase.h"
+#import "BNCSQLiteDatabaseStatement.h"
+#import "BNCSQLiteDatabaseStatement+Take.h"
+#import "BNCSQLiteDatabaseConfig.h"
 
 NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
 NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
 
-@interface BNCSQLiteDataBase()
+@interface BNCSQLiteDatabase()
 
 @property (nonatomic, unsafe_unretained, readwrite) sqlite3 *database;
 @property (nonatomic, copy) NSString *databaseFilePath;
 
 @end
 
-@implementation BNCSQLiteDataBase
+@implementation BNCSQLiteDatabase
 
-- (instancetype)initWithConfig:(BNCSQLiteDataBaseConfig *)config error:(NSError *__autoreleasing *)error {
+- (instancetype)initWithConfig:(BNCSQLiteDatabaseConfig *)config error:(NSError *__autoreleasing *)error {
     self = [super init];
     if (self) {
         NSString *filePath = config.filePath;
@@ -63,10 +63,9 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
             [self updateSchemaVersion:config.latestSchemaVersion];
         }
         
+        // Need Migration
         if (isFileExistsBefore && !config.migrationAction) {
-            if (config.migrationAction(self)) {
-                [self updateSchemaVersion:config.latestSchemaVersion];
-            }
+            config.migrationAction(self);
         }
     }
     
@@ -104,7 +103,7 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
     NSString *sql = @"pragma user_version";
     
     __block NSString *version = @"";
-    [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDataBaseStatement *statement, uint64_t rowID) {
+    [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
         version = [statement takeTextColumn:1];
     } error:nil];
     
@@ -136,7 +135,7 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
 }
 
 - (BOOL)executeSQL:(NSString *)sqlString bind:(BindBlock)bind rowHandle:(RowHandleBlock)rowHandle error:(NSError *__autoreleasing *)error {
-    BNCSQLiteDataBaseStatement *sqlStatement = [[BNCSQLiteDataBaseStatement alloc] initWithSQLString:sqlString database:self error:error];
+    BNCSQLiteDatabaseStatement *sqlStatement = [[BNCSQLiteDatabaseStatement alloc] initWithSQLString:sqlString database:self error:error];
     
     if (!sqlStatement || error) {
         [sqlStatement finalizeStatement];
