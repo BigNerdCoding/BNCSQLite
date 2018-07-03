@@ -13,6 +13,9 @@
 
 + (instancetype)initRowIDColWithName:(NSString *)columnName;
 
++ (instancetype)initPrimaryColWithName:(NSString *)columnName
+                                  type:(BNCSQLiteTableColumnType)columnType;
+
 + (instancetype)initNotNullColWithName:(NSString *)columnName
                                   type:(BNCSQLiteTableColumnType)columnType;
 

@@ -30,6 +30,16 @@
     return column;
 }
 
++ (instancetype)initPrimaryColWithName:(NSString *)columnName
+                                  type:(BNCSQLiteTableColumnType)columnType {
+    
+    BNCSQLiteTableColumn *column = [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:columnType constraint:^(BNCSQLiteTableColumn *column) {
+        [column settingPrimarykeyConstraint];
+    }];
+    
+    return column;
+}
+
 + (instancetype)initNotNullColWithName:(NSString *)columnName
                                   type:(BNCSQLiteTableColumnType)columnType {
     BNCSQLiteTableColumn *column = [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:columnType constraint:^(BNCSQLiteTableColumn *column) {
