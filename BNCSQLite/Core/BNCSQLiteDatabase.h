@@ -9,6 +9,22 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
+/**
+ specify the lock type when transaction begins
+
+ use BNCSQLiteTransactionLockTypeDeferred if you are not sure which lock to use
+ 
+ - BNCSQLiteTransactionLockTypeDeferred: perform BEGIN DEFERRED TRANSACTION, which uses SHARED lock
+ - BNCSQLiteTransactionLockTypeImmediate: perform BEGIN IMMEDIATE TRANSACTION, which uses RESERVED lock.
+ - BNCSQLiteTransactionLockTypeExclusive: perform BEGIN EXCLUSIVE TRANSACTION, which uses EXCLUSIVE lock.
+ */
+
+typedef NS_ENUM(NSUInteger, BNCSQLiteTransactionLockType){
+    BNCSQLiteTransactionLockTypeDeferred,
+    BNCSQLiteTransactionLockTypeImmediate,
+    BNCSQLiteTransactionLockTypeExclusive,
+};
+
 @class BNCSQLiteDatabaseStatement,BNCSQLiteDatabaseConfig;
 
 typedef void(^BindBlock)(BNCSQLiteDatabaseStatement *statement);
@@ -60,19 +76,30 @@ extern NSString * const kBNCSQLiteInitVersion;
  */
 - (UInt64)totalChanges;
 
+/**
+ Return the current schema version
+
+ @return version of schema
+ */
 - (NSString *)currentVersion;
 
+/**
+ Update the schema version
+
+ @param schemaVersion the new schema version
+ */
 - (void)updateSchemaVersion:(NSString *)schemaVersion;
 
 /**
  Executes a BEGIN, calls the provided closure and executes a ROLLBACK if an exception occurs or a COMMIT if no exception occurs.
 
  @param transaction Block to be executed inside transaction
+ @param lockType the lock type of transaction, use BNCSQLiteTransactionLockTypeDeferred if you are not sure which lock to use
  */
-- (void)executeSQLWithTransaction:(void(^)(void))transaction;
+- (void)executeSQLWithTransaction:(void (^)(void))transaction lockType:(BNCSQLiteTransactionLockType)lockType;
 
 /**
- Execute the given sql statement
+ Execute the given sqlString
 
  @param sqlString the sql string to be executed
  @param bind Block to be executed for binding on each call

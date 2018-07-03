@@ -64,7 +64,8 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
         }
         
         // Need Migration
-        if (isFileExistsBefore && !config.migrationAction) {
+        if (isFileExistsBefore && ![[self currentVersion] isEqualToString:config.latestSchemaVersion] && !config.migrationAction) {
+            // Do Migration
             config.migrationAction(self);
         }
     }
@@ -124,9 +125,22 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
     [self executeSQL:userVserion bind:nil rowHandle:nil error:nil];
 }
 
-- (void)executeSQLWithTransaction:(void(^)(void))transaction {
+- (void)executeSQLWithTransaction:(void (^)(void))transaction lockType:(BNCSQLiteTransactionLockType)lockType {
+    NSString *sql = @"";
+    switch (lockType) {
+        case BNCSQLiteTransactionLockTypeDeferred:
+            sql = @"BEGIN DEFERRED TRANSACTION;";
+            break;
+        case BNCSQLiteTransactionLockTypeImmediate:
+            sql = @"BEGIN IMMEDIATE TRANSACTION;";
+            break;
+        case BNCSQLiteTransactionLockTypeExclusive:
+            sql = @"BEGIN EXCLUSIVE TRANSACTION;";
+            break;
+    }
+    
     @try {
-        [self executeSQL:@"BEGIN TRANSACTION" bind:nil rowHandle:nil error:nil];
+        [self executeSQL:sql bind:nil rowHandle:nil error:nil];
         transaction();
         [self executeSQL:@"COMMIT" bind:nil rowHandle:nil error:nil];
     } @catch (NSException *exception) {
