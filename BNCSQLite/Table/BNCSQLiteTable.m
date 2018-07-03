@@ -10,6 +10,7 @@
 #import "BNCSQLiteDataBaseProtocol.h"
 #import "BNCSQLiteDatabasePool.h"
 #import "NSString+BNCSQLiteSchema.h"
+#import "BNCSQLiteDataBaseConfig+Protocol.h"
 
 @implementation BNCSQLiteTable
 
@@ -39,16 +40,19 @@
     NSString *filePath = [database databaseFilePath];
     NSAssert(filePath != nil, @"database filePath must not be nil");
     
-    BNCSQLiteDataBase *dbConnect = [[BNCSQLiteDatabasePool sharedInstance] databaseWith:filePath];
+    // Setup Connect
+    BNCSQLiteDataBaseConfig *config = [[BNCSQLiteDataBaseConfig alloc] initWithProtocol:database];
+    BNCSQLiteDataBase *dbConnect = [[BNCSQLiteDatabasePool sharedInstance] databaseWithConfig:config];
     
+    // Crate Table
     NSString *creatTableSQL = [NSString createTable:[self tableName] withColumns:[self columnInfo]];
     [dbConnect executeSQL:creatTableSQL bind:nil rowHandle:nil error:nil];
     
+    // Crate table index if not exist
     if (![self respondsToSelector:@selector(indexList)]) {
         return;
     }
     
-    // Crate table index if not exist
     NSArray *indexArr = [self performSelector:@selector(indexList)];
     for (id<BNCSQLiteTableColumnIndexProtocol> columnIndex in indexArr) {
         NSString *crateTableIndex = [NSString addIndex:columnIndex tableName:[self tableName]];

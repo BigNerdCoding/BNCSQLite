@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BNCSQLiteMigrationStepProtocol.h"
 
 @protocol BNCSQLiteMigratorProtocol <NSObject>
+
+@required
+/**
+ *  the order of migration
+ *
+ *  @return return the order of migration
+ */
+- (NSArray<NSString *> *)migrationVersionList;
+
+- (NSDictionary<NSString *,id<BNCSQLiteMigrationStepProtocol> > *)migrationStepDictionary;
 
 @end

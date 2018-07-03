@@ -16,5 +16,4 @@
 
 @optional
 - (id<BNCSQLiteMigratorProtocol>)databaseMigrator;
-
 @end

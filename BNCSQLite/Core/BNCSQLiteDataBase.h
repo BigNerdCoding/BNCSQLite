@@ -9,14 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-@class BNCSQLiteDataBaseStatement;
+@class BNCSQLiteDataBaseStatement,BNCSQLiteDataBaseConfig;
 
 typedef void(^BindBlock)(BNCSQLiteDataBaseStatement *statement);
 typedef void(^RowHandleBlock)(BNCSQLiteDataBaseStatement *statement, uint64_t rowID);
 
 extern NSString * const kBNCSQLiteErrorDomain;
-
-
+extern NSString * const kBNCSQLiteInitVersion;
 
 @interface BNCSQLiteDataBase : NSObject
 
@@ -28,11 +27,12 @@ extern NSString * const kBNCSQLiteErrorDomain;
 /**
  Connect database with filepath
 
- @param filePath the filepath of the database
+ @param config the config of the database
+ 
  @param error the error when create databse fails
  @return an instance of BNCDataBase
  */
-- (instancetype)initWithPath:(NSString *)filePath error:(NSError *__autoreleasing *)error;
+- (instancetype)initWithConfig:(BNCSQLiteDataBaseConfig *)config error:(NSError *__autoreleasing *)error;
 
 /**
  Close the database connection
@@ -59,6 +59,10 @@ extern NSString * const kBNCSQLiteErrorDomain;
  @return Int total changes
  */
 - (UInt64)totalChanges;
+
+- (NSString *)currentVersion;
+
+- (void)updateSchemaVersion:(NSString *)schemaVersion;
 
 /**
  Executes a BEGIN, calls the provided closure and executes a ROLLBACK if an exception occurs or a COMMIT if no exception occurs.

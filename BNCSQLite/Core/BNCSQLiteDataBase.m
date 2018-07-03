@@ -8,8 +8,11 @@
 
 #import "BNCSQLiteDataBase.h"
 #import "BNCSQLiteDataBaseStatement.h"
+#import "BNCSQLiteDataBaseStatement+Take.h"
+#import "BNCSQLiteDataBaseConfig.h"
 
 NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
+NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
 
 @interface BNCSQLiteDataBase()
 
@@ -20,9 +23,11 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
 
 @implementation BNCSQLiteDataBase
 
-- (instancetype)initWithPath:(NSString *)filePath error:(NSError *__autoreleasing *)error {
+- (instancetype)initWithConfig:(BNCSQLiteDataBaseConfig *)config error:(NSError *__autoreleasing *)error {
     self = [super init];
     if (self) {
+        NSString *filePath = config.filePath;
+        
         NSAssert(filePath != nil, @"database filePath must not be nil");
         
         _databaseFilePath = filePath;
@@ -33,6 +38,8 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
         if (![defaultFileManager fileExistsAtPath:checkDirPath]) {
             [defaultFileManager createDirectoryAtPath:checkDirPath withIntermediateDirectories:YES attributes:nil error:nil];
         }
+        
+        BOOL isFileExistsBefore = [defaultFileManager fileExistsAtPath:filePath];
         
         const char *path = [_databaseFilePath UTF8String];
         int result = sqlite3_open_v2(path, &(_database),
@@ -49,6 +56,17 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
             
             [self closeDatabase];
             return nil;
+        }
+        
+        // Setting latestVsersion
+        if (!isFileExistsBefore) {
+            [self updateSchemaVersion:config.latestSchemaVersion];
+        }
+        
+        if (isFileExistsBefore && !config.migrationAction) {
+            if (config.migrationAction(self)) {
+                [self updateSchemaVersion:config.latestSchemaVersion];
+            }
         }
     }
     
@@ -80,6 +98,31 @@ NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
 
 - (UInt64)totalChanges {
     return sqlite3_total_changes(_database);
+}
+
+- (NSString *)currentVersion {
+    NSString *sql = @"pragma user_version";
+    
+    __block NSString *version = @"";
+    [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDataBaseStatement *statement, uint64_t rowID) {
+        version = [statement takeTextColumn:1];
+    } error:nil];
+    
+    if (version && ![version isEqualToString:@""] ) {
+        return version;
+    }
+    
+    version = kBNCSQLiteInitVersion;
+    
+    [self updateSchemaVersion:version];
+    
+    return version;
+}
+
+- (void)updateSchemaVersion:(NSString *)schemaVersion {
+    NSString *userVserion = [NSString stringWithFormat:@"pragma user_version = %@", schemaVersion];
+    
+    [self executeSQL:userVserion bind:nil rowHandle:nil error:nil];
 }
 
 - (void)executeSQLWithTransaction:(void(^)(void))transaction {

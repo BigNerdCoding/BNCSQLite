@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "BNCSQLite.h"
+#import "BNCSQLiteDataBaseConfig.h"
 
 @interface BNCSQLiteCoreTest : XCTestCase
 
@@ -23,7 +24,10 @@
     
     self.filePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"BNCSQLiteCoreTest.sqlite"];
     
-    self.db = [[BNCSQLiteDataBase alloc] initWithPath:_filePath error:nil];
+    BNCSQLiteDataBaseConfig *config = [[BNCSQLiteDataBaseConfig alloc] init];
+    config.filePath = self.filePath;
+    
+    self.db = [[BNCSQLiteDataBase alloc] initWithConfig:config error:nil];
 }
 
 - (void)tearDown {

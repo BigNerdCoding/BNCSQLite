@@ -42,14 +42,9 @@
     [self closeAllDatabase];
 }
 
-- (BNCSQLiteDataBase *)databaseWith:(NSString *)filePath {
-    NSAssert(filePath != nil, @"database filepath must not be nil");
-    
-    if (filePath == nil) {
-        return nil;
-    }
-    
-    NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread],filePath];
+- (BNCSQLiteDataBase *)databaseWithConfig:(BNCSQLiteDataBaseConfig *)config {
+
+    NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread],config.filePath];
     
     BNCSQLiteDataBase *dbConnect = [self.dbCache getCacheForKey:key];
     
@@ -58,7 +53,8 @@
     }
     
     NSError *error = nil;
-    dbConnect = [[BNCSQLiteDataBase alloc] initWithPath:filePath error:&error];
+    
+    dbConnect = [[BNCSQLiteDataBase alloc] initWithConfig:config error:&error];
     
     if (error) {
         NSLog(@"Error at %s:[%d]:%@", __FILE__, __LINE__, error);
@@ -113,5 +109,6 @@
         [self.dbCache removeCacheObjectForKey:key];
     }
 }
+
 
 @end
