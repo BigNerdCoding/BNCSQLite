@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "BNCSQLiteTableProtocol.h"
 @protocol BNCSQLiteRecordProtocol <NSObject>
+
+@required
+
+- (NSDictionary *)dictionaryRepresentationWithTable:(id<BNCSQLiteTableProtocol>)table;
+
+- (void)objectRepresentationWithDictionary:(NSDictionary *)dictionary;
 
 @end

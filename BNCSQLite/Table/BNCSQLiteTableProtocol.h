@@ -43,6 +43,13 @@
  */
 - (Class)recordClass;
 
+/**
+ the name of the primary key
+
+ @return the name of the primary key
+ */
+- (NSString *)primaryKeyName;
+
 @optional
 
 /**

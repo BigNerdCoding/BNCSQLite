@@ -37,7 +37,12 @@
             case SQLITE_TEXT:
             {
                 const char *value = (const char*)sqlite3_column_text(self.statement, index);
-                [result setObject:[NSString stringWithCString:value encoding:NSUTF8StringEncoding] forKey:columnName];
+                NSString *strValue = nil;
+                if (value) {
+                    strValue = [NSString stringWithCString:value encoding:NSUTF8StringEncoding];
+                }
+                
+                [result setObject:strValue forKey:columnName];
                 break;
             }
                 
@@ -53,9 +58,22 @@
                 break;
             }
                 
-            default:
-                // Do Nothing
+            case SQLITE_NULL:
+                // do nothing
                 break;
+                
+            default:
+            {
+                const char *value = (const char *)sqlite3_column_text(self.statement, index);
+                
+                NSString *strValue = nil;
+                if (value) {
+                    strValue = [NSString stringWithCString:value encoding:NSUTF8StringEncoding];
+                }
+                
+                [result setObject:strValue forKey:columnName];
+                break;
+            }
         }
 
     }
@@ -73,6 +91,10 @@
 
 - (NSString *)takeTextColumn:(int)tValuePosition {
     const char *textValue = (const char*)sqlite3_column_text(self.statement, tValuePosition);
+    
+    if (!textValue) {
+        return nil;
+    }
     
     return [[NSString alloc] initWithCString:textValue encoding:NSUTF8StringEncoding];
 }

@@ -27,6 +27,8 @@ typedef NS_ENUM (NSUInteger, BNCSQLiteTableColumnType) {
 
 - (BOOL)isAutoIncrement;
 
+- (BOOL)isUnique;
+
 - (BOOL)isNull;
 
 - (NSString *)defaultValue;

@@ -12,6 +12,12 @@
 #import "BNCSQLiteDataBaseConfig+InfoProtocol.h"
 #import "BNCSQLiteRecordProtocol.h"
 
+@interface BNCSQLiteTable()
+
+@property(nonatomic, strong, readwrite) BNCSQLiteDatabase *dbConnect;
+
+@end
+
 @implementation BNCSQLiteTable
 
 - (instancetype)init {
@@ -24,7 +30,7 @@
             
             @throw exception;
         }
-    
+        
         // Create Table & Index
         [self initTableWith:self.databaseInfo];
     }
@@ -38,11 +44,11 @@
     
     // Setup Connect
     BNCSQLiteDatabaseConfig *config = [[BNCSQLiteDatabaseConfig alloc] initWithProtocol:databaseInfo];
-    BNCSQLiteDatabase *dbConnect = [[BNCSQLiteDatabasePool sharedInstance] databaseWithConfig:config];
+    self.dbConnect = [[BNCSQLiteDatabasePool sharedInstance] databaseWithConfig:config];
     
     // Crate Table
     NSString *creatTableSQL = [NSString createTable:[self tableName] withColumns:[self columnInfo]];
-    [dbConnect executeSQL:creatTableSQL bind:nil rowHandle:nil error:nil];
+    [self.dbConnect executeSQL:creatTableSQL bind:nil rowHandle:nil error:nil];
     
     // Crate table index if not exist
     if (![self respondsToSelector:@selector(indexList)]) {
@@ -52,7 +58,7 @@
     NSArray *indexArr = [self performSelector:@selector(indexList)];
     for (id<BNCSQLiteTableColumnIndexProtocol> columnIndex in indexArr) {
         NSString *crateTableIndex = [NSString addIndex:columnIndex tableName:[self tableName]];
-        [dbConnect executeSQL:crateTableIndex bind:nil rowHandle:nil error:nil];
+        [self.dbConnect executeSQL:crateTableIndex bind:nil rowHandle:nil error:nil];
     }
     
     return;
@@ -80,6 +86,12 @@
 
 - (Class)recordClass {
     NSException *exception =[NSException exceptionWithName:@"BNCSQLiteTableProtocol methods must be override" reason:@"recordClass must be override" userInfo:nil];
+    
+    @throw exception;
+}
+
+- (NSString *)primaryKeyName {
+    NSException *exception =[NSException exceptionWithName:@"BNCSQLiteTableProtocol methods must be override" reason:@"primaryKeyName must be override" userInfo:nil];
     
     @throw exception;
 }

@@ -89,6 +89,10 @@
         columnDescription =  [columnDescription stringByAppendingString:@" AUTOINCREMENT "];
     }
     
+    if (![column isUnique]) {
+        columnDescription =  [columnDescription stringByAppendingString:@" UNIQUE "];
+    }
+    
     if (![column isNull]) {
         columnDescription =  [columnDescription stringByAppendingString:@" NOT NULL "];
     }

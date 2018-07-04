@@ -15,6 +15,7 @@
 @property(nonatomic, assign) BOOL primaryKey;
 @property(nonatomic, assign) BOOL autoIncrement;
 @property(nonatomic, assign) BOOL colNull;
+@property(nonatomic, assign) BOOL uniqueColumn;
 @property(nonatomic, strong) NSString *colDefaultValue;
 
 @end
@@ -30,11 +31,11 @@
     return column;
 }
 
-+ (instancetype)initPrimaryColWithName:(NSString *)columnName
-                                  type:(BNCSQLiteTableColumnType)columnType {
++ (instancetype)initUniqueColWithName:(NSString *)columnName
+                                 type:(BNCSQLiteTableColumnType)columnType {
     
     BNCSQLiteTableColumn *column = [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:columnType constraint:^(BNCSQLiteTableColumn *column) {
-        [column settingPrimarykeyConstraint];
+        [column settingUniqueConstraint];
     }];
     
     return column;
@@ -57,7 +58,7 @@
         _primaryKey = NO;
         _autoIncrement = NO;
         _colDefaultValue = @"";
-        
+        _uniqueColumn  = NO;
         if (constraint) {
             constraint(self);
         }
@@ -72,6 +73,10 @@
 
 - (void)settingAutoIncrementConstraint {
     self.autoIncrement = YES;
+}
+
+- (void)settingUniqueConstraint {
+    self.uniqueColumn = YES;
 }
 
 - (void)settingNotNullConstraint {

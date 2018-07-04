@@ -125,7 +125,7 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
     [self executeSQL:userVserion bind:nil rowHandle:nil error:nil];
 }
 
-- (BOOL)executeSQLWithTransaction:(void (^)(void))transaction lockType:(BNCSQLiteTransactionLockType)lockType {
+- (BOOL)executeSQLWithTransaction:(BOOL (^)(void))transaction lockType:(BNCSQLiteTransactionLockType)lockType {
     NSString *sql = @"";
     switch (lockType) {
         case BNCSQLiteTransactionLockTypeDeferred:
@@ -143,8 +143,14 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
     
     @try {
         [self executeSQL:sql bind:nil rowHandle:nil error:nil];
-        transaction();
-        [self executeSQL:@"COMMIT" bind:nil rowHandle:nil error:nil];
+        isSuccess = transaction();
+        
+        if (isSuccess) {
+            [self executeSQL:@"COMMIT" bind:nil rowHandle:nil error:nil];
+        } else {
+            [self executeSQL:@"ROLLBACK" bind:nil rowHandle:nil error:nil];
+        }
+        
     } @catch (NSException *exception) {
         [self executeSQL:@"ROLLBACK" bind:nil rowHandle:nil error:nil];
         isSuccess = NO;

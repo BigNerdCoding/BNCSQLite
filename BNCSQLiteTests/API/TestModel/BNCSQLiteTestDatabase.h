@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BNCSQLiteDataBaseProtocol.h"
+#import "BNCSQLiteDatabaseInfoProtocol.h"
 
-@interface BNCSQLiteTestDatabase : NSObject <BNCSQLiteDatabaseProtocol>
+@interface BNCSQLiteTestDatabase : NSObject <BNCSQLiteDatabaseInfoProtocol>
 
 @end

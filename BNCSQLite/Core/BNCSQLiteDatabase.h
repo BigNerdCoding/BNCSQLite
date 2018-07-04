@@ -98,7 +98,7 @@ extern NSString * const kBNCSQLiteInitVersion;
  
  @return NO if fails 
  */
-- (BOOL)executeSQLWithTransaction:(void (^)(void))transaction lockType:(BNCSQLiteTransactionLockType)lockType;
+- (BOOL)executeSQLWithTransaction:(BOOL (^)(void))transaction lockType:(BNCSQLiteTransactionLockType)lockType;
 
 /**
  Execute the given sqlString

@@ -44,7 +44,7 @@
 
 - (BNCSQLiteDatabase *)databaseWithConfig:(BNCSQLiteDatabaseConfig *)config {
 
-    NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread],config.filePath];
+    NSString *key = [NSString stringWithFormat:@"%@ - %@",config.filePath, [NSThread currentThread]];
     
     BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:key];
     
@@ -69,8 +69,7 @@
     NSMutableArray *databaseToClose = [NSMutableArray array];
     
     for (NSString *key in self.dbCache.getAllCacheKeys) {
-        
-        if ([key containsString:filePath]) {
+        if ([key hasPrefix:[NSString stringWithFormat:@"%@ -",filePath]]) {
             [databaseToClose addObject:key];
         }
     }

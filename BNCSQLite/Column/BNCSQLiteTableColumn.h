@@ -13,7 +13,7 @@
 
 + (instancetype)initRowIDColWithName:(NSString *)columnName;
 
-+ (instancetype)initPrimaryColWithName:(NSString *)columnName
++ (instancetype)initUniqueColWithName:(NSString *)columnName
                                   type:(BNCSQLiteTableColumnType)columnType;
 
 + (instancetype)initNotNullColWithName:(NSString *)columnName
@@ -26,6 +26,8 @@
 - (void)settingPrimarykeyConstraint;
 
 - (void)settingAutoIncrementConstraint;
+
+- (void)settingUniqueConstraint;
 
 - (void)settingNotNullConstraint;
 
