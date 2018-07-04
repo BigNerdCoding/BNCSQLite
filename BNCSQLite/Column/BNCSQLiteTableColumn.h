@@ -11,7 +11,7 @@
 
 @interface BNCSQLiteTableColumn : NSObject <BNCSQLiteTableColumnProtocol>
 
-+ (instancetype)initRowIDColWithName:(NSString *)columnName;
++ (instancetype)initPrimaryColWithName:(NSString *)columnName;
 
 + (instancetype)initUniqueColWithName:(NSString *)columnName
                                   type:(BNCSQLiteTableColumnType)columnType;

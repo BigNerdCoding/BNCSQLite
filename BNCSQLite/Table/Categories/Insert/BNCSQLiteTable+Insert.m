@@ -7,15 +7,28 @@
 //
 
 #import "BNCSQLiteTable+Insert.h"
+#import "BNCSQLiteDatabaseStatement+Bind.h"
 
 @implementation BNCSQLiteTable (Insert)
 
-- (BOOL)insertRecord:(id<BNCSQLiteRecordProtocol>)record error:(NSError *__autoreleasing *)error {
+- (BOOL)insertRecord:(NSObject<BNCSQLiteRecordProtocol> *)record error:(NSError *__autoreleasing *)error {
+    NSString *insertSQL = [self generateInsertSQL];
+    
+    NSDictionary *recordDic = [record dictionaryRepresentationWithTable:self];
+    
+    [self.dbConnect executeSQL:insertSQL bind:^(BNCSQLiteDatabaseStatement *statement) {
+        [recordDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            NSString *bindKey = [NSString stringWithFormat:@":%@",key];
+            [statement bindColumn:bindKey withValue:obj];
+        }];
+    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
+        [record setValue:@(rowID) forKey:self.primaryKeyName];
+    } error:error];
     
     return YES;
 }
 
-- (BOOL)insertRecordList:(NSArray<id<BNCSQLiteRecordProtocol> > *)recordList
+- (BOOL)insertRecordList:(NSArray<NSObject <BNCSQLiteRecordProtocol> * > *)recordList
                error:(NSError *__autoreleasing *)error {
     
     __block BOOL isSuccess = YES;
@@ -37,5 +50,23 @@
     
     return isSuccess;
 }
+
+- (NSString *)generateInsertSQL {
+  
+    
+    NSMutableArray *insertColumns = [NSMutableArray array];
+    NSMutableArray *insertValues = [NSMutableArray array];
+    for (id<BNCSQLiteTableColumnProtocol> column in self.columnInfo) {
+        [insertColumns addObject:column.columnName];
+        [insertValues addObject:[NSString stringWithFormat:@":%@", column.columnName]];
+    }
+    
+    NSString *insertColumnSQL = [insertColumns componentsJoinedByString:@","];
+    NSString *insertValueSQL = [insertValues componentsJoinedByString:@","];
+    
+    return [NSString stringWithFormat:@"INSERT INTO '%@' (%@) VALUES %@ ;", self.tableName, insertColumnSQL, insertValueSQL];
+}
+
+
 
 @end

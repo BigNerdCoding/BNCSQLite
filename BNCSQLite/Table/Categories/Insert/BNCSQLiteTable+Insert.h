@@ -11,9 +11,9 @@
 
 @interface BNCSQLiteTable (Insert)
 
-- (BOOL)insertRecord:(id<BNCSQLiteRecordProtocol>)record error:(NSError *__autoreleasing *)error;
+- (BOOL)insertRecord:(NSObject<BNCSQLiteRecordProtocol> *)record error:(NSError *__autoreleasing *)error;
 
-- (BOOL)insertRecordList:(NSArray<id<BNCSQLiteRecordProtocol> > *)recordList
+- (BOOL)insertRecordList:(NSArray<NSObject<BNCSQLiteRecordProtocol> * > *)recordList
                error:(NSError *__autoreleasing *)error;
 
 @end

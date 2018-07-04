@@ -17,7 +17,7 @@
  *  @param record the record you want to update
  *  @param error  error if fails
  */
-- (BOOL)updateRecord:(id<BNCSQLiteRecordProtocol>)record error:(NSError **)error;
+- (BOOL)updateRecord:(NSObject<BNCSQLiteRecordProtocol> *)record error:(NSError *__autoreleasing*)error;
 
 /**
  *  udpate a list of record
@@ -25,7 +25,7 @@
  *  @param recordList the list of record to update
  *  @param error      error if fails
  */
-- (BOOL)updateRecordList:(NSArray <id<BNCSQLiteRecordProtocol> > *)recordList error:(NSError **)error;
+- (BOOL)updateRecordList:(NSArray <NSObject<BNCSQLiteRecordProtocol> * > *)recordList error:(NSError *__autoreleasing*)error;
 
 /**
  *  update value for key which the row matches whereCondition, @see deleteWithWhereCondition:conditionParams:error:
@@ -36,7 +36,7 @@
  *  @param whereConditionParams params for where condition
  *  @param error                error if fails
  */
-- (BOOL)updateValue:(id)value forKey:(NSString *)key whereCondition:(NSString *)whereCondition whereConditionParams:(NSDictionary *)whereConditionParams error:(NSError **)error;
+- (BOOL)updateValue:(id)value forKey:(NSString *)key whereCondition:(NSString *)whereCondition whereConditionParams:(NSDictionary *)whereConditionParams error:(NSError *__autoreleasing*)error;
 
 /**
  *  update keys and values of rows matches whereCondition, @see deleteWithWhereCondition:conditionParams:error:
@@ -46,7 +46,7 @@
  *  @param whereConditionParams params for where condition
  *  @param error                error if fails
  */
-- (BOOL)updateKeyValueList:(NSDictionary *)keyValueList whereCondition:(NSString *)whereCondition whereConditionParams:(NSDictionary *)whereConditionParams error:(NSError **)error;
+- (BOOL)updateKeyValueList:(NSDictionary *)keyValueList whereCondition:(NSString *)whereCondition whereConditionParams:(NSDictionary *)whereConditionParams error:(NSError *__autoreleasing*)error;
 
 /**
  *  update value for key1, where key2 in a list
@@ -59,7 +59,6 @@
  */
 - (BOOL)updateValue:(id)value forKey:(NSString *)key whereKey:(NSString *)wherekey inList:(NSArray *)valueList error:(NSError *__autoreleasing *)error;
 
-
 /**
  *  update value for key by primary key
  *
@@ -68,7 +67,7 @@
  *  @param primaryKeyValue primary key of the record you want to update
  *  @param error           error if fails
  */
-- (BOOL)updateValue:(id)value forKey:(NSString *)key primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError **)error;
+- (BOOL)updateValue:(id)value forKey:(NSString *)key primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError *__autoreleasing*)error;
 
 /**
  *  update key-value list by primary key of the record you want to update
@@ -77,6 +76,6 @@
  *  @param primaryKeyValue the primary key of the record you want to update
  *  @param error           error if fails
  */
-- (BOOL)updateKeyValueList:(NSDictionary *)keyValueList primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError **)error;
+- (BOOL)updateKeyValueList:(NSDictionary *)keyValueList primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError *__autoreleasing*)error;
 
 @end

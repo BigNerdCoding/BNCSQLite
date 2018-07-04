@@ -22,7 +22,7 @@
 
 @implementation BNCSQLiteTableColumn
 
-+ (instancetype)initRowIDColWithName:(NSString *)columnName {
++ (instancetype)initPrimaryColWithName:(NSString *)columnName {
     BNCSQLiteTableColumn *column = [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:BNCSQLiteTableColumnTypeInt constraint:^(BNCSQLiteTableColumn *column) {
         [column settingPrimarykeyConstraint];
         [column settingAutoIncrementConstraint];

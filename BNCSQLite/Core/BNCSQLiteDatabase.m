@@ -144,7 +144,6 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
     @try {
         [self executeSQL:sql bind:nil rowHandle:nil error:nil];
         isSuccess = transaction();
-        
         if (isSuccess) {
             [self executeSQL:@"COMMIT" bind:nil rowHandle:nil error:nil];
         } else {

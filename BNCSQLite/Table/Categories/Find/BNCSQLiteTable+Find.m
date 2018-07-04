@@ -30,10 +30,6 @@
     return nil;
 }
 
-- (id<BNCSQLiteRecordProtocol>)findFirstRowWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error {
-    return nil;
-}
-
 - (NSInteger)countTotalRecord {
     return 0;
 }

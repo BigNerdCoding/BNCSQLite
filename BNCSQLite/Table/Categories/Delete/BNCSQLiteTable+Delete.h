@@ -11,9 +11,9 @@
 
 @interface BNCSQLiteTable (Delete)
 
-- (BOOL)deleteRecord:(id<BNCSQLiteRecordProtocol>)record error:(NSError **)error;
+- (BOOL)deleteRecord:(NSObject<BNCSQLiteRecordProtocol> * )record error:(NSError * __autoreleasing *)error;
 
-- (BOOL)deleteRecordList:(NSArray <id<BNCSQLiteRecordProtocol> > *)recordList error:(NSError **)error;
+- (BOOL)deleteRecordList:(NSArray <NSObject<BNCSQLiteRecordProtocol> * > *)recordList error:(NSError * __autoreleasing*)error;
 
 /**
  *  delete with condition. The "where condition" is a string which will be used in SQL WHERE clause. Can bind params if you have words start with colon.
@@ -32,11 +32,13 @@
  *  @param conditionParams the params to bind in to where condition
  *  @param error           the error if delete fails
  */
-- (BOOL)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error;
+- (BOOL)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError *__autoreleasing*)error;
 
-- (BOOL)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error;
+- (BOOL)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError *__autoreleasing*)error;
 
-- (BOOL)deleteRecordWhereKey:(NSString *)key value:(id)value error:(NSError **)error;
+- (BOOL)deleteWithPrimaryKeyList:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError * __autoreleasing*)error;
+
+- (BOOL)deleteRecordWhereKey:(NSString *)key value:(id)value error:(NSError *__autoreleasing*)error;
 
 - (BOOL)truncate;
 

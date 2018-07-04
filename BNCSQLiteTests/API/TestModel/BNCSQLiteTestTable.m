@@ -24,7 +24,7 @@
 }
 
 - (NSArray< id<BNCSQLiteTableColumnProtocol> > *)columnInfo {
-    BNCSQLiteTableColumn *column = [BNCSQLiteTableColumn initRowIDColWithName:@"row_id"];
+    BNCSQLiteTableColumn *column = [BNCSQLiteTableColumn initPrimaryColWithName:@"row_id"];
     BNCSQLiteTableColumn *column2 = [[BNCSQLiteTableColumn alloc] initWithColName:@"text_index_col" type:BNCSQLiteTableColumnTypeInt constraint:^(BNCSQLiteTableColumn *column) {
         [column settingNotNullConstraint];
         [column settingDefaultValueConstraint:@"0"];
