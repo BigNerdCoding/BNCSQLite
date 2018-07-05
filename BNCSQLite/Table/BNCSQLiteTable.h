@@ -12,8 +12,10 @@
 /**
  This is an abstract class that conform `BNCSQLiteTableProtocol` protocol, don't use it directly
  
- You can inherit `BNCSQLiteTable` or define your own class the conform `BNCSQLiteTableProtocol` protocol
+ You can inherit `BNCSQLiteTable` or define your own class that conform `BNCSQLiteTableProtocol` protocol
  
+ WARNING:
+    if you inherit `BNCSQLiteTable` class , you should also implement the `BNCSQLiteTableProtocol` protocol methods.
  */
 
 @interface BNCSQLiteTable : NSObject <BNCSQLiteTableProtocol>

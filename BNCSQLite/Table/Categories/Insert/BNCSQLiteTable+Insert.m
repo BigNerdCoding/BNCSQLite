@@ -11,7 +11,8 @@
 
 @implementation BNCSQLiteTable (Insert)
 
-- (BOOL)insertRecord:(NSObject<BNCSQLiteRecordProtocol> *)record error:(NSError *__autoreleasing *)error {
+- (BOOL)insertRecord:(NSObject<BNCSQLiteRecordProtocol> *)record
+               error:(NSError *__autoreleasing *)error {
     NSString *insertSQL = [self generateInsertSQL];
     
     NSDictionary *recordDic = [record dictionaryRepresentationWithTable:self];
@@ -21,19 +22,19 @@
             NSString *bindKey = [NSString stringWithFormat:@":%@",key];
             [statement bindColumn:bindKey withValue:obj];
         }];
-    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
-        [record setValue:@(rowID) forKey:self.primaryKeyName];
+    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+        [record setValue:@([self.dbConnect latestInsertRowID]) forKey:self.primaryKeyName];
     } error:error];
     
     return YES;
 }
 
 - (BOOL)insertRecordList:(NSArray<NSObject <BNCSQLiteRecordProtocol> * > *)recordList
-               error:(NSError *__autoreleasing *)error {
+                   error:(NSError *__autoreleasing *)error {
     
     __block BOOL isSuccess = YES;
     
-    [self.dbConnect executeSQLWithTransaction:^{
+    return [self.dbConnect executeSQLWithTransaction:^{
 
         for (id<BNCSQLiteRecordProtocol> record in recordList) {
             isSuccess = [self insertRecord:record error:error];
@@ -46,9 +47,6 @@
         return isSuccess;
         
     } lockType:BNCSQLiteTransactionLockTypeDeferred];
-     
-    
-    return isSuccess;
 }
 
 - (NSString *)generateInsertSQL {
@@ -64,7 +62,7 @@
     NSString *insertColumnSQL = [insertColumns componentsJoinedByString:@","];
     NSString *insertValueSQL = [insertValues componentsJoinedByString:@","];
     
-    return [NSString stringWithFormat:@"INSERT INTO '%@' (%@) VALUES %@ ;", self.tableName, insertColumnSQL, insertValueSQL];
+    return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES %@ ;", self.tableName, insertColumnSQL, insertValueSQL];
 }
 
 
