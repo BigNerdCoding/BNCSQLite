@@ -117,7 +117,6 @@
     XCTAssertTrue(isSuccess);
     XCTAssert(arr.count == 1);
     
-    
     sql = @"SELECT COUNT(*) AS count FROM contacts ;";
     
     __block NSInteger nCount = 0;
