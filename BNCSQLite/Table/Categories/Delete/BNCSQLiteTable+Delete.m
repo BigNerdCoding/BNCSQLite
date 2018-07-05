@@ -96,7 +96,7 @@
     
     return [self.dbConnect executeSQLWithTransaction:^{
         
-        NSString *sqlString = [NSString stringWithFormat:@"DELETE %@ SET ;", self.tableName];
+        NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM %@;", self.tableName];
         
         isSuccess = [self.dbConnect executeSQL:sqlString bind:nil rowHandle:nil error:nil];
         
