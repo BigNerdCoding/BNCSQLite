@@ -1,5 +1,5 @@
 //
-//  BNCSQLiteORMSelectUnitTest.m
+//  BNCSQLiteORMFindGeneralUnitTest.m
 //  BNCSQLiteTests
 //
 //  Created by Karsa Wu on 2018/7/5.
@@ -13,18 +13,17 @@
 #import "BNCSQLiteTable+Find.h"
 #import "BNCSQLiteTable+Delete.h"
 
-@interface BNCSQLiteORMFindWithConditionUnitTest : XCTestCase
+@interface BNCSQLiteORMFindGeneralUnitTest : XCTestCase
 
 @property(nonatomic,strong) BNCSQLiteTestTable *table;
 
 @end
 
-@implementation BNCSQLiteORMFindWithConditionUnitTest
+@implementation BNCSQLiteORMFindGeneralUnitTest
 
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    
     _table = [[BNCSQLiteTestTable alloc] init];
     [self generateTestData];
 }
@@ -37,52 +36,21 @@
     XCTAssertTrue(isSuccess);
 }
 
-- (void)testFindAllWithError {
-    NSError *error = nil;
-    
-    NSArray *results = [_table findAllWithError:&error];
-    
-    XCTAssert(results.count == 10);
-    XCTAssertNil(error);
+
+- (void)testCountTotalRecord {
+    NSInteger count = [_table countTotalRecord];
+    XCTAssert(count == 10);
 }
 
-- (void)testFindAllWithOrder {
-    NSError *error = nil;
+- (void)testCountWithCondition {
+    NSInteger count = [_table countWithCondition:@"age > :age" params:@{@"age":@(5)}];
+    XCTAssert(count == 4);
     
-    NSArray *results = [_table findAllWithOrder:@"timeStamp desc" error:&error];
     
-    XCTAssert(results.count == 10);
-    XCTAssertNil(error);
-    
-    BNCSQLiteTestRecord *record = [results firstObject];
-    long long timeStamp = record.timeStamp;
-    
-    for (NSInteger index = 1; index < results.count; index++) {
-        record = [results objectAtIndex:index];
-        
-        XCTAssert(timeStamp > record.timeStamp);
-        
-        timeStamp = record.timeStamp;
-    }
-}
-
-- (void)testFindLatestRecordWithError {
-    NSError *error = nil;
-    
-    BNCSQLiteTestRecord *record = [_table findLatestRecordWithError:&error];
-    XCTAssertNil(error);
-    XCTAssertNotNil(record);
-    XCTAssertEqual(record.age, 9);
-}
-
-- (void)testFindLatestRecordWithOrder {
-    NSError *error = nil;
-    
-    BNCSQLiteTestRecord *record = [_table findLatestRecordWithOrder:@"age desc" error:&error];
-    
-    XCTAssertNil(error);
-    XCTAssertNotNil(record);
-    XCTAssertEqual(record.timeStamp, 1000);
+    count = [_table countWithCondition:@"age > :age AND timeStamp < :timeStamp" params:@{@"age":@(5),
+                                                                                         @"timeStamp":@(1007)
+                                                                                         }];
+    XCTAssert(count == 1);
 }
 
 - (void)generateTestData {
@@ -105,5 +73,4 @@
     XCTAssertTrue(isSuccess);
     XCTAssertNil(error);
 }
-
 @end
