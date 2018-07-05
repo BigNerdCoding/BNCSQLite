@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteTableProtocol.h"
+
 @protocol BNCSQLiteRecordProtocol <NSObject>
 
 @required

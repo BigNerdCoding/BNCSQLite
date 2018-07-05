@@ -29,7 +29,7 @@ typedef NS_ENUM (NSUInteger, BNCSQLiteTableColumnType) {
 
 - (BOOL)isUnique;
 
-- (BOOL)isNull;
+- (BOOL)isNotNull;
 
 - (NSString *)defaultValue;
 

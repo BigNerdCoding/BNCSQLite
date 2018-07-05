@@ -14,7 +14,7 @@
 @property(nonatomic, assign) BNCSQLiteTableColumnType type;
 @property(nonatomic, assign) BOOL primaryKey;
 @property(nonatomic, assign) BOOL autoIncrement;
-@property(nonatomic, assign) BOOL colNull;
+@property(nonatomic, assign) BOOL colNotNull;
 @property(nonatomic, assign) BOOL uniqueColumn;
 @property(nonatomic, strong) NSString *colDefaultValue;
 
@@ -59,6 +59,7 @@
         _autoIncrement = NO;
         _colDefaultValue = @"";
         _uniqueColumn  = NO;
+        _colNotNull = NO;
         if (constraint) {
             constraint(self);
         }
@@ -80,7 +81,7 @@
 }
 
 - (void)settingNotNullConstraint {
-    self.colNull = NO;
+    self.colNotNull = YES;
 }
 
 - (void)settingDefaultValueConstraint:(NSString *)defaultValue {
@@ -104,8 +105,12 @@
     return _autoIncrement;
 }
 
-- (BOOL)isNull {
-    return _colNull;
+- (BOOL)isUnique; {
+    return _uniqueColumn;
+}
+
+- (BOOL)isNotNull {
+    return _colNotNull;
 }
 
 - (NSString *)defaultValue {

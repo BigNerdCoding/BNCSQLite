@@ -154,7 +154,7 @@ NSInteger const kBNCSQLiteInitVersion = 0;
 - (BOOL)executeSQL:(NSString *)sqlString bind:(BindBlock)bind rowHandle:(RowHandleBlock)rowHandle error:(NSError *__autoreleasing *)error {
     BNCSQLiteDatabaseStatement *sqlStatement = [[BNCSQLiteDatabaseStatement alloc] initWithSQLString:sqlString database:self error:error];
     
-    if (!sqlStatement || error) {
+    if (!sqlStatement) {
         [sqlStatement finalizeStatement];
         return NO;
     }

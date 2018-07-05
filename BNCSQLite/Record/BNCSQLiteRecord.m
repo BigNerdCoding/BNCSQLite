@@ -36,11 +36,11 @@
             continue;
         }
         
-        dictionaryRepresentation[columnName] = propertyList[columnName];
-        
-        if (propertyList[columnName] != [NSNull null]) {
+        if (propertyList[columnName] == [NSNull null]) {
             continue;
         }
+        
+        dictionaryRepresentation[columnName] = propertyList[columnName];
     }
     
     return dictionaryRepresentation;

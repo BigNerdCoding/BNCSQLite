@@ -23,7 +23,7 @@
 		47584C3420E928EA00173F5F /* BNCSQLiteTableColumnProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C3320E928EA00173F5F /* BNCSQLiteTableColumnProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C3720E9299B00173F5F /* BNCSQLiteDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C3520E9299B00173F5F /* BNCSQLiteDatabasePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C3820E9299B00173F5F /* BNCSQLiteDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C3620E9299B00173F5F /* BNCSQLiteDatabasePool.m */; };
-		47584C3C20E92C1400173F5F /* BNCSQLiteSafeCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C3A20E92C1400173F5F /* BNCSQLiteSafeCache.h */; };
+		47584C3C20E92C1400173F5F /* BNCSQLiteSafeCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C3A20E92C1400173F5F /* BNCSQLiteSafeCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C3D20E92C1400173F5F /* BNCSQLiteSafeCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C3B20E92C1400173F5F /* BNCSQLiteSafeCache.m */; };
 		47584C3F20E9317700173F5F /* BNCSQLiteRecordProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C3E20E9317700173F5F /* BNCSQLiteRecordProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C5820E9C0C500173F5F /* BNCSQLiteTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C5620E9C0C500173F5F /* BNCSQLiteTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,12 +31,12 @@
 		47584C5D20E9CC5000173F5F /* BNCSQLiteTableColumn.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C5B20E9CC5000173F5F /* BNCSQLiteTableColumn.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C5E20E9CC5000173F5F /* BNCSQLiteTableColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C5C20E9CC5000173F5F /* BNCSQLiteTableColumn.m */; };
 		47584C6120E9CF7A00173F5F /* BNCSQLiteCoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C6020E9CF7A00173F5F /* BNCSQLiteCoreTest.m */; };
-		47584C6D20E9FFF900173F5F /* NSString+BNCSQLiteSchema.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C6B20E9FFF900173F5F /* NSString+BNCSQLiteSchema.h */; };
+		47584C6D20E9FFF900173F5F /* NSString+BNCSQLiteSchema.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C6B20E9FFF900173F5F /* NSString+BNCSQLiteSchema.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C6E20E9FFF900173F5F /* NSString+BNCSQLiteSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C6C20E9FFF900173F5F /* NSString+BNCSQLiteSchema.m */; };
 		47584C7520EA066300173F5F /* BNCSQLiteTestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C7420EA066300173F5F /* BNCSQLiteTestRecord.m */; };
 		47584C7820EA067E00173F5F /* BNCSQLiteTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C7720EA067E00173F5F /* BNCSQLiteTestTable.m */; };
 		47584C7B20EA075E00173F5F /* BNCSQLiteTestDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C7A20EA075E00173F5F /* BNCSQLiteTestDatabase.m */; };
-		47584C7E20EA0E6600173F5F /* BNCSQLiteBaseUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47584C7D20EA0E6600173F5F /* BNCSQLiteBaseUnitTest.m */; };
+		4765752C20EDF21700315CF3 /* BNCSQLiteORMSelectUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4765752B20EDF21700315CF3 /* BNCSQLiteORMSelectUnitTest.m */; };
 		476F906B20EB0C2400718E1E /* BNCSQLiteTableColumnIndexProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F906A20EB0C2400718E1E /* BNCSQLiteTableColumnIndexProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F906E20EB0F7900718E1E /* BNCSQLiteTableColumnIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F906C20EB0F7900718E1E /* BNCSQLiteTableColumnIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F906F20EB0F7900718E1E /* BNCSQLiteTableColumnIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F906D20EB0F7900718E1E /* BNCSQLiteTableColumnIndex.m */; };
@@ -45,15 +45,15 @@
 		476F907F20EB69B100718E1E /* BNCSQLiteMigrationStepProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F907E20EB69B100718E1E /* BNCSQLiteMigrationStepProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F908220EB757D00718E1E /* BNCSQLiteDatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F908020EB757C00718E1E /* BNCSQLiteDatabaseConfig.m */; };
 		476F908320EB757D00718E1E /* BNCSQLiteDatabaseConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F908120EB757D00718E1E /* BNCSQLiteDatabaseConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		476F909020EBABC600718E1E /* BNCSQLiteTable+Insert.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F908E20EBABC600718E1E /* BNCSQLiteTable+Insert.h */; };
+		476F909020EBABC600718E1E /* BNCSQLiteTable+Insert.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F908E20EBABC600718E1E /* BNCSQLiteTable+Insert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F909120EBABC600718E1E /* BNCSQLiteTable+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F908F20EBABC600718E1E /* BNCSQLiteTable+Insert.m */; };
-		476F909420EBABEE00718E1E /* BNCSQLiteTable+Delete.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909220EBABEE00718E1E /* BNCSQLiteTable+Delete.h */; };
+		476F909420EBABEE00718E1E /* BNCSQLiteTable+Delete.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909220EBABEE00718E1E /* BNCSQLiteTable+Delete.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F909520EBABEE00718E1E /* BNCSQLiteTable+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F909320EBABEE00718E1E /* BNCSQLiteTable+Delete.m */; };
-		476F909820EBABF800718E1E /* BNCSQLiteTable+Update.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909620EBABF800718E1E /* BNCSQLiteTable+Update.h */; };
+		476F909820EBABF800718E1E /* BNCSQLiteTable+Update.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909620EBABF800718E1E /* BNCSQLiteTable+Update.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F909920EBABF800718E1E /* BNCSQLiteTable+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F909720EBABF800718E1E /* BNCSQLiteTable+Update.m */; };
-		476F909C20EBAC0200718E1E /* BNCSQLiteTable+Find.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909A20EBAC0200718E1E /* BNCSQLiteTable+Find.h */; };
+		476F909C20EBAC0200718E1E /* BNCSQLiteTable+Find.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909A20EBAC0200718E1E /* BNCSQLiteTable+Find.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F909D20EBAC0200718E1E /* BNCSQLiteTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F909B20EBAC0200718E1E /* BNCSQLiteTable+Find.m */; };
-		476F90A020EBBC0800718E1E /* BNCSQLiteRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909E20EBBC0800718E1E /* BNCSQLiteRecord.h */; };
+		476F90A020EBBC0800718E1E /* BNCSQLiteRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909E20EBBC0800718E1E /* BNCSQLiteRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F90A120EBBC0800718E1E /* BNCSQLiteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F909F20EBBC0800718E1E /* BNCSQLiteRecord.m */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +103,7 @@
 		47584C7720EA067E00173F5F /* BNCSQLiteTestTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteTestTable.m; sourceTree = "<group>"; };
 		47584C7920EA075E00173F5F /* BNCSQLiteTestDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteTestDatabase.h; sourceTree = "<group>"; };
 		47584C7A20EA075E00173F5F /* BNCSQLiteTestDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteTestDatabase.m; sourceTree = "<group>"; };
-		47584C7D20EA0E6600173F5F /* BNCSQLiteBaseUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteBaseUnitTest.m; sourceTree = "<group>"; };
+		4765752B20EDF21700315CF3 /* BNCSQLiteORMSelectUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMSelectUnitTest.m; sourceTree = "<group>"; };
 		476F906A20EB0C2400718E1E /* BNCSQLiteTableColumnIndexProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteTableColumnIndexProtocol.h; sourceTree = "<group>"; };
 		476F906C20EB0F7900718E1E /* BNCSQLiteTableColumnIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteTableColumnIndex.h; sourceTree = "<group>"; };
 		476F906D20EB0F7900718E1E /* BNCSQLiteTableColumnIndex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteTableColumnIndex.m; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 		47584C0320E6817000173F5F /* BNCSQLiteTests */ = {
 			isa = PBXGroup;
 			children = (
-				47584C6F20EA061600173F5F /* API */,
+				47584C6F20EA061600173F5F /* ORM */,
 				47584C5F20E9CF6700173F5F /* Core */,
 				47584C0620E6817000173F5F /* Info.plist */,
 			);
@@ -294,13 +294,13 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		47584C6F20EA061600173F5F /* API */ = {
+		47584C6F20EA061600173F5F /* ORM */ = {
 			isa = PBXGroup;
 			children = (
 				47584C7020EA062300173F5F /* TestModel */,
-				47584C7D20EA0E6600173F5F /* BNCSQLiteBaseUnitTest.m */,
+				4765752B20EDF21700315CF3 /* BNCSQLiteORMSelectUnitTest.m */,
 			);
-			path = API;
+			path = ORM;
 			sourceTree = "<group>";
 		};
 		47584C7020EA062300173F5F /* TestModel */ = {
@@ -370,17 +370,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				476F909420EBABEE00718E1E /* BNCSQLiteTable+Delete.h in Headers */,
 				47584C0720E6817000173F5F /* BNCSQLite.h in Headers */,
 				47584C1520E6825400173F5F /* BNCSQLiteDatabase.h in Headers */,
-				476F909820EBABF800718E1E /* BNCSQLiteTable+Update.h in Headers */,
 				47584C1A20E8A32A00173F5F /* BNCSQLiteDatabaseStatement.h in Headers */,
-				476F90A020EBBC0800718E1E /* BNCSQLiteRecord.h in Headers */,
 				47584C3F20E9317700173F5F /* BNCSQLiteRecordProtocol.h in Headers */,
 				47584C5820E9C0C500173F5F /* BNCSQLiteTable.h in Headers */,
 				47584C3220E928D200173F5F /* BNCSQLiteTableProtocol.h in Headers */,
 				47584C3020E9274600173F5F /* BNCSQLiteMigratorProtocol.h in Headers */,
-				476F909020EBABC600718E1E /* BNCSQLiteTable+Insert.h in Headers */,
 				476F907F20EB69B100718E1E /* BNCSQLiteMigrationStepProtocol.h in Headers */,
 				47584C2E20E926DE00173F5F /* BNCSQLiteDatabaseInfoProtocol.h in Headers */,
 				47584C3720E9299B00173F5F /* BNCSQLiteDatabasePool.h in Headers */,
@@ -388,13 +384,17 @@
 				476F908320EB757D00718E1E /* BNCSQLiteDatabaseConfig.h in Headers */,
 				47584C5D20E9CC5000173F5F /* BNCSQLiteTableColumn.h in Headers */,
 				476F906E20EB0F7900718E1E /* BNCSQLiteTableColumnIndex.h in Headers */,
+				476F909420EBABEE00718E1E /* BNCSQLiteTable+Delete.h in Headers */,
+				476F909820EBABF800718E1E /* BNCSQLiteTable+Update.h in Headers */,
+				476F90A020EBBC0800718E1E /* BNCSQLiteRecord.h in Headers */,
+				476F909020EBABC600718E1E /* BNCSQLiteTable+Insert.h in Headers */,
+				476F909C20EBAC0200718E1E /* BNCSQLiteTable+Find.h in Headers */,
+				47584C6D20E9FFF900173F5F /* NSString+BNCSQLiteSchema.h in Headers */,
+				47584C3C20E92C1400173F5F /* BNCSQLiteSafeCache.h in Headers */,
 				47584C3420E928EA00173F5F /* BNCSQLiteTableColumnProtocol.h in Headers */,
 				476F906B20EB0C2400718E1E /* BNCSQLiteTableColumnIndexProtocol.h in Headers */,
 				47584C2620E8EA7200173F5F /* BNCSQLiteDatabaseStatement+Take.h in Headers */,
-				476F909C20EBAC0200718E1E /* BNCSQLiteTable+Find.h in Headers */,
 				47584C2220E8EA6400173F5F /* BNCSQLiteDatabaseStatement+Bind.h in Headers */,
-				47584C6D20E9FFF900173F5F /* NSString+BNCSQLiteSchema.h in Headers */,
-				47584C3C20E92C1400173F5F /* BNCSQLiteSafeCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +521,7 @@
 				47584C7B20EA075E00173F5F /* BNCSQLiteTestDatabase.m in Sources */,
 				47584C7520EA066300173F5F /* BNCSQLiteTestRecord.m in Sources */,
 				47584C6120E9CF7A00173F5F /* BNCSQLiteCoreTest.m in Sources */,
-				47584C7E20EA0E6600173F5F /* BNCSQLiteBaseUnitTest.m in Sources */,
+				4765752C20EDF21700315CF3 /* BNCSQLiteORMSelectUnitTest.m in Sources */,
 				47584C7820EA067E00173F5F /* BNCSQLiteTestTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

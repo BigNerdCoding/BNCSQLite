@@ -12,7 +12,7 @@
 
 #pragma mark - BNCSQLiteDataBaseProtocol
 - (NSString *)databaseFilePath {
-    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"BNCSQLiteAPITest.sqlite"];
+    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"BNCSQLiteORMTest.sqlite"];
     
     return filePath;
 }

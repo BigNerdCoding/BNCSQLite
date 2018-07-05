@@ -31,6 +31,10 @@ FOUNDATION_EXPORT const unsigned char BNCSQLiteVersionString[];
 // Table
 #import <BNCSQLite/BNCSQLiteTable.h>
 #import <BNCSQLite/BNCSQLiteTableProtocol.h>
+#import <BNCSQLite/BNCSQLiteTable+Delete.h>
+#import <BNCSQLite/BNCSQLiteTable+Update.h>
+#import <BNCSQLite/BNCSQLiteTable+Find.h>
+#import <BNCSQLite/BNCSQLiteTable+Insert.h>
 
 // Column
 #import <BNCSQLite/BNCSQLiteTableColumnProtocol.h>
@@ -40,7 +44,11 @@ FOUNDATION_EXPORT const unsigned char BNCSQLiteVersionString[];
 
 // Record
 #import <BNCSQLite/BNCSQLiteRecordProtocol.h>
+#import <BNCSQLite/BNCSQLiteRecord.h>
 
 // Migration
 #import <BNCSQLite/BNCSQLiteMigratorProtocol.h>
 #import <BNCSQLite/BNCSQLiteMigrationStepProtocol.h>
+
+// Categories
+#import <BNCSQLite/NSString+BNCSQLiteSchema.h>

@@ -13,11 +13,12 @@
 
 - (BOOL)insertRecord:(NSObject<BNCSQLiteRecordProtocol> *)record
                error:(NSError *__autoreleasing *)error {
-    NSString *insertSQL = [self generateInsertSQL];
-    
+
     NSDictionary *recordDic = [record dictionaryRepresentationWithTable:self];
     
-    [self.dbConnect executeSQL:insertSQL bind:^(BNCSQLiteDatabaseStatement *statement) {
+    NSString *insertSQL = [self generateInsertSQLWithColumn:recordDic.allKeys];
+    
+    return [self.dbConnect executeSQL:insertSQL bind:^(BNCSQLiteDatabaseStatement *statement) {
         [recordDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NSString *bindKey = [NSString stringWithFormat:@":%@",key];
             [statement bindColumn:bindKey withValue:obj];
@@ -25,8 +26,6 @@
     } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
         [record setValue:@([self.dbConnect latestInsertRowID]) forKey:self.primaryKeyName];
     } error:error];
-    
-    return YES;
 }
 
 - (BOOL)insertRecordList:(NSArray<NSObject <BNCSQLiteRecordProtocol> * > *)recordList
@@ -49,20 +48,20 @@
     } lockType:BNCSQLiteTransactionLockTypeDeferred];
 }
 
-- (NSString *)generateInsertSQL {
+- (NSString *)generateInsertSQLWithColumn:(NSArray<NSString *> *)columnNames {
   
     
     NSMutableArray *insertColumns = [NSMutableArray array];
     NSMutableArray *insertValues = [NSMutableArray array];
-    for (id<BNCSQLiteTableColumnProtocol> column in self.columnInfo) {
-        [insertColumns addObject:column.columnName];
-        [insertValues addObject:[NSString stringWithFormat:@":%@", column.columnName]];
+    for (NSString *columnName in columnNames) {
+        [insertColumns addObject:columnName];
+        [insertValues addObject:[NSString stringWithFormat:@":%@",columnName]];
     }
     
     NSString *insertColumnSQL = [insertColumns componentsJoinedByString:@","];
     NSString *insertValueSQL = [insertValues componentsJoinedByString:@","];
     
-    return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES %@ ;", self.tableName, insertColumnSQL, insertValueSQL];
+    return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@) ;", self.tableName, insertColumnSQL, insertValueSQL];
 }
 
 
