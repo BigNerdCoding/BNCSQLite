@@ -81,15 +81,15 @@
     return result;
 }
 
-- (int64_t)takeIntColumn:(int)iValuePosition {
+- (int64_t)takeIntColumnAt:(int)iValuePosition {
     return sqlite3_column_int64(self.statement, iValuePosition);
 }
 
-- (double)takeDoubleColumn:(int)dValuePosition {
+- (double)takeDoubleColumnAt:(int)dValuePosition {
     return sqlite3_column_double(self.statement, dValuePosition);
 }
 
-- (NSString *)takeTextColumn:(int)tValuePosition {
+- (NSString *)takeTextColumnAt:(int)tValuePosition {
     const char *textValue = (const char*)sqlite3_column_text(self.statement, tValuePosition);
     
     if (!textValue) {
@@ -99,7 +99,7 @@
     return [[NSString alloc] initWithCString:textValue encoding:NSUTF8StringEncoding];
 }
 
-- (NSData *)takeBinaryColumn:(int)bValuePosition {
+- (NSData *)takeBinaryColumnAt:(int)bValuePosition {
     NSData *binaryResult = nil;
     
     int bytes = sqlite3_column_bytes(self.statement, bValuePosition);

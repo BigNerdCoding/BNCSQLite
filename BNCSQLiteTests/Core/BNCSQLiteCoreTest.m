@@ -80,6 +80,8 @@
     
     NSString *sql = @"SELECT * FROM contacts; ";
     
+    [self.db currentVersion];
+    
     BOOL isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
         NSDictionary *dic = [statement takeAllColumn];
         XCTAssert(dic.allKeys.count == 5);
@@ -114,6 +116,17 @@
     
     XCTAssertTrue(isSuccess);
     XCTAssert(arr.count == 1);
+    
+    
+    sql = @"SELECT COUNT(*) AS count FROM contacts ;";
+    
+    __block NSInteger nCount = 0;
+    
+    [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+        nCount = [statement takeIntColumnAt:0];
+    } error:nil];
+    
+    XCTAssert(2 == nCount);
 }
 
 @end

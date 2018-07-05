@@ -23,8 +23,8 @@
 }
 
 #pragma mark - Migration Action
--(NSString *)latestVersionWithConfig:(id<BNCSQLiteDatabaseInfoProtocol>)infoProtocol {
-    NSString *schemaVersion = kBNCSQLiteInitVersion;
+-(NSInteger)latestVersionWithConfig:(id<BNCSQLiteDatabaseInfoProtocol>)infoProtocol {
+    NSInteger schemaVersion = kBNCSQLiteInitVersion;
     
     if(![infoProtocol respondsToSelector:@selector(databaseMigrator)]) {
         // Don't Need Migrator
@@ -38,7 +38,7 @@
     NSArray *versionList = [migrator migrationVersionList];
     
     if (versionList.count > 0) {
-       schemaVersion = [versionList lastObject];
+       schemaVersion = [[versionList lastObject] integerValue];
     }
     
     return schemaVersion;
@@ -74,7 +74,7 @@
         // Do Version Migration
         BOOL shouldMigration = NO;
         
-        for (NSString *version in versionList) {
+        for (NSNumber *version in versionList) {
             if (shouldMigration) {
                 id<BNCSQLiteMigrationStepProtocol> step = [stepDictionary objectForKey:version];
                 
@@ -83,10 +83,10 @@
                     break;
                 }
                 
-                [dbConnct updateSchemaVersion:version];
+                [dbConnct updateSchemaVersion:[version integerValue]];
             }
             
-            if ([version isEqualToString:[dbConnct currentVersion]]) {
+            if ([version integerValue] > [dbConnct currentVersion]) {
                 shouldMigration = YES;
             }
         }

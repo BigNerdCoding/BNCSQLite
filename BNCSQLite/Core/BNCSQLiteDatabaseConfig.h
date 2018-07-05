@@ -21,7 +21,7 @@ typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 /**
  latest schemaVersion default: kBNCSQLiteInitVersion
  */
-@property(nonatomic, strong) NSString *latestSchemaVersion;
+@property(nonatomic, assign) NSInteger latestSchemaVersion;
 
 /**
  Block that do migration action

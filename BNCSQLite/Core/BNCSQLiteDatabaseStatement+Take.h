@@ -10,6 +10,7 @@
 
 @interface BNCSQLiteDatabaseStatement (Take)
 
+#pragma mark - Take With Position
 /**
  get the all value for the statement
 
@@ -23,7 +24,7 @@
  @param iValuePosition position of column
  @return Int value for column
  */
-- (int64_t)takeIntColumn:(int)iValuePosition;
+- (int64_t)takeIntColumnAt:(int)iValuePosition;
 
 /**
  get the Double value for the indicated column
@@ -31,7 +32,7 @@
  @param dValuePosition position of column
  @return Double value for column
  */
-- (double)takeDoubleColumn:(int)dValuePosition;
+- (double)takeDoubleColumnAt:(int)dValuePosition;
 
 /**
  get the String value for the indicated column
@@ -39,7 +40,7 @@
  @param tValuePosition position of column
  @return String value for column
  */
-- (NSString *)takeTextColumn:(int)tValuePosition;
+- (NSString *)takeTextColumnAt:(int)tValuePosition;
 
 /**
  get the Binary value for the indicated column
@@ -47,6 +48,6 @@
  @param bValuePosition position of column
  @return Binary value for column
  */
-- (NSData *)takeBinaryColumn:(int)bValuePosition;
+- (NSData *)takeBinaryColumnAt:(int)bValuePosition;
 
 @end

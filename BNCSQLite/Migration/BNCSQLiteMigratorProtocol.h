@@ -17,8 +17,8 @@
  *
  *  @return return the order of migration
  */
-- (NSArray<NSString *> *)migrationVersionList;
+- (NSArray<NSNumber *> *)migrationVersionList;
 
-- (NSDictionary<NSString *,id<BNCSQLiteMigrationStepProtocol> > *)migrationStepDictionary;
+- (NSDictionary<NSNumber *,id<BNCSQLiteMigrationStepProtocol> > *)migrationStepDictionary;
 
 @end

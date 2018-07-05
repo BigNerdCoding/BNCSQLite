@@ -91,4 +91,9 @@
     return sqlite3_column_count(_statement);
 }
 
+- (int)queryBindParameterIndex:(NSString *)columnName {
+    const char *cColumnName = [columnName UTF8String];
+    return sqlite3_bind_parameter_index(self.statement, cColumnName);
+}
+
 @end

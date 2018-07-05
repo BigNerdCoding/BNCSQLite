@@ -91,14 +91,6 @@
  */
 - (void)bindColumn:(NSString *)columnName withBinaryValue:(NSData *)bValue;
 
-/**
- Returns the index for the named parameter.
-
- @param columnName String name of binding
- @return Int index of parameter
- */
-- (int)queryBindParameterIndex:(NSString *)columnName;
-
 #pragma mark - Bind With id Type
 /**
  Bind a `id` to the indicated parameter

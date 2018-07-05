@@ -27,11 +27,23 @@ typedef NS_ENUM(NSUInteger, BNCSQLiteTransactionLockType){
 
 @class BNCSQLiteDatabaseStatement,BNCSQLiteDatabaseConfig;
 
+/**
+ Block to perform bindings on statement
+
+ @param statement instance of BNCSQLiteDatabaseStatement
+ */
 typedef void(^BindBlock)(BNCSQLiteDatabaseStatement *statement);
-typedef void(^RowHandleBlock)(BNCSQLiteDatabaseStatement *statement, uint64_t rowID);
+
+/**
+ Callback of `sqlite3_step` to execute for each row
+
+ @param statement instance of BNCSQLiteDatabaseStatement
+ @param rowNum `sqlite3_step` rowNum   Warning: Not the primarykey id.
+ */
+typedef void(^RowHandleBlock)(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum);
 
 extern NSString * const kBNCSQLiteErrorDomain;
-extern NSString * const kBNCSQLiteInitVersion;
+extern NSInteger const kBNCSQLiteInitVersion;
 
 @interface BNCSQLiteDatabase : NSObject
 
@@ -81,14 +93,14 @@ extern NSString * const kBNCSQLiteInitVersion;
 
  @return version of schema
  */
-- (NSString *)currentVersion;
+- (NSInteger)currentVersion;
 
 /**
  Update the schema version
 
  @param schemaVersion the new schema version
  */
-- (void)updateSchemaVersion:(NSString *)schemaVersion;
+- (void)updateSchemaVersion:(NSInteger)schemaVersion;
 
 /**
  Executes a BEGIN, calls the provided closure and executes a ROLLBACK if an exception occurs or a COMMIT if no exception occurs.

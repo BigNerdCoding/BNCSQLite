@@ -34,7 +34,7 @@
     
     [columnDescription stringByReplacingOccurrencesOfString:[column columnName] withString:@""];
     
-    return [NSString stringWithFormat:@"ALTER TABLE '%@' ADD COLUMN '%@' %@;", tableName, [column columnName],columnDescription];
+    return [NSString stringWithFormat:@"ALTER TABLE '%@' ADD COLUMN '%@' %@ ;", tableName, [column columnName],columnDescription];
 }
 
 + (instancetype)addIndex:(id<BNCSQLiteTableColumnIndexProtocol>)tableIndex tableName:(NSString *)tableName {
@@ -48,15 +48,15 @@
     
     NSString *indexedColumnListString = [tableIndex.indexCloumnFields componentsJoinedByString:@","];
     
-    return [NSString stringWithFormat:@"%@  ON '%@' (%@)",sqlString,tableName,indexedColumnListString];
+    return [NSString stringWithFormat:@"%@  ON '%@' (%@) ;",sqlString,tableName,indexedColumnListString];
 }
 
 + (instancetype)dropIndex:(NSString *)indexName {
-    return [NSString stringWithFormat:@"DROP INDEX IF EXISTS '%@'",indexName];
+    return [NSString stringWithFormat:@"DROP INDEX IF EXISTS '%@' ;",indexName];
 }
 
 + (instancetype)columnInfoWithTableName:(NSString *)tableName {
-    return [NSString stringWithFormat:@"PRAGMA table_info(`%@`);", tableName];
+    return [NSString stringWithFormat:@"PRAGMA table_info('%@') ;", tableName];
 }
 
 #pragma mark - Helper

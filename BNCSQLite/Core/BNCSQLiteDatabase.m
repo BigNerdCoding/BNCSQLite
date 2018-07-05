@@ -9,10 +9,11 @@
 #import "BNCSQLiteDatabase.h"
 #import "BNCSQLiteDatabaseStatement.h"
 #import "BNCSQLiteDatabaseStatement+Take.h"
+#import "BNCSQLiteDatabaseStatement+Bind.h"
 #import "BNCSQLiteDatabaseConfig.h"
 
 NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
-NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
+NSInteger const kBNCSQLiteInitVersion = 0;
 
 @interface BNCSQLiteDatabase()
 
@@ -64,7 +65,7 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
         }
         
         // Need Migration
-        if (isFileExistsBefore && ![[self currentVersion] isEqualToString:config.latestSchemaVersion] && !config.migrationAction) {
+        if (isFileExistsBefore && [self currentVersion] < config.latestSchemaVersion && !config.migrationAction) {
             // Do Migration
             config.migrationAction(self);
         }
@@ -100,27 +101,19 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
     return sqlite3_total_changes(_database);
 }
 
-- (NSString *)currentVersion {
-    NSString *sql = @"pragma user_version";
+- (NSInteger)currentVersion {
+    NSString *sql = @"pragma user_version ;";
     
-    __block NSString *version = @"";
+    __block NSInteger version = kBNCSQLiteInitVersion;
     [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
-        version = [statement takeTextColumn:1];
+        version = [statement takeIntColumnAt:0];
     } error:nil];
-    
-    if (version && ![version isEqualToString:@""] ) {
-        return version;
-    }
-    
-    version = kBNCSQLiteInitVersion;
-    
-    [self updateSchemaVersion:version];
     
     return version;
 }
 
-- (void)updateSchemaVersion:(NSString *)schemaVersion {
-    NSString *userVserion = [NSString stringWithFormat:@"pragma user_version = %@", schemaVersion];
+- (void)updateSchemaVersion:(NSInteger)schemaVersion {
+    NSString *userVserion = [NSString stringWithFormat:@"pragma user_version = %ld ",(long)schemaVersion] ;
     
     [self executeSQL:userVserion bind:nil rowHandle:nil error:nil];
 }
@@ -129,13 +122,13 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
     NSString *sql = @"";
     switch (lockType) {
         case BNCSQLiteTransactionLockTypeDeferred:
-            sql = @"BEGIN DEFERRED TRANSACTION;";
+            sql = @"BEGIN DEFERRED TRANSACTION ;";
             break;
         case BNCSQLiteTransactionLockTypeImmediate:
-            sql = @"BEGIN IMMEDIATE TRANSACTION;";
+            sql = @"BEGIN IMMEDIATE TRANSACTION ;";
             break;
         case BNCSQLiteTransactionLockTypeExclusive:
-            sql = @"BEGIN EXCLUSIVE TRANSACTION;";
+            sql = @"BEGIN EXCLUSIVE TRANSACTION ;";
             break;
     }
     
@@ -145,13 +138,13 @@ NSString * const kBNCSQLiteInitVersion = @"kBNCSQLiteInitVersion";
         [self executeSQL:sql bind:nil rowHandle:nil error:nil];
         isSuccess = transaction();
         if (isSuccess) {
-            [self executeSQL:@"COMMIT" bind:nil rowHandle:nil error:nil];
+            [self executeSQL:@"COMMIT ;" bind:nil rowHandle:nil error:nil];
         } else {
-            [self executeSQL:@"ROLLBACK" bind:nil rowHandle:nil error:nil];
+            [self executeSQL:@"ROLLBACK ;" bind:nil rowHandle:nil error:nil];
         }
         
     } @catch (NSException *exception) {
-        [self executeSQL:@"ROLLBACK" bind:nil rowHandle:nil error:nil];
+        [self executeSQL:@"ROLLBACK ;" bind:nil rowHandle:nil error:nil];
         isSuccess = NO;
     }
     

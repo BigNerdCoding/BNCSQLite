@@ -55,11 +55,6 @@
     [self bindBinaryValue:bValue atPosition:[self queryBindParameterIndex:columnName]];
 }
 
-- (int)queryBindParameterIndex:(NSString *)columnName {
-    const char *cColumnName = [columnName UTF8String];
-    return sqlite3_bind_parameter_index(self.statement, cColumnName);
-}
-
 #pragma mark - Bind With id Type
 - (void)bindColumn:(NSString *)columnName withValue:(id)bindValue {
     if (columnName == nil) {

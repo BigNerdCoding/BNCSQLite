@@ -63,4 +63,12 @@
  */
 - (NSInteger)columnCount;
 
+/**
+ Returns the index for the named parameter.
+ 
+ @param columnName String name of binding
+ @return Int index of parameter
+ */
+- (int)queryBindParameterIndex:(NSString *)columnName;
+
 @end
