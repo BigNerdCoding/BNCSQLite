@@ -22,7 +22,7 @@
     
     NSString *orderClause = @"";
     
-    if (!orderBy && ![orderBy isEqualToString:@""]) {
+    if (orderBy && ![orderBy isEqualToString:@""]) {
         orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
     }
     
@@ -89,7 +89,7 @@
                                                         error:(NSError *__autoreleasing*)error {
     NSString *orderClause = @"";
     
-    if (!orderBy && ![orderBy isEqualToString:@""]) {
+    if (orderBy && ![orderBy isEqualToString:@""]) {
         orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
     }
     
@@ -141,7 +141,7 @@
     
     NSString *orderClause = @"";
     
-    if (!orderBy && ![orderBy isEqualToString:@""]) {
+    if (orderBy && ![orderBy isEqualToString:@""]) {
         orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
     }
     
@@ -181,7 +181,7 @@
                                                            error:(NSError *__autoreleasing*)error {
     NSString *orderClause = @"";
     
-    if (!orderBy && ![orderBy isEqualToString:@""]) {
+    if (orderBy && ![orderBy isEqualToString:@""]) {
         orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
     }
     
@@ -227,7 +227,7 @@
     
     NSString *orderClause = @"";
     
-    if (!orderBy && ![orderBy isEqualToString:@""]) {
+    if (orderBy && ![orderBy isEqualToString:@""]) {
         orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
     }
     
@@ -267,7 +267,7 @@
                                                               error:(NSError *__autoreleasing*)error {
     NSString *orderClause = @"";
     
-    if (!orderBy && ![orderBy isEqualToString:@""]) {
+    if (orderBy && ![orderBy isEqualToString:@""]) {
         orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
     }
     

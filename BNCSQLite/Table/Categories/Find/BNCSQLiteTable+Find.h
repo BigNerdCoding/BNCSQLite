@@ -85,7 +85,7 @@
 
  @param column column name
  @param value column value
- @param orderBy sorting rules, string for ORDER BY clause
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
  @param error error if fails
  @return query result
  */
@@ -111,7 +111,7 @@
 
  @param column  column name
  @param valueList valueList
- @param orderBy sorting rules, string for ORDER BY clause
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
  @param error error if fails
  @return query result
  */
@@ -126,7 +126,7 @@
  if there is no limit, use `findAllWithColumn` replace
 
  @param column column name
- @param value column value, string for ORDER BY clause
+ @param value column value
  @param limit limition , number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithColumn`
  @param error error if fails
  @return query result
@@ -143,7 +143,7 @@
 
  @param column column name
  @param value column value
- @param orderBy sorting rules, string for ORDER BY clause
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
  @param limit limition number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithColumn`
  @param error error if fails
  @return query result
@@ -185,7 +185,7 @@
  
  @param whereCondition string for WHERE clause
  @param conditionParams the params to bind in to where condition
- @param orderBy sorting rules, string for ORDER BY clause
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
  @param error error if fails
  @return query result
  */
@@ -225,7 +225,7 @@
  
  @param whereCondition string for WHERE clause
  @param conditionParams the params to bind in to where condition
- @param orderBy sorting rules, string for ORDER BY clause
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
  @param limit limition, number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithCondition`
  @param error error if fails
  @return query result
