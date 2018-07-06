@@ -55,7 +55,7 @@
 - (id<BNCSQLiteRecordProtocol>)findLatestRecordWithOrder:(NSString *)orderBy
                                                    error:(NSError *__autoreleasing*)error;
 
-#pragma mark - Query with single column condition
+#pragma mark - Query with single column equal condition
 
 /**
  query record with primaryKey

@@ -51,7 +51,7 @@
     return [[self findAllWithOrder:orderBy error:error] lastObject];
 }
 
-#pragma mark - Query with single column condition
+#pragma mark - Query with single column equal condition
 
 - (id<BNCSQLiteRecordProtocol>)findWithPrimaryKey:(NSNumber *)primaryKey
                                             error:(NSError *__autoreleasing*)error {

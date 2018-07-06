@@ -60,7 +60,7 @@
     for (NSInteger index = 1; index < results.count; index++) {
         record = [results objectAtIndex:index];
         
-        XCTAssert(timeStamp > record.timeStamp);
+        XCTAssert(timeStamp >= record.timeStamp);
         
         timeStamp = record.timeStamp;
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		47179F6B20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */; };
+		47179F6D20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */; };
 		47584C0020E6817000173F5F /* BNCSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47584BF620E6817000173F5F /* BNCSQLite.framework */; };
 		47584C0720E6817000173F5F /* BNCSQLite.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584BF920E6817000173F5F /* BNCSQLite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47584C1520E6825400173F5F /* BNCSQLiteDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 47584C1320E6825400173F5F /* BNCSQLiteDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindGeneralUnitTest.m; sourceTree = "<group>"; };
+		47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindWithSingleConditionUnitTest.m; sourceTree = "<group>"; };
 		47584BF620E6817000173F5F /* BNCSQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BNCSQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47584BF920E6817000173F5F /* BNCSQLite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLite.h; sourceTree = "<group>"; };
 		47584BFA20E6817000173F5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			children = (
 				4765752B20EDF21700315CF3 /* BNCSQLiteORMFindWithConditionUnitTest.m */,
 				47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */,
+				47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				47584C7B20EA075E00173F5F /* BNCSQLiteTestDatabase.m in Sources */,
 				47584C7520EA066300173F5F /* BNCSQLiteTestRecord.m in Sources */,
 				47584C6120E9CF7A00173F5F /* BNCSQLiteCoreTest.m in Sources */,
+				47179F6D20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m in Sources */,
 				4765752C20EDF21700315CF3 /* BNCSQLiteORMFindWithConditionUnitTest.m in Sources */,
 				47584C7820EA067E00173F5F /* BNCSQLiteTestTable.m in Sources */,
 			);
