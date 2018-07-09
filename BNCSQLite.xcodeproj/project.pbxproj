@@ -58,6 +58,7 @@
 		476F909D20EBAC0200718E1E /* BNCSQLiteTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F909B20EBAC0200718E1E /* BNCSQLiteTable+Find.m */; };
 		476F90A020EBBC0800718E1E /* BNCSQLiteRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909E20EBBC0800718E1E /* BNCSQLiteRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F90A120EBBC0800718E1E /* BNCSQLiteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F909F20EBBC0800718E1E /* BNCSQLiteRecord.m */; };
+		47F84F8820F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F84F8720F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		476F909B20EBAC0200718E1E /* BNCSQLiteTable+Find.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BNCSQLiteTable+Find.m"; sourceTree = "<group>"; };
 		476F909E20EBBC0800718E1E /* BNCSQLiteRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteRecord.h; sourceTree = "<group>"; };
 		476F909F20EBBC0800718E1E /* BNCSQLiteRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteRecord.m; sourceTree = "<group>"; };
+		47F84F8720F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMInsertUnitTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 		47584C6F20EA061600173F5F /* ORM */ = {
 			isa = PBXGroup;
 			children = (
+				47F84F8620F353A6009C8BE5 /* Insert */,
 				4765752E20EE18F500315CF3 /* Delete */,
 				4765752D20EE18E800315CF3 /* Find */,
 				47584C7020EA062300173F5F /* TestModel */,
@@ -384,6 +387,14 @@
 			children = (
 				476F908E20EBABC600718E1E /* BNCSQLiteTable+Insert.h */,
 				476F908F20EBABC600718E1E /* BNCSQLiteTable+Insert.m */,
+			);
+			path = Insert;
+			sourceTree = "<group>";
+		};
+		47F84F8620F353A6009C8BE5 /* Insert */ = {
+			isa = PBXGroup;
+			children = (
+				47F84F8720F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m */,
 			);
 			path = Insert;
 			sourceTree = "<group>";
@@ -548,6 +559,7 @@
 				47584C7B20EA075E00173F5F /* BNCSQLiteTestDatabase.m in Sources */,
 				47584C7520EA066300173F5F /* BNCSQLiteTestRecord.m in Sources */,
 				47584C6120E9CF7A00173F5F /* BNCSQLiteCoreTest.m in Sources */,
+				47F84F8820F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m in Sources */,
 				47179F6D20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m in Sources */,
 				4765752C20EDF21700315CF3 /* BNCSQLiteORMFindWithConditionUnitTest.m in Sources */,
 				47584C7820EA067E00173F5F /* BNCSQLiteTestTable.m in Sources */,

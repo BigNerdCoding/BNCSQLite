@@ -31,6 +31,6 @@ typedef NS_ENUM (NSUInteger, BNCSQLiteTableColumnType) {
 
 - (BOOL)isNotNull;
 
-- (NSString *)defaultValue;
+- (NSString*)defaultValue;
 
 @end

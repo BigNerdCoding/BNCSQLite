@@ -97,8 +97,8 @@
         columnDescription =  [columnDescription stringByAppendingString:@" NOT NULL "];
     }
     
-    if ([column defaultValue]  && ![[column defaultValue] isEqualToString:@""]) {
-        columnDescription =  [columnDescription stringByAppendingString:[NSString stringWithFormat:@" DEFAULT %@ ",[column defaultValue] ]];
+    if ([column defaultValue]) {
+        columnDescription =  [columnDescription stringByAppendingString:[NSString stringWithFormat:@" DEFAULT %@ ", [column defaultValue]]];
     }
     
     

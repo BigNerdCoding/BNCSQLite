@@ -18,6 +18,7 @@
 @property(nonatomic, strong) NSData *bolbData;
 @property(nonatomic, assign) double progress;
 @property(nonatomic, strong) NSString *nilText;
+@property(nonatomic, strong) NSString *defaultText;
 @property(nonatomic, assign) long long timeStamp;
 
 @end

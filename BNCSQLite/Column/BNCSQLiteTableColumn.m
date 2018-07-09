@@ -16,7 +16,7 @@
 @property(nonatomic, assign) BOOL autoIncrement;
 @property(nonatomic, assign) BOOL colNotNull;
 @property(nonatomic, assign) BOOL uniqueColumn;
-@property(nonatomic, strong) NSString *colDefaultValue;
+@property(nonatomic, strong) NSString   *colDefaultValue;
 
 @end
 
@@ -57,7 +57,6 @@
         _type = columnType;
         _primaryKey = NO;
         _autoIncrement = NO;
-        _colDefaultValue = @"";
         _uniqueColumn  = NO;
         _colNotNull = NO;
         if (constraint) {
@@ -85,7 +84,7 @@
 }
 
 - (void)settingDefaultValueConstraint:(NSString *)defaultValue {
-    self.colDefaultValue   = defaultValue;
+    self.colDefaultValue = defaultValue;
 }
 
 #pragma mark -  BNCSQLiteTableColumnProtocol

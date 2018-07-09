@@ -34,9 +34,14 @@
     BNCSQLiteTableColumn *column5 = [[BNCSQLiteTableColumn alloc] initWithColName:@"bolbData" type:BNCSQLiteTableColumnTypeBinary constraint:nil];
     BNCSQLiteTableColumn *column6 = [[BNCSQLiteTableColumn alloc] initWithColName:@"progress" type:BNCSQLiteTableColumnTypeReal constraint:nil];
     BNCSQLiteTableColumn *column7 = [[BNCSQLiteTableColumn alloc] initWithColName:@"nilText" type:BNCSQLiteTableColumnTypeText constraint:nil];
-    BNCSQLiteTableColumn *column8 = [BNCSQLiteTableColumn initUniqueColWithName:@"timeStamp" type:BNCSQLiteTableColumnTypeInt];
     
-    return @[column, column2, column3, column4, column5, column6, column7, column8];
+    BNCSQLiteTableColumn *column8 = [[BNCSQLiteTableColumn alloc] initWithColName:@"defaultText" type:BNCSQLiteTableColumnTypeText constraint:^(BNCSQLiteTableColumn *column) {
+        [column settingDefaultValueConstraint:@" '' "];
+    }];
+    
+    BNCSQLiteTableColumn *column9 = [BNCSQLiteTableColumn initUniqueColWithName:@"timeStamp" type:BNCSQLiteTableColumnTypeInt];
+    
+    return @[column, column2, column3, column4, column5, column6, column7, column8, column9];
 }
 
 - (Class)recordClass {
