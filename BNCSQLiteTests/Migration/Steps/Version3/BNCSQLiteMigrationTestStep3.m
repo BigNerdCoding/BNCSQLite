@@ -14,7 +14,7 @@
 
 #pragma mark - BNCSQLiteMigrationStepProtocol
 
-- (BOOL)goUpWithQueryCommand:(BNCSQLiteDatabase *)dbConnect {
+- (BOOL)goUpWithAction:(BNCSQLiteDatabase *)dbConnect {
     NSError *error = nil;
     
     BNCSQLiteTableColumn *column3 = [[BNCSQLiteTableColumn alloc] initWithColName:@"version3" type:BNCSQLiteTableColumnTypeText constraint:nil];

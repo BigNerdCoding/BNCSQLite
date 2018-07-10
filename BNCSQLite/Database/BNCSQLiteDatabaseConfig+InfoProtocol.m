@@ -77,7 +77,7 @@
             if (shouldMigration) {
                 id<BNCSQLiteMigrationStepProtocol> step = [stepDictionary objectForKey:version];
                 
-                if (![step goUpWithQueryCommand:dbConnct]) {
+                if (![step goUpWithAction:dbConnct]) {
                     break;
                 }
                 

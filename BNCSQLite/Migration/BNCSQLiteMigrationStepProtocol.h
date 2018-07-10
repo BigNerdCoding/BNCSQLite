@@ -21,6 +21,6 @@
  @param dbConnect BNCSQLiteDataBase instance
  @return NO if migration up fails
  */
-- (BOOL)goUpWithQueryCommand:(BNCSQLiteDatabase *)dbConnect;
+- (BOOL)goUpWithAction:(BNCSQLiteDatabase *)dbConnect;
 
 @end

@@ -13,7 +13,7 @@
 @implementation BNCSQLiteMigrationTestStep4
 
 #pragma mark - BNCSQLiteMigrationStepProtocol
-- (BOOL)goUpWithQueryCommand:(BNCSQLiteDatabase *)dbConnect {
+- (BOOL)goUpWithAction:(BNCSQLiteDatabase *)dbConnect {
     NSError *error = nil;
     
     BNCSQLiteTableColumn *column4 = [[BNCSQLiteTableColumn alloc] initWithColName:@"version4" type:BNCSQLiteTableColumnTypeText constraint:nil];
