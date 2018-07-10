@@ -36,7 +36,7 @@
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    // 关闭数据库连接
+    // 删除文件
     if ([fileManager fileExistsAtPath:_filePath]) {
         [fileManager removeItemAtPath:_filePath error:nil];
     }
