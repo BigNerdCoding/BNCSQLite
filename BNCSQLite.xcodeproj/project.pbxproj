@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470595F320F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 470595F220F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m */; };
+		470595F520F4442E004C6543 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 470595F420F4442E004C6543 /* libsqlite3.tbd */; };
 		47179F6B20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */; };
 		47179F6D20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */; };
 		47179F8720EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F8620EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m */; };
@@ -72,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		470595F220F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMDeleteUnitTest.m; sourceTree = "<group>"; };
+		470595F420F4442E004C6543 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindGeneralUnitTest.m; sourceTree = "<group>"; };
 		47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindWithSingleConditionUnitTest.m; sourceTree = "<group>"; };
 		47179F8620EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindWithMulitConditionUnitTest.m; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				470595F520F4442E004C6543 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +205,7 @@
 		47584C1020E681FE00173F5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				470595F420F4442E004C6543 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -340,6 +346,7 @@
 		4765752E20EE18F500315CF3 /* Delete */ = {
 			isa = PBXGroup;
 			children = (
+				470595F220F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m */,
 			);
 			path = Delete;
 			sourceTree = "<group>";
@@ -555,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47179F6B20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m in Sources */,
+				470595F320F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m in Sources */,
 				47179F8720EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m in Sources */,
 				47584C7B20EA075E00173F5F /* BNCSQLiteTestDatabase.m in Sources */,
 				47584C7520EA066300173F5F /* BNCSQLiteTestRecord.m in Sources */,

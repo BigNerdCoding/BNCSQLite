@@ -42,7 +42,7 @@
                      params:(NSDictionary *)conditionParams
                       error:(NSError *__autoreleasing*)error {
     
-    NSString *deleteSQL = [NSString stringWithFormat:@"DELETE %@ SET WHERE %@ ;", self.tableName, whereCondition];
+    NSString *deleteSQL = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@ ;", self.tableName, whereCondition];
     
     return [self.dbConnect executeSQL:deleteSQL bind:^(BNCSQLiteDatabaseStatement *statement) {
         [conditionParams enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -87,7 +87,27 @@
 - (BOOL)deleteRecordWhereColumn:(NSString *)column
                     inValueList:(NSArray *)valueList
                           error:(NSError *__autoreleasing*)error {
-    return YES;
+    
+    __block NSMutableArray *conditionValues = [NSMutableArray array];
+    __block NSMutableDictionary *conditionValueBindList = [NSMutableDictionary dictionary];
+    
+    // Generate SQL
+    [valueList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *bindKey = [NSString stringWithFormat:@":BNCSQLiteDeleteColum%lu",(unsigned long)idx];
+        [conditionValues addObject:bindKey];
+        [conditionValueBindList setObject:obj forKey:bindKey];
+    }];
+    NSString *conditionValueSQL = [conditionValues componentsJoinedByString:@","];
+    
+    NSString *whereCondition = [NSString stringWithFormat:@" %@ IN (%@) ",column, conditionValueSQL];
+    
+    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@;", self.tableName, whereCondition];
+    
+    return [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
+        [conditionValueBindList enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            [statement bindColumn:key withValue:obj];
+        }];
+    } rowHandle:nil error:&error];
 }
 
 - (BOOL)truncate {
