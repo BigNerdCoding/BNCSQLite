@@ -17,8 +17,8 @@
  */
 + (instancetype)sharedInstance;
 
-- (void)write:(void (^)(void))writeAction;
+- (void)asyncWrite:(void (^)(void))writeAction;
 
-- (void)read:(void (^)(void))readAction;
+- (void)asyncRead:(void (^)(void))readAction;
 
 @end

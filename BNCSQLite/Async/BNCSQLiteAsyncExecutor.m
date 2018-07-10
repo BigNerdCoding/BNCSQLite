@@ -37,15 +37,19 @@
 }
 
 #pragma mark - public methods
-- (void)write:(void (^)(void))writeAction {
+- (void)asyncWrite:(void (^)(void))writeAction {
     dispatch_barrier_async(self.queue, ^{
-        writeAction();
+        if (writeAction) {
+            writeAction();
+        }
     });
 }
 
-- (void)read:(void (^)(void))readAction {
+- (void)asyncRead:(void (^)(void))readAction {
     dispatch_async(self.queue, ^{
-        readAction();
+        if (readAction) {
+            readAction();
+        }
     });
 }
 

@@ -15,7 +15,7 @@
  You can inherit `BNCSQLiteTable` or define your own class that conform `BNCSQLiteTableProtocol` protocol
  
  WARNING:
-    if you inherit `BNCSQLiteTable` class , you should also implement the `BNCSQLiteTableProtocol` protocol methods.
+    if you inherit `BNCSQLiteTable` class , you should also implement the `BNCSQLiteTableProtocol` protocol.
  */
 
 @interface BNCSQLiteTable : NSObject <BNCSQLiteTableProtocol>

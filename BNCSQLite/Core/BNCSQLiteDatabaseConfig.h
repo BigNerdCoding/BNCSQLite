@@ -13,6 +13,7 @@
 typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 
 @interface BNCSQLiteDatabaseConfig : NSObject
+
 /**
  Database filePath
  */
