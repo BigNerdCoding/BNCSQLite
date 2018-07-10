@@ -50,5 +50,11 @@ FOUNDATION_EXPORT const unsigned char BNCSQLiteVersionString[];
 #import <BNCSQLite/BNCSQLiteMigratorProtocol.h>
 #import <BNCSQLite/BNCSQLiteMigrationStepProtocol.h>
 
+// Helper
+#import <BNCSQLite/BNCSQLiteSafeCache.h>
+
 // Categories
 #import <BNCSQLite/NSString+BNCSQLiteSchema.h>
+
+// Async
+#import <BNCSQLite/BNCSQLiteAsyncExecutor.h>

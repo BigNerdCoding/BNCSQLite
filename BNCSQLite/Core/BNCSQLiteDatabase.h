@@ -93,7 +93,7 @@ extern NSInteger const kBNCSQLiteInitVersion;
 
  @return version of schema
  */
-- (NSInteger)currentVersion;
+- (UInt64)currentVersion;
 
 /**
  Update the schema version

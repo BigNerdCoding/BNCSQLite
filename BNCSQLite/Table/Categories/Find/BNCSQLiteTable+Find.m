@@ -301,10 +301,10 @@
 
 #pragma mark - General Table Info Query
 
-- (NSUInteger)countTotalRecord {
+- (UInt64)countTotalRecord {
     NSString *sqlString = [NSString stringWithFormat:@"SELECT COUNT(*) AS count FROM %@ ;", self.tableName];
     
-    __block NSInteger nCount = 0;
+    __block UInt64 nCount = 0;
     
     [self.dbConnect executeSQL:sqlString bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
         nCount = [statement takeIntColumnAt:0];
@@ -313,12 +313,12 @@
     return nCount;
 }
 
-- (NSUInteger)countWithCondition:(NSString *)whereCondition
+- (UInt64)countWithCondition:(NSString *)whereCondition
                           params:(NSDictionary *)whereConditionParams {
     
     NSString *sqlString = [NSString stringWithFormat:@"SELECT COUNT(*) AS count FROM %@ WHERE %@ ;", self.tableName, whereCondition];
     
-    __block NSInteger nCount = 0;
+    __block UInt64 nCount = 0;
     
     [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
         [whereConditionParams enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {

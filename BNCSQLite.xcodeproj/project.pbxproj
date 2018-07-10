@@ -10,6 +10,8 @@
 		470595F320F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 470595F220F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m */; };
 		470595F520F4442E004C6543 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 470595F420F4442E004C6543 /* libsqlite3.tbd */; };
 		470595F820F459F7004C6543 /* BNCSQLiteORMUpdateUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 470595F720F459F7004C6543 /* BNCSQLiteORMUpdateUnitTest.m */; };
+		4705960120F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = 470595FF20F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4705960220F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705960020F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.m */; };
 		47179F6B20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */; };
 		47179F6D20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */; };
 		47179F8720EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F8620EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m */; };
@@ -78,6 +80,8 @@
 		470595F220F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMDeleteUnitTest.m; sourceTree = "<group>"; };
 		470595F420F4442E004C6543 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		470595F720F459F7004C6543 /* BNCSQLiteORMUpdateUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMUpdateUnitTest.m; sourceTree = "<group>"; };
+		470595FF20F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteAsyncExecutor.h; sourceTree = "<group>"; };
+		4705960020F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteAsyncExecutor.m; sourceTree = "<group>"; };
 		47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindGeneralUnitTest.m; sourceTree = "<group>"; };
 		47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindWithSingleConditionUnitTest.m; sourceTree = "<group>"; };
 		47179F8620EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindWithMulitConditionUnitTest.m; sourceTree = "<group>"; };
@@ -166,6 +170,15 @@
 			path = Update;
 			sourceTree = "<group>";
 		};
+		470595FE20F4DE0B004C6543 /* Async */ = {
+			isa = PBXGroup;
+			children = (
+				470595FF20F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.h */,
+				4705960020F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.m */,
+			);
+			path = Async;
+			sourceTree = "<group>";
+		};
 		47584BEC20E6817000173F5F = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +201,7 @@
 		47584BF820E6817000173F5F /* BNCSQLite */ = {
 			isa = PBXGroup;
 			children = (
+				470595FE20F4DE0B004C6543 /* Async */,
 				47584C6220E9D4A600173F5F /* Categories */,
 				47584C3920E92BFE00173F5F /* Helper */,
 				47584C2C20E9269D00173F5F /* Migration */,
@@ -448,6 +462,7 @@
 				47584C3420E928EA00173F5F /* BNCSQLiteTableColumnProtocol.h in Headers */,
 				476F906B20EB0C2400718E1E /* BNCSQLiteTableColumnIndexProtocol.h in Headers */,
 				47584C2620E8EA7200173F5F /* BNCSQLiteDatabaseStatement+Take.h in Headers */,
+				4705960120F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.h in Headers */,
 				47584C2220E8EA6400173F5F /* BNCSQLiteDatabaseStatement+Bind.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,6 +568,7 @@
 				47584C1B20E8A32A00173F5F /* BNCSQLiteDatabaseStatement.m in Sources */,
 				47584C2720E8EA7200173F5F /* BNCSQLiteDatabaseStatement+Take.m in Sources */,
 				476F909920EBABF800718E1E /* BNCSQLiteTable+Update.m in Sources */,
+				4705960220F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.m in Sources */,
 				476F909120EBABC600718E1E /* BNCSQLiteTable+Insert.m in Sources */,
 				47584C6E20E9FFF900173F5F /* NSString+BNCSQLiteSchema.m in Sources */,
 				47584C1620E6825400173F5F /* BNCSQLiteDatabase.m in Sources */,
@@ -725,12 +741,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BNCSQLite/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.debug.BNCSQLite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.BNCSQLite;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -749,12 +766,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BNCSQLite/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.debug.BNCSQLite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.BNCSQLite;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -243,7 +243,7 @@
 
  @return the table record count
  */
-- (NSUInteger)countTotalRecord;
+- (UInt64)countTotalRecord;
 
 /**
  return the table record count with where condition
@@ -258,7 +258,7 @@
  @param whereConditionParams the params to bind in to where condition
  @return the table record count with where condition
  */
-- (NSUInteger)countWithCondition:(NSString *)whereCondition
+- (UInt64)countWithCondition:(NSString *)whereCondition
                           params:(NSDictionary *)whereConditionParams;
 
 @end

@@ -101,10 +101,10 @@ NSInteger const kBNCSQLiteInitVersion = 0;
     return sqlite3_total_changes(_database);
 }
 
-- (NSInteger)currentVersion {
+- (UInt64)currentVersion {
     NSString *sql = @"pragma user_version ;";
     
-    __block NSInteger version = kBNCSQLiteInitVersion;
+    __block UInt64 version = kBNCSQLiteInitVersion;
     [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
         version = [statement takeIntColumnAt:0];
     } error:nil];
