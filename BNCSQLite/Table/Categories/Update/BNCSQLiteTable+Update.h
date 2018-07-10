@@ -90,6 +90,20 @@
               error:(NSError *__autoreleasing *)error;
 
 /**
+ update column values of rows, where column `wherekey` in a list
+ 
+ @param columnValueList column-values to update
+ @param wherekey column to search
+ @param valueList column's value list
+ @param error error if fails
+ @return whether the update action is success
+ */
+- (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
+                     whereKey:(NSString *)wherekey
+                       inList:(NSArray *)valueList
+                        error:(NSError *__autoreleasing *)error;
+
+/**
  update value for column by primary key
 
  @param value value to update

@@ -82,25 +82,50 @@
            whereKey:(NSString *)wherekey
              inList:(NSArray *)valueList
               error:(NSError *__autoreleasing *)error {
+    return [self updateColumnValueList:@{column:value} whereKey:wherekey inList:valueList error:error];
+}
+
+- (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
+               whereKey:(NSString *)wherekey
+                 inList:(NSArray *)valueList
+                  error:(NSError *__autoreleasing *)error {
     
+    // Update Column
+    __block NSMutableArray *updateColumns = [NSMutableArray array];
+    __block NSMutableDictionary *updateColumnBindList = [NSMutableDictionary dictionary];
+    [columnValueList enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        NSString *updateColumn = [NSString stringWithFormat:@" %@ = :BNCSQLiteUpdateColum%@",key, key];
+        [updateColumns addObject:updateColumn];
+        [updateColumnBindList setObject:obj forKey:[NSString stringWithFormat:@":BNCSQLiteUpdateColum%@", key]];
+    }];
+    
+    NSString *updateValueSQL = [updateColumns componentsJoinedByString:@","];
+    
+    // Update Condition
     __block NSMutableArray *conditionValues = [NSMutableArray array];
     __block NSMutableDictionary *conditionValueBindList = [NSMutableDictionary dictionary];
     
     [valueList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *bindKey = [NSString stringWithFormat:@":BNCSQLiteUpdateColum%lu",(unsigned long)idx];
+        NSString *bindKey = [NSString stringWithFormat:@":BNCSQLiteWhrerColum%lu",(unsigned long)idx];
         [conditionValues addObject:bindKey];
         [conditionValueBindList setObject:obj forKey:bindKey];
     }];
     NSString *conditionValueSQL = [conditionValues componentsJoinedByString:@","];
     
+    // Where clause
     NSString *whereCondition = [NSString stringWithFormat:@" %@ IN (%@) ",wherekey, conditionValueSQL];
     
-    NSString *updateSQL = [NSString stringWithFormat:@"UPDATE %@ SET %@ = :%@ WHERE %@ ;",self.tableName, column, column, whereCondition];
+    // SQL
+    NSString *updateSQL = [NSString stringWithFormat:@"UPDATE %@ SET %@ WHERE %@ ;",self.tableName, updateValueSQL, whereCondition];
     
     return [self.dbConnect executeSQL:updateSQL bind:^(BNCSQLiteDatabaseStatement *statement) {
         
-        [statement bindColumn:[NSString stringWithFormat:@":%@",column] withValue:value];
-    
+        // Bind Update Column
+        [updateColumnBindList enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            [statement bindColumn:key withValue:obj];
+        }];
+        
+        // Bind Update Condition
         [conditionValueBindList enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             [statement bindColumn:key withValue:obj];
         }];

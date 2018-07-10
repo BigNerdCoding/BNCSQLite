@@ -107,7 +107,7 @@
         [conditionValueBindList enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             [statement bindColumn:key withValue:obj];
         }];
-    } rowHandle:nil error:&error];
+    } rowHandle:nil error:error];
 }
 
 - (BOOL)truncate {
