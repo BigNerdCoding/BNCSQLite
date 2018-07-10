@@ -13,8 +13,19 @@
 
 @required
 
+/**
+ transform record into dictionary based with column infomation and table name
+
+ @param table an instance that conform `BNCSQLiteTableProtocol` protocol
+ @return the dicitonary of record data
+ */
 - (NSDictionary *)dictionaryRepresentationWithTable:(id<BNCSQLiteTableProtocol>)table;
 
+/**
+ config you record `property` with dictionary
+
+ @param dictionary the data fetched with `id<BNCSQLiteTableProtocol>`
+ */
 - (void)objectRepresentationWithDictionary:(NSDictionary *)dictionary;
 
 @end

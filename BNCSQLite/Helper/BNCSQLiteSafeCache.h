@@ -11,37 +11,37 @@
 @interface BNCSQLiteSafeCache : NSObject
 
 /**
- 缓存数据
+ cache the object
  
- @param object 待缓存对象
- @param key 缓存键
+ @param object object want to cache
+ @param key key of the cache object
  */
 -(void)cacheObject:(id)object forKey:(NSString *)key;
 
 /**
- 取出缓存数据
+ fetch th cached object
  
- @param key 缓存键
- @return 缓存对象
+ @param key  key of the cache object
+ @return cached object
  */
 -(id)getCacheForKey:(NSString *)key;
 
 /**
- 移除缓存对象
+ revome the cache object
  
- @param key 待移除对象键
+ @param key key of the cache object
  */
 -(void)removeCacheObjectForKey:(NSString *)key;
 
 /**
- 移除所有缓存对象
+ remove all cached objects
  */
 -(void)removeAllCacheObjects;
 
 /**
- 返回所有 key
+ get all cache key
  
- @return 返回所有健
+ @return all cache key
  */
 -(NSArray<NSString *> *)getAllCacheKeys;
 

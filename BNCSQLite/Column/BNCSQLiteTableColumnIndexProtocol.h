@@ -11,10 +11,26 @@
 @protocol BNCSQLiteTableColumnIndexProtocol <NSObject>
 
 @required
+
+/**
+ whether an unique index
+
+ @return whether an unique index
+ */
 - (BOOL)isUniqueIndex;
 
+/**
+ index name
+
+ @return index name
+ */
 - (NSString *)indexName;
 
+/**
+ indexed column list name
+
+ @return column list name
+ */
 - (NSArray<NSString *> *)indexCloumnFields;
 
 @end

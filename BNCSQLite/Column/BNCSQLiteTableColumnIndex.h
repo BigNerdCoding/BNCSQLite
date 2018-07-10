@@ -11,8 +11,22 @@
 
 @interface BNCSQLiteTableColumnIndex : NSObject <BNCSQLiteTableColumnIndexProtocol>
 
+/**
+ create a common index
+
+ @param indexName index name
+ @param fileds indexed column list name
+ @return an instance of BNCSQLiteTableColumnIndex
+ */
 - (instancetype)initWithIndexName:(NSString *)indexName fields:(NSArray<NSString *> *)fileds;
 
+/**
+ create a unique index
+
+ @param indexName index name
+ @param fields indexed column list name
+ @return an instance of BNCSQLiteTableColumnIndex
+ */
 - (instancetype)initWithUniqueIndexName:(NSString *)indexName fields:(NSArray<NSString *> *)fields;
 
 @end
