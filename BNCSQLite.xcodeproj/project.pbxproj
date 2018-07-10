@@ -12,6 +12,25 @@
 		470595F820F459F7004C6543 /* BNCSQLiteORMUpdateUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 470595F720F459F7004C6543 /* BNCSQLiteORMUpdateUnitTest.m */; };
 		4705960120F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = 470595FF20F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4705960220F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705960020F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.m */; };
+		4705960F20F4E074004C6543 /* BNCSQLiteMigrationTestRecordV1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705960E20F4E074004C6543 /* BNCSQLiteMigrationTestRecordV1.m */; };
+		4705961220F4E07C004C6543 /* BNCSQLiteMigrationTestRecordV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705961120F4E07C004C6543 /* BNCSQLiteMigrationTestRecordV2.m */; };
+		4705961520F4E083004C6543 /* BNCSQLiteMigrationTestRecordV3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705961420F4E083004C6543 /* BNCSQLiteMigrationTestRecordV3.m */; };
+		4705961820F4E08A004C6543 /* BNCSQLiteMigrationTestRecordV4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705961720F4E08A004C6543 /* BNCSQLiteMigrationTestRecordV4.m */; };
+		4705961B20F4E0B3004C6543 /* BNCSQLiteMigrationTestTableV1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705961A20F4E0B3004C6543 /* BNCSQLiteMigrationTestTableV1.m */; };
+		4705961E20F4E0BC004C6543 /* BNCSQLiteMigrationTestTableV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705961D20F4E0BC004C6543 /* BNCSQLiteMigrationTestTableV2.m */; };
+		4705962120F4E0C5004C6543 /* BNCSQLiteMigrationTestTableV3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705962020F4E0C5004C6543 /* BNCSQLiteMigrationTestTableV3.m */; };
+		4705962420F4E0CC004C6543 /* BNCSQLiteMigrationTestTableV4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705962320F4E0CC004C6543 /* BNCSQLiteMigrationTestTableV4.m */; };
+		4705962720F4E0EB004C6543 /* BNCSQLiteTestDatabaseV1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705962620F4E0EB004C6543 /* BNCSQLiteTestDatabaseV1.m */; };
+		4705962A20F4E0F3004C6543 /* BNCSQLiteTestDatabaseV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705962920F4E0F3004C6543 /* BNCSQLiteTestDatabaseV2.m */; };
+		4705962D20F4E0FB004C6543 /* BNCSQLiteTestDatabaseV3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705962C20F4E0FB004C6543 /* BNCSQLiteTestDatabaseV3.m */; };
+		4705963020F4E104004C6543 /* BNCSQLiteTestDatabaseV4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705962F20F4E104004C6543 /* BNCSQLiteTestDatabaseV4.m */; };
+		4705963320F4E30B004C6543 /* BNCSQLiteMigrationTestStep2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705963220F4E30B004C6543 /* BNCSQLiteMigrationTestStep2.m */; };
+		4705963620F4E315004C6543 /* BNCSQLiteMigrationTestStep3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705963520F4E315004C6543 /* BNCSQLiteMigrationTestStep3.m */; };
+		4705963920F4E31E004C6543 /* BNCSQLiteMigrationTestStep4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705963820F4E31E004C6543 /* BNCSQLiteMigrationTestStep4.m */; };
+		4705963C20F4E565004C6543 /* BNCSQLiteMigratorTest2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705963B20F4E565004C6543 /* BNCSQLiteMigratorTest2.m */; };
+		4705963F20F4E61D004C6543 /* BNCSQLiteMigratorTest3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705963E20F4E61D004C6543 /* BNCSQLiteMigratorTest3.m */; };
+		4705964220F4E624004C6543 /* BNCSQLiteMigratorTest4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705964120F4E624004C6543 /* BNCSQLiteMigratorTest4.m */; };
+		4705964420F4E7DE004C6543 /* BNCSQLiteMigrationUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4705964320F4E7DE004C6543 /* BNCSQLiteMigrationUnitTest.m */; };
 		47179F6B20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */; };
 		47179F6D20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */; };
 		47179F8720EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47179F8620EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m */; };
@@ -82,6 +101,43 @@
 		470595F720F459F7004C6543 /* BNCSQLiteORMUpdateUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMUpdateUnitTest.m; sourceTree = "<group>"; };
 		470595FF20F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteAsyncExecutor.h; sourceTree = "<group>"; };
 		4705960020F4DE3F004C6543 /* BNCSQLiteAsyncExecutor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteAsyncExecutor.m; sourceTree = "<group>"; };
+		4705960D20F4E074004C6543 /* BNCSQLiteMigrationTestRecordV1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestRecordV1.h; sourceTree = "<group>"; };
+		4705960E20F4E074004C6543 /* BNCSQLiteMigrationTestRecordV1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestRecordV1.m; sourceTree = "<group>"; };
+		4705961020F4E07C004C6543 /* BNCSQLiteMigrationTestRecordV2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestRecordV2.h; sourceTree = "<group>"; };
+		4705961120F4E07C004C6543 /* BNCSQLiteMigrationTestRecordV2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestRecordV2.m; sourceTree = "<group>"; };
+		4705961320F4E083004C6543 /* BNCSQLiteMigrationTestRecordV3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestRecordV3.h; sourceTree = "<group>"; };
+		4705961420F4E083004C6543 /* BNCSQLiteMigrationTestRecordV3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestRecordV3.m; sourceTree = "<group>"; };
+		4705961620F4E08A004C6543 /* BNCSQLiteMigrationTestRecordV4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestRecordV4.h; sourceTree = "<group>"; };
+		4705961720F4E08A004C6543 /* BNCSQLiteMigrationTestRecordV4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestRecordV4.m; sourceTree = "<group>"; };
+		4705961920F4E0B3004C6543 /* BNCSQLiteMigrationTestTableV1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestTableV1.h; sourceTree = "<group>"; };
+		4705961A20F4E0B3004C6543 /* BNCSQLiteMigrationTestTableV1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestTableV1.m; sourceTree = "<group>"; };
+		4705961C20F4E0BC004C6543 /* BNCSQLiteMigrationTestTableV2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestTableV2.h; sourceTree = "<group>"; };
+		4705961D20F4E0BC004C6543 /* BNCSQLiteMigrationTestTableV2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestTableV2.m; sourceTree = "<group>"; };
+		4705961F20F4E0C5004C6543 /* BNCSQLiteMigrationTestTableV3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestTableV3.h; sourceTree = "<group>"; };
+		4705962020F4E0C5004C6543 /* BNCSQLiteMigrationTestTableV3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestTableV3.m; sourceTree = "<group>"; };
+		4705962220F4E0CC004C6543 /* BNCSQLiteMigrationTestTableV4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestTableV4.h; sourceTree = "<group>"; };
+		4705962320F4E0CC004C6543 /* BNCSQLiteMigrationTestTableV4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestTableV4.m; sourceTree = "<group>"; };
+		4705962520F4E0EB004C6543 /* BNCSQLiteTestDatabaseV1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteTestDatabaseV1.h; sourceTree = "<group>"; };
+		4705962620F4E0EB004C6543 /* BNCSQLiteTestDatabaseV1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteTestDatabaseV1.m; sourceTree = "<group>"; };
+		4705962820F4E0F3004C6543 /* BNCSQLiteTestDatabaseV2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteTestDatabaseV2.h; sourceTree = "<group>"; };
+		4705962920F4E0F3004C6543 /* BNCSQLiteTestDatabaseV2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteTestDatabaseV2.m; sourceTree = "<group>"; };
+		4705962B20F4E0FB004C6543 /* BNCSQLiteTestDatabaseV3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteTestDatabaseV3.h; sourceTree = "<group>"; };
+		4705962C20F4E0FB004C6543 /* BNCSQLiteTestDatabaseV3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteTestDatabaseV3.m; sourceTree = "<group>"; };
+		4705962E20F4E104004C6543 /* BNCSQLiteTestDatabaseV4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteTestDatabaseV4.h; sourceTree = "<group>"; };
+		4705962F20F4E104004C6543 /* BNCSQLiteTestDatabaseV4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteTestDatabaseV4.m; sourceTree = "<group>"; };
+		4705963120F4E30B004C6543 /* BNCSQLiteMigrationTestStep2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestStep2.h; sourceTree = "<group>"; };
+		4705963220F4E30B004C6543 /* BNCSQLiteMigrationTestStep2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestStep2.m; sourceTree = "<group>"; };
+		4705963420F4E315004C6543 /* BNCSQLiteMigrationTestStep3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestStep3.h; sourceTree = "<group>"; };
+		4705963520F4E315004C6543 /* BNCSQLiteMigrationTestStep3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestStep3.m; sourceTree = "<group>"; };
+		4705963720F4E31E004C6543 /* BNCSQLiteMigrationTestStep4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigrationTestStep4.h; sourceTree = "<group>"; };
+		4705963820F4E31E004C6543 /* BNCSQLiteMigrationTestStep4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationTestStep4.m; sourceTree = "<group>"; };
+		4705963A20F4E565004C6543 /* BNCSQLiteMigratorTest2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigratorTest2.h; sourceTree = "<group>"; };
+		4705963B20F4E565004C6543 /* BNCSQLiteMigratorTest2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigratorTest2.m; sourceTree = "<group>"; };
+		4705963D20F4E61D004C6543 /* BNCSQLiteMigratorTest3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigratorTest3.h; sourceTree = "<group>"; };
+		4705963E20F4E61D004C6543 /* BNCSQLiteMigratorTest3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigratorTest3.m; sourceTree = "<group>"; };
+		4705964020F4E624004C6543 /* BNCSQLiteMigratorTest4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteMigratorTest4.h; sourceTree = "<group>"; };
+		4705964120F4E624004C6543 /* BNCSQLiteMigratorTest4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigratorTest4.m; sourceTree = "<group>"; };
+		4705964320F4E7DE004C6543 /* BNCSQLiteMigrationUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteMigrationUnitTest.m; sourceTree = "<group>"; };
 		47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindGeneralUnitTest.m; sourceTree = "<group>"; };
 		47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindWithSingleConditionUnitTest.m; sourceTree = "<group>"; };
 		47179F8620EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindWithMulitConditionUnitTest.m; sourceTree = "<group>"; };
@@ -179,6 +235,122 @@
 			path = Async;
 			sourceTree = "<group>";
 		};
+		4705960320F4DFE4004C6543 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				4705960920F4E03C004C6543 /* Steps */,
+				4705960420F4DFF6004C6543 /* Versions */,
+				4705964320F4E7DE004C6543 /* BNCSQLiteMigrationUnitTest.m */,
+			);
+			path = Migration;
+			sourceTree = "<group>";
+		};
+		4705960420F4DFF6004C6543 /* Versions */ = {
+			isa = PBXGroup;
+			children = (
+				4705960820F4E02A004C6543 /* Version4 */,
+				4705960720F4E025004C6543 /* Version3 */,
+				4705960620F4E01F004C6543 /* Version2 */,
+				4705960520F4E017004C6543 /* Version1 */,
+			);
+			path = Versions;
+			sourceTree = "<group>";
+		};
+		4705960520F4E017004C6543 /* Version1 */ = {
+			isa = PBXGroup;
+			children = (
+				4705960D20F4E074004C6543 /* BNCSQLiteMigrationTestRecordV1.h */,
+				4705960E20F4E074004C6543 /* BNCSQLiteMigrationTestRecordV1.m */,
+				4705961920F4E0B3004C6543 /* BNCSQLiteMigrationTestTableV1.h */,
+				4705961A20F4E0B3004C6543 /* BNCSQLiteMigrationTestTableV1.m */,
+				4705962520F4E0EB004C6543 /* BNCSQLiteTestDatabaseV1.h */,
+				4705962620F4E0EB004C6543 /* BNCSQLiteTestDatabaseV1.m */,
+			);
+			path = Version1;
+			sourceTree = "<group>";
+		};
+		4705960620F4E01F004C6543 /* Version2 */ = {
+			isa = PBXGroup;
+			children = (
+				4705961020F4E07C004C6543 /* BNCSQLiteMigrationTestRecordV2.h */,
+				4705961120F4E07C004C6543 /* BNCSQLiteMigrationTestRecordV2.m */,
+				4705961C20F4E0BC004C6543 /* BNCSQLiteMigrationTestTableV2.h */,
+				4705961D20F4E0BC004C6543 /* BNCSQLiteMigrationTestTableV2.m */,
+				4705962820F4E0F3004C6543 /* BNCSQLiteTestDatabaseV2.h */,
+				4705962920F4E0F3004C6543 /* BNCSQLiteTestDatabaseV2.m */,
+			);
+			path = Version2;
+			sourceTree = "<group>";
+		};
+		4705960720F4E025004C6543 /* Version3 */ = {
+			isa = PBXGroup;
+			children = (
+				4705961320F4E083004C6543 /* BNCSQLiteMigrationTestRecordV3.h */,
+				4705961420F4E083004C6543 /* BNCSQLiteMigrationTestRecordV3.m */,
+				4705961F20F4E0C5004C6543 /* BNCSQLiteMigrationTestTableV3.h */,
+				4705962020F4E0C5004C6543 /* BNCSQLiteMigrationTestTableV3.m */,
+				4705962B20F4E0FB004C6543 /* BNCSQLiteTestDatabaseV3.h */,
+				4705962C20F4E0FB004C6543 /* BNCSQLiteTestDatabaseV3.m */,
+			);
+			path = Version3;
+			sourceTree = "<group>";
+		};
+		4705960820F4E02A004C6543 /* Version4 */ = {
+			isa = PBXGroup;
+			children = (
+				4705961620F4E08A004C6543 /* BNCSQLiteMigrationTestRecordV4.h */,
+				4705961720F4E08A004C6543 /* BNCSQLiteMigrationTestRecordV4.m */,
+				4705962220F4E0CC004C6543 /* BNCSQLiteMigrationTestTableV4.h */,
+				4705962320F4E0CC004C6543 /* BNCSQLiteMigrationTestTableV4.m */,
+				4705962E20F4E104004C6543 /* BNCSQLiteTestDatabaseV4.h */,
+				4705962F20F4E104004C6543 /* BNCSQLiteTestDatabaseV4.m */,
+			);
+			path = Version4;
+			sourceTree = "<group>";
+		};
+		4705960920F4E03C004C6543 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				4705960C20F4E050004C6543 /* Version4 */,
+				4705960B20F4E049004C6543 /* Version3 */,
+				4705960A20F4E044004C6543 /* Version2 */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		4705960A20F4E044004C6543 /* Version2 */ = {
+			isa = PBXGroup;
+			children = (
+				4705963120F4E30B004C6543 /* BNCSQLiteMigrationTestStep2.h */,
+				4705963220F4E30B004C6543 /* BNCSQLiteMigrationTestStep2.m */,
+				4705963A20F4E565004C6543 /* BNCSQLiteMigratorTest2.h */,
+				4705963B20F4E565004C6543 /* BNCSQLiteMigratorTest2.m */,
+			);
+			path = Version2;
+			sourceTree = "<group>";
+		};
+		4705960B20F4E049004C6543 /* Version3 */ = {
+			isa = PBXGroup;
+			children = (
+				4705963420F4E315004C6543 /* BNCSQLiteMigrationTestStep3.h */,
+				4705963520F4E315004C6543 /* BNCSQLiteMigrationTestStep3.m */,
+				4705963D20F4E61D004C6543 /* BNCSQLiteMigratorTest3.h */,
+				4705963E20F4E61D004C6543 /* BNCSQLiteMigratorTest3.m */,
+			);
+			path = Version3;
+			sourceTree = "<group>";
+		};
+		4705960C20F4E050004C6543 /* Version4 */ = {
+			isa = PBXGroup;
+			children = (
+				4705963720F4E31E004C6543 /* BNCSQLiteMigrationTestStep4.h */,
+				4705963820F4E31E004C6543 /* BNCSQLiteMigrationTestStep4.m */,
+				4705964020F4E624004C6543 /* BNCSQLiteMigratorTest4.h */,
+				4705964120F4E624004C6543 /* BNCSQLiteMigratorTest4.m */,
+			);
+			path = Version4;
+			sourceTree = "<group>";
+		};
 		47584BEC20E6817000173F5F = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +391,7 @@
 		47584C0320E6817000173F5F /* BNCSQLiteTests */ = {
 			isa = PBXGroup;
 			children = (
+				4705960320F4DFE4004C6543 /* Migration */,
 				47584C6F20EA061600173F5F /* ORM */,
 				47584C5F20E9CF6700173F5F /* Core */,
 				47584C0620E6817000173F5F /* Info.plist */,
@@ -588,16 +761,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4705961520F4E083004C6543 /* BNCSQLiteMigrationTestRecordV3.m in Sources */,
+				4705962720F4E0EB004C6543 /* BNCSQLiteTestDatabaseV1.m in Sources */,
+				4705963620F4E315004C6543 /* BNCSQLiteMigrationTestStep3.m in Sources */,
+				4705961820F4E08A004C6543 /* BNCSQLiteMigrationTestRecordV4.m in Sources */,
+				4705963F20F4E61D004C6543 /* BNCSQLiteMigratorTest3.m in Sources */,
 				47179F6B20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m in Sources */,
 				470595F320F4413F004C6543 /* BNCSQLiteORMDeleteUnitTest.m in Sources */,
+				4705962420F4E0CC004C6543 /* BNCSQLiteMigrationTestTableV4.m in Sources */,
+				4705964220F4E624004C6543 /* BNCSQLiteMigratorTest4.m in Sources */,
+				4705963920F4E31E004C6543 /* BNCSQLiteMigrationTestStep4.m in Sources */,
+				4705964420F4E7DE004C6543 /* BNCSQLiteMigrationUnitTest.m in Sources */,
 				47179F8720EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m in Sources */,
+				4705962A20F4E0F3004C6543 /* BNCSQLiteTestDatabaseV2.m in Sources */,
 				47584C7B20EA075E00173F5F /* BNCSQLiteTestDatabase.m in Sources */,
+				4705960F20F4E074004C6543 /* BNCSQLiteMigrationTestRecordV1.m in Sources */,
+				4705961E20F4E0BC004C6543 /* BNCSQLiteMigrationTestTableV2.m in Sources */,
+				4705962D20F4E0FB004C6543 /* BNCSQLiteTestDatabaseV3.m in Sources */,
 				470595F820F459F7004C6543 /* BNCSQLiteORMUpdateUnitTest.m in Sources */,
+				4705963320F4E30B004C6543 /* BNCSQLiteMigrationTestStep2.m in Sources */,
+				4705961B20F4E0B3004C6543 /* BNCSQLiteMigrationTestTableV1.m in Sources */,
+				4705963C20F4E565004C6543 /* BNCSQLiteMigratorTest2.m in Sources */,
+				4705962120F4E0C5004C6543 /* BNCSQLiteMigrationTestTableV3.m in Sources */,
+				4705963020F4E104004C6543 /* BNCSQLiteTestDatabaseV4.m in Sources */,
 				47584C7520EA066300173F5F /* BNCSQLiteTestRecord.m in Sources */,
 				47584C6120E9CF7A00173F5F /* BNCSQLiteCoreTest.m in Sources */,
 				47F84F8820F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m in Sources */,
 				47179F6D20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m in Sources */,
 				4765752C20EDF21700315CF3 /* BNCSQLiteORMFindWithConditionUnitTest.m in Sources */,
+				4705961220F4E07C004C6543 /* BNCSQLiteMigrationTestRecordV2.m in Sources */,
 				47584C7820EA067E00173F5F /* BNCSQLiteTestTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

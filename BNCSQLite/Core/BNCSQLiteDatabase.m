@@ -13,7 +13,7 @@
 #import "BNCSQLiteDatabaseConfig.h"
 
 NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
-NSInteger const kBNCSQLiteInitVersion = 0;
+NSInteger const kBNCSQLiteInitVersion = 1;
 
 @interface BNCSQLiteDatabase()
 
@@ -65,7 +65,7 @@ NSInteger const kBNCSQLiteInitVersion = 0;
         }
         
         // Need Migration
-        if (isFileExistsBefore && [self currentVersion] < config.latestSchemaVersion && !config.migrationAction) {
+        if (isFileExistsBefore && [self currentVersion] < config.latestSchemaVersion && config.migrationAction) {
             // Do Migration
             config.migrationAction(self);
         }

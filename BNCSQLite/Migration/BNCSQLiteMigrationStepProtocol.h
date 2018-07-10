@@ -23,14 +23,4 @@
  */
 - (BOOL)goUpWithQueryCommand:(BNCSQLiteDatabase *)dbConnect;
 
-/**
- go lower version
-
- this will call this method when goUpWithQueryCommand: fails
- 
- @param dbConnect BNCSQLiteDataBase instance
- @return NO if migration down fails
- */
-- (BOOL)goDownWithQueryCommand:(BNCSQLiteDatabase *)dbConnect;
-
 @end

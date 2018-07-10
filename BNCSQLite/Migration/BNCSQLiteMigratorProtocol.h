@@ -19,6 +19,12 @@
  */
 - (NSArray<NSNumber *> *)migrationVersionList;
 
+
+/**
+ the dictionary contains step objects which keyed by version number
+
+ @return return step dictionary
+ */
 - (NSDictionary<NSNumber *,id<BNCSQLiteMigrationStepProtocol> > *)migrationStepDictionary;
 
 @end

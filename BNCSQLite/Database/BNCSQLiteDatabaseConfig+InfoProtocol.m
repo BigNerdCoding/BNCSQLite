@@ -51,24 +51,23 @@
         return nil;
     }
     
-    if (![infoProtocol respondsToSelector:@selector(migrationStepDictionary)]) {
-        // Don't Need Migrator
-        return nil;
-    }
-    
     id<BNCSQLiteMigratorProtocol> migrator = nil;
     
     migrator = [infoProtocol performSelector:@selector(databaseMigrator)];
     
-    NSArray *versionList = [migrator migrationVersionList];
-    NSDictionary *stepDictionary = [migrator migrationStepDictionary];
     
-    NSAssert(versionList.count == stepDictionary.allKeys.count, @"migrationVersionList & migrationStepDictionary quantity must be equal ");
-    
-    if (versionList.count != stepDictionary.allKeys.count) {
-        // Not Equal Don't Do Migrator
+    if (![migrator respondsToSelector:@selector(migrationStepDictionary)]) {
+        // Don't Need Migrator
         return nil;
     }
+    
+    if (![migrator respondsToSelector:@selector(migrationVersionList)]) {
+        // Don't Need Migrator
+        return nil;
+    }
+    
+    NSArray *versionList = [migrator migrationVersionList];
+    NSDictionary *stepDictionary = [migrator migrationStepDictionary];
     
     MigrationBlock action = ^(BNCSQLiteDatabase *dbConnct) {
         // Do Version Migration
@@ -79,14 +78,13 @@
                 id<BNCSQLiteMigrationStepProtocol> step = [stepDictionary objectForKey:version];
                 
                 if (![step goUpWithQueryCommand:dbConnct]) {
-                    [step goDownWithQueryCommand:dbConnct];
                     break;
                 }
                 
                 [dbConnct updateSchemaVersion:[version integerValue]];
             }
             
-            if ([version integerValue] > [dbConnct currentVersion]) {
+            if ([version integerValue] == [dbConnct currentVersion]) {
                 shouldMigration = YES;
             }
         }
