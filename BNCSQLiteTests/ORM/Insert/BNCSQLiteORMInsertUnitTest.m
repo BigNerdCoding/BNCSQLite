@@ -49,9 +49,13 @@
     XCTAssertNil(error);
     
     NSArray *results = [_table findAllWithError:&error];
-    
     XCTAssert(results.count == 1);
     XCTAssertNil(error);
+    
+    record = [results firstObject];
+    XCTAssert(record.defaultInt == 0);
+    XCTAssert(record.defaultReal == 0.0);
+    XCTAssert([record.defaultText isEqualToString:@""]);
 }
 
 

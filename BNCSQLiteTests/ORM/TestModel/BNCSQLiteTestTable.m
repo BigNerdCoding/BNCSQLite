@@ -39,9 +39,17 @@
         [column settingDefaultValueConstraint:@" '' "];
     }];
     
-    BNCSQLiteTableColumn *column9 = [BNCSQLiteTableColumn initUniqueColWithName:@"timeStamp" type:BNCSQLiteTableColumnTypeInt];
+    BNCSQLiteTableColumn *column9 = [[BNCSQLiteTableColumn alloc] initWithColName:@"defaultInt" type:BNCSQLiteTableColumnTypeInt constraint:^(BNCSQLiteTableColumn *column) {
+        [column settingDefaultValueConstraint:@" 0 "];
+    }];
     
-    return @[column, column2, column3, column4, column5, column6, column7, column8, column9];
+    BNCSQLiteTableColumn *column10 = [[BNCSQLiteTableColumn alloc] initWithColName:@"defaultReal" type:BNCSQLiteTableColumnTypeReal constraint:^(BNCSQLiteTableColumn *column) {
+        [column settingDefaultValueConstraint:@" 0.0 "];
+    }];
+    
+    BNCSQLiteTableColumn *column11 = [BNCSQLiteTableColumn initUniqueColWithName:@"timeStamp" type:BNCSQLiteTableColumnTypeInt];
+    
+    return @[column, column2, column3, column4, column5, column6, column7, column8, column9, column10, column11];
 }
 
 - (Class)recordClass {

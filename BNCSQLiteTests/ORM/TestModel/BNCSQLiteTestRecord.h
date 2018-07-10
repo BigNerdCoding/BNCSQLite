@@ -19,6 +19,8 @@
 @property(nonatomic, assign) double progress;
 @property(nonatomic, strong) NSString *nilText;
 @property(nonatomic, strong) NSString *defaultText;
+@property(nonatomic, assign) NSInteger defaultInt;
+@property(nonatomic, assign) double defaultReal;
 @property(nonatomic, assign) long long timeStamp;
 
 @end
