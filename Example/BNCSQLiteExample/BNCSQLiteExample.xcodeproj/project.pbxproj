@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		47346A5D20FC6D6200EED587 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47346A5C20FC6D6200EED587 /* AppDelegate.m */; };
+		47346A6020FC6D6200EED587 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47346A5F20FC6D6200EED587 /* ViewController.m */; };
+		47346A6320FC6D6200EED587 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47346A6120FC6D6200EED587 /* Main.storyboard */; };
+		47346A6520FC6D6300EED587 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47346A6420FC6D6300EED587 /* Assets.xcassets */; };
+		47346A6820FC6D6300EED587 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47346A6620FC6D6300EED587 /* LaunchScreen.storyboard */; };
+		47346A6B20FC6D6300EED587 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47346A6A20FC6D6300EED587 /* main.m */; };
+		47346A7520FC6D6300EED587 /* BNCSQLiteExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47346A7420FC6D6300EED587 /* BNCSQLiteExampleTests.m */; };
+		47346A8020FC6D6300EED587 /* BNCSQLiteExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47346A7F20FC6D6300EED587 /* BNCSQLiteExampleUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		47346A7120FC6D6300EED587 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47346A5020FC6D6200EED587 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47346A5720FC6D6200EED587;
+			remoteInfo = BNCSQLiteExample;
+		};
+		47346A7C20FC6D6300EED587 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47346A5020FC6D6200EED587 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47346A5720FC6D6200EED587;
+			remoteInfo = BNCSQLiteExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		47346A5820FC6D6200EED587 /* BNCSQLiteExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BNCSQLiteExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47346A5B20FC6D6200EED587 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		47346A5C20FC6D6200EED587 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		47346A5E20FC6D6200EED587 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		47346A5F20FC6D6200EED587 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		47346A6220FC6D6200EED587 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		47346A6420FC6D6300EED587 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		47346A6720FC6D6300EED587 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		47346A6920FC6D6300EED587 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47346A6A20FC6D6300EED587 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		47346A7020FC6D6300EED587 /* BNCSQLiteExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BNCSQLiteExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		47346A7420FC6D6300EED587 /* BNCSQLiteExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteExampleTests.m; sourceTree = "<group>"; };
+		47346A7620FC6D6300EED587 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47346A7B20FC6D6300EED587 /* BNCSQLiteExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BNCSQLiteExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		47346A7F20FC6D6300EED587 /* BNCSQLiteExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteExampleUITests.m; sourceTree = "<group>"; };
+		47346A8120FC6D6300EED587 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		47346A5520FC6D6200EED587 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47346A6D20FC6D6300EED587 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47346A7820FC6D6300EED587 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		47346A4F20FC6D6200EED587 = {
+			isa = PBXGroup;
+			children = (
+				47346A5A20FC6D6200EED587 /* BNCSQLiteExample */,
+				47346A7320FC6D6300EED587 /* BNCSQLiteExampleTests */,
+				47346A7E20FC6D6300EED587 /* BNCSQLiteExampleUITests */,
+				47346A5920FC6D6200EED587 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		47346A5920FC6D6200EED587 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				47346A5820FC6D6200EED587 /* BNCSQLiteExample.app */,
+				47346A7020FC6D6300EED587 /* BNCSQLiteExampleTests.xctest */,
+				47346A7B20FC6D6300EED587 /* BNCSQLiteExampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		47346A5A20FC6D6200EED587 /* BNCSQLiteExample */ = {
+			isa = PBXGroup;
+			children = (
+				47346A5B20FC6D6200EED587 /* AppDelegate.h */,
+				47346A5C20FC6D6200EED587 /* AppDelegate.m */,
+				47346A5E20FC6D6200EED587 /* ViewController.h */,
+				47346A5F20FC6D6200EED587 /* ViewController.m */,
+				47346A6120FC6D6200EED587 /* Main.storyboard */,
+				47346A6420FC6D6300EED587 /* Assets.xcassets */,
+				47346A6620FC6D6300EED587 /* LaunchScreen.storyboard */,
+				47346A6920FC6D6300EED587 /* Info.plist */,
+				47346A6A20FC6D6300EED587 /* main.m */,
+			);
+			path = BNCSQLiteExample;
+			sourceTree = "<group>";
+		};
+		47346A7320FC6D6300EED587 /* BNCSQLiteExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				47346A7420FC6D6300EED587 /* BNCSQLiteExampleTests.m */,
+				47346A7620FC6D6300EED587 /* Info.plist */,
+			);
+			path = BNCSQLiteExampleTests;
+			sourceTree = "<group>";
+		};
+		47346A7E20FC6D6300EED587 /* BNCSQLiteExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				47346A7F20FC6D6300EED587 /* BNCSQLiteExampleUITests.m */,
+				47346A8120FC6D6300EED587 /* Info.plist */,
+			);
+			path = BNCSQLiteExampleUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		47346A5720FC6D6200EED587 /* BNCSQLiteExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47346A8420FC6D6300EED587 /* Build configuration list for PBXNativeTarget "BNCSQLiteExample" */;
+			buildPhases = (
+				47346A5420FC6D6200EED587 /* Sources */,
+				47346A5520FC6D6200EED587 /* Frameworks */,
+				47346A5620FC6D6200EED587 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BNCSQLiteExample;
+			productName = BNCSQLiteExample;
+			productReference = 47346A5820FC6D6200EED587 /* BNCSQLiteExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		47346A6F20FC6D6300EED587 /* BNCSQLiteExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47346A8720FC6D6300EED587 /* Build configuration list for PBXNativeTarget "BNCSQLiteExampleTests" */;
+			buildPhases = (
+				47346A6C20FC6D6300EED587 /* Sources */,
+				47346A6D20FC6D6300EED587 /* Frameworks */,
+				47346A6E20FC6D6300EED587 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				47346A7220FC6D6300EED587 /* PBXTargetDependency */,
+			);
+			name = BNCSQLiteExampleTests;
+			productName = BNCSQLiteExampleTests;
+			productReference = 47346A7020FC6D6300EED587 /* BNCSQLiteExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		47346A7A20FC6D6300EED587 /* BNCSQLiteExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47346A8A20FC6D6300EED587 /* Build configuration list for PBXNativeTarget "BNCSQLiteExampleUITests" */;
+			buildPhases = (
+				47346A7720FC6D6300EED587 /* Sources */,
+				47346A7820FC6D6300EED587 /* Frameworks */,
+				47346A7920FC6D6300EED587 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				47346A7D20FC6D6300EED587 /* PBXTargetDependency */,
+			);
+			name = BNCSQLiteExampleUITests;
+			productName = BNCSQLiteExampleUITests;
+			productReference = 47346A7B20FC6D6300EED587 /* BNCSQLiteExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		47346A5020FC6D6200EED587 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Karsa Wu";
+				TargetAttributes = {
+					47346A5720FC6D6200EED587 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					47346A6F20FC6D6300EED587 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 47346A5720FC6D6200EED587;
+					};
+					47346A7A20FC6D6300EED587 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 47346A5720FC6D6200EED587;
+					};
+				};
+			};
+			buildConfigurationList = 47346A5320FC6D6200EED587 /* Build configuration list for PBXProject "BNCSQLiteExample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 47346A4F20FC6D6200EED587;
+			productRefGroup = 47346A5920FC6D6200EED587 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				47346A5720FC6D6200EED587 /* BNCSQLiteExample */,
+				47346A6F20FC6D6300EED587 /* BNCSQLiteExampleTests */,
+				47346A7A20FC6D6300EED587 /* BNCSQLiteExampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		47346A5620FC6D6200EED587 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47346A6820FC6D6300EED587 /* LaunchScreen.storyboard in Resources */,
+				47346A6520FC6D6300EED587 /* Assets.xcassets in Resources */,
+				47346A6320FC6D6200EED587 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47346A6E20FC6D6300EED587 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47346A7920FC6D6300EED587 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47346A5420FC6D6200EED587 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47346A6020FC6D6200EED587 /* ViewController.m in Sources */,
+				47346A6B20FC6D6300EED587 /* main.m in Sources */,
+				47346A5D20FC6D6200EED587 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47346A6C20FC6D6300EED587 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47346A7520FC6D6300EED587 /* BNCSQLiteExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47346A7720FC6D6300EED587 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47346A8020FC6D6300EED587 /* BNCSQLiteExampleUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		47346A7220FC6D6300EED587 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47346A5720FC6D6200EED587 /* BNCSQLiteExample */;
+			targetProxy = 47346A7120FC6D6300EED587 /* PBXContainerItemProxy */;
+		};
+		47346A7D20FC6D6300EED587 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47346A5720FC6D6200EED587 /* BNCSQLiteExample */;
+			targetProxy = 47346A7C20FC6D6300EED587 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		47346A6120FC6D6200EED587 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47346A6220FC6D6200EED587 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		47346A6620FC6D6300EED587 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47346A6720FC6D6300EED587 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		47346A8220FC6D6300EED587 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		47346A8320FC6D6300EED587 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		47346A8520FC6D6300EED587 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58GTYMQJRP;
+				INFOPLIST_FILE = BNCSQLiteExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.BNCSQLiteExample.BNCSQLiteExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		47346A8620FC6D6300EED587 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58GTYMQJRP;
+				INFOPLIST_FILE = BNCSQLiteExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.BNCSQLiteExample.BNCSQLiteExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		47346A8820FC6D6300EED587 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58GTYMQJRP;
+				INFOPLIST_FILE = BNCSQLiteExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.BNCSQLiteExample.BNCSQLiteExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BNCSQLiteExample.app/BNCSQLiteExample";
+			};
+			name = Debug;
+		};
+		47346A8920FC6D6300EED587 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58GTYMQJRP;
+				INFOPLIST_FILE = BNCSQLiteExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.BNCSQLiteExample.BNCSQLiteExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BNCSQLiteExample.app/BNCSQLiteExample";
+			};
+			name = Release;
+		};
+		47346A8B20FC6D6300EED587 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58GTYMQJRP;
+				INFOPLIST_FILE = BNCSQLiteExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.BNCSQLiteExample.BNCSQLiteExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BNCSQLiteExample;
+			};
+			name = Debug;
+		};
+		47346A8C20FC6D6300EED587 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58GTYMQJRP;
+				INFOPLIST_FILE = BNCSQLiteExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.BNCSQLiteExample.BNCSQLiteExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BNCSQLiteExample;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		47346A5320FC6D6200EED587 /* Build configuration list for PBXProject "BNCSQLiteExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47346A8220FC6D6300EED587 /* Debug */,
+				47346A8320FC6D6300EED587 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47346A8420FC6D6300EED587 /* Build configuration list for PBXNativeTarget "BNCSQLiteExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47346A8520FC6D6300EED587 /* Debug */,
+				47346A8620FC6D6300EED587 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47346A8720FC6D6300EED587 /* Build configuration list for PBXNativeTarget "BNCSQLiteExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47346A8820FC6D6300EED587 /* Debug */,
+				47346A8920FC6D6300EED587 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47346A8A20FC6D6300EED587 /* Build configuration list for PBXNativeTarget "BNCSQLiteExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47346A8B20FC6D6300EED587 /* Debug */,
+				47346A8C20FC6D6300EED587 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 47346A5020FC6D6200EED587 /* Project object */;
+}

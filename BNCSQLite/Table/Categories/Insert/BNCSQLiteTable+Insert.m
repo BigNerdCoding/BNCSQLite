@@ -64,6 +64,4 @@
     return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@) ;", self.tableName, insertColumnSQL, insertValueSQL];
 }
 
-
-
 @end

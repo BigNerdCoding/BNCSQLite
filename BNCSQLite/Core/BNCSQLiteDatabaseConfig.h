@@ -17,7 +17,7 @@ typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 /**
  Database filePath
  */
-@property(nonatomic, strong) NSString *filePath;
+@property(nonatomic, copy) NSString *filePath;
 
 /**
  latest schemaVersion default: kBNCSQLiteInitVersion
@@ -27,6 +27,6 @@ typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 /**
  Block that do migration action
  */
-@property(nonatomic, strong) MigrationBlock migrationAction;
+@property(nonatomic, copy) MigrationBlock migrationAction;
 
 @end
