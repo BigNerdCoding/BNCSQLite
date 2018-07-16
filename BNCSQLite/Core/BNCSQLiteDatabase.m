@@ -105,7 +105,7 @@ NSInteger const kBNCSQLiteInitVersion = 1;
     NSString *sql = @"pragma user_version ;";
     
     __block UInt64 version = kBNCSQLiteInitVersion;
-    [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
+    [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowID) {
         version = [statement takeIntColumnAt:0];
     } error:nil];
     
@@ -179,7 +179,7 @@ NSInteger const kBNCSQLiteInitVersion = 1;
         return NO;
     }
     
-    NSInteger rowNum = 1;
+    UInt64 rowNum = 1;
     while (result == SQLITE_ROW) {
         
         if (rowHandle) {

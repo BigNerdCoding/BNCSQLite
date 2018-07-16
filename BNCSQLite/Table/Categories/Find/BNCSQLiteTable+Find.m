@@ -29,7 +29,7 @@
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ %@ ;", self.tableName, orderClause];
     
     __block NSMutableArray *results = [NSMutableArray array];
-    [self.dbConnect executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+    [self.dbConnect executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
         NSDictionary *dictionary = [statement takeAllColumn];
         id<BNCSQLiteRecordProtocol> record = [[self.recordClass alloc] init];
         
@@ -63,7 +63,7 @@
     [self.dbConnect executeSQL:sql bind:^(BNCSQLiteDatabaseStatement *statement) {
         NSString *bindKey = [NSString stringWithFormat:@":%@",self.primaryKeyName];
         [statement bindColumn:bindKey withValue:primaryKey];
-    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
         NSDictionary *dictionary = [statement takeAllColumn];
         record = [[self.recordClass alloc] init];
         if ([record respondsToSelector:@selector(objectRepresentationWithDictionary:)]) {
@@ -102,7 +102,7 @@
     
     [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
         [statement bindColumn:[NSString stringWithFormat:@":%@",column] withValue:value];
-    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
         NSDictionary *dictionary = [statement takeAllColumn];
         id<BNCSQLiteRecordProtocol> record = [[self.recordClass alloc] init];
         
@@ -154,7 +154,7 @@
         [conditionValueBindList enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             [statement bindColumn:key withValue:obj];
         }];
-    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
         NSDictionary *dictionary = [statement takeAllColumn];
         id<BNCSQLiteRecordProtocol> record = [[self.recordClass alloc] init];
         
@@ -199,7 +199,7 @@
     
     [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
         [statement bindColumn:[NSString stringWithFormat:@":%@",column] withValue:value];
-    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
         NSDictionary *dictionary = [statement takeAllColumn];
         id<BNCSQLiteRecordProtocol> record = [[self.recordClass alloc] init];
         

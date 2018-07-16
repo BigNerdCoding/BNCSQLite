@@ -40,7 +40,7 @@ typedef void(^BindBlock)(BNCSQLiteDatabaseStatement *statement);
  @param statement instance of BNCSQLiteDatabaseStatement
  @param rowNum `sqlite3_step` rowNum   Warning: Not the primarykey id.
  */
-typedef void(^RowHandleBlock)(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum);
+typedef void(^RowHandleBlock)(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum);
 
 // Error Domain
 extern NSString * const kBNCSQLiteErrorDomain;

@@ -23,7 +23,7 @@
             NSString *bindKey = [NSString stringWithFormat:@":%@",key];
             [statement bindColumn:bindKey withValue:obj];
         }];
-    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
         [record setValue:@([self.dbConnect latestInsertRowID]) forKey:self.primaryKeyName];
     } error:error];
 }

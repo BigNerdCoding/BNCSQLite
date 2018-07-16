@@ -82,7 +82,7 @@
     
     [self.db currentVersion];
     
-    BOOL isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
+    BOOL isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowID) {
         NSDictionary *dic = [statement takeAllColumn];
         XCTAssert(dic.allKeys.count == 5);
         [arr addObject:dic];
@@ -94,7 +94,7 @@
     [arr removeAllObjects];
     sql = @"SELECT first_name,last_name FROM contacts; ";
     
-    isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowID) {
+    isSuccess = [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowID) {
         NSDictionary *dic = [statement takeAllColumn];
         XCTAssert(dic.allKeys.count == 2);
         [arr addObject:dic];
@@ -121,7 +121,7 @@
     
     __block NSInteger nCount = 0;
     
-    [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
+    [self.db executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
         nCount = [statement takeIntColumnAt:0];
     } error:nil];
     
