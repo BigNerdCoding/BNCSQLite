@@ -39,8 +39,7 @@
 }
 
 - (void)initTableWith:(id<BNCSQLiteDatabaseInfoProtocol>)databaseInfo {
-    NSString *filePath = [databaseInfo databaseFilePath];
-    NSAssert(filePath != nil, @"database filePath must not be nil");
+    NSAssert([databaseInfo databaseFilePath] != nil, @"database filePath must not be nil");
     
     // Setup Connect
     BNCSQLiteDatabaseConfig *config = [[BNCSQLiteDatabaseConfig alloc] initWithProtocol:databaseInfo];
