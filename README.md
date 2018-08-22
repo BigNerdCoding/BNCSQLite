@@ -2,7 +2,7 @@
 
 A Objective-C Wrapper Around SQLite. Inspired by [CTPersistance](https://github.com/casatwy/CTPersistance).
 
-## Installiing
+## Installing
 
 BNCSQLite supports multiple methods for installing the library in a project
 
@@ -54,4 +54,4 @@ Run carthage to build the framework and drag the built BNCSQLite.framework into 
 
 ## License
 
-BNCSQLite is released under the MIT license. See LICENSE for details.
+BNCSQLite is released under the MIT license. See [LICENSE](https://github.com/BigNerdCoding/BNCSQLite/blob/master/LICENSE) for details.
