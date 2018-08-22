@@ -39,11 +39,17 @@ $ pod install
 
 You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
 
+```
 $ brew update
 $ brew install carthage
+```
+
 To integrate BNCSQLite into your Xcode project using Carthage, specify it in your Cartfile:
 
+```
 github "BigNerdCoding/BNCSQLite" ~> 1.0.0
+```
+
 Run carthage to build the framework and drag the built BNCSQLite.framework into your Xcode project.
 
 ## License
