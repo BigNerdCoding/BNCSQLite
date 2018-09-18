@@ -77,6 +77,14 @@
     return record;
 }
 
+- (id<BNCSQLiteRecordProtocol>)findWithUniqueColumn:(NSString *)columuName
+                                              value:(id)value
+                                              error:(NSError *__autoreleasing*)error {
+    NSArray *all = [self findRecordWithColumn:columuName value:value limit:1 error:error];
+    
+    return all.firstObject;
+}
+
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
                                                         value:(id)value
                                                         error:(NSError *__autoreleasing*)error {

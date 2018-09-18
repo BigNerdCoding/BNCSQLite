@@ -50,6 +50,20 @@
     XCTAssertNotNil(record);
 }
 
+- (void)testFindWithUniqueColumn {
+    NSError *error = nil;
+    
+    BNCSQLiteTestRecord *record = [_table findWithUniqueColumn:@"timeStamp" value:@(100) error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertNil(record);
+    
+    record = [_table findWithUniqueColumn:@"timeStamp" value:@(1001) error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertNotNil(record);
+}
+
 - (void)testFindAllWithColumn {
     NSError *error = nil;
     

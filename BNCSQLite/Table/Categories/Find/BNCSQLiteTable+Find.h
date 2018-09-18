@@ -67,6 +67,17 @@
 - (id<BNCSQLiteRecordProtocol>)findWithPrimaryKey:(NSNumber *)primaryKey
                                             error:(NSError *__autoreleasing*)error;
 
+/**
+ query record with unique column
+
+ @param columuName column name
+ @param value column value
+ @param error error if fails
+ @return query result (may be nil)
+ */
+- (id<BNCSQLiteRecordProtocol>)findWithUniqueColumn:(NSString *)columuName
+                                              value:(id)value
+                                              error:(NSError *__autoreleasing*)error;
 
 /**
  query all record with same column value
