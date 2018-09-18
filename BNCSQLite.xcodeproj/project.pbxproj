@@ -82,6 +82,7 @@
 		476F909D20EBAC0200718E1E /* BNCSQLiteTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F909B20EBAC0200718E1E /* BNCSQLiteTable+Find.m */; };
 		476F90A020EBBC0800718E1E /* BNCSQLiteRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 476F909E20EBBC0800718E1E /* BNCSQLiteRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		476F90A120EBBC0800718E1E /* BNCSQLiteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 476F909F20EBBC0800718E1E /* BNCSQLiteRecord.m */; };
+		47782F222151310A002EEAD6 /* BNCSQLiteORMFindWithReadyConditionUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47782F212151310A002EEAD6 /* BNCSQLiteORMFindWithReadyConditionUnitTest.m */; };
 		47F84F8820F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F84F8720F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +196,7 @@
 		476F909B20EBAC0200718E1E /* BNCSQLiteTable+Find.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BNCSQLiteTable+Find.m"; sourceTree = "<group>"; };
 		476F909E20EBBC0800718E1E /* BNCSQLiteRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCSQLiteRecord.h; sourceTree = "<group>"; };
 		476F909F20EBBC0800718E1E /* BNCSQLiteRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteRecord.m; sourceTree = "<group>"; };
+		47782F212151310A002EEAD6 /* BNCSQLiteORMFindWithReadyConditionUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMFindWithReadyConditionUnitTest.m; sourceTree = "<group>"; };
 		47F84F8720F353BF009C8BE5 /* BNCSQLiteORMInsertUnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCSQLiteORMInsertUnitTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -537,6 +539,7 @@
 				47179F6A20EE574600D11C74 /* BNCSQLiteORMFindGeneralUnitTest.m */,
 				47179F6C20EE593600D11C74 /* BNCSQLiteORMFindWithSingleConditionUnitTest.m */,
 				47179F8620EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m */,
+				47782F212151310A002EEAD6 /* BNCSQLiteORMFindWithReadyConditionUnitTest.m */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 					};
 					47584BFE20E6817000173F5F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -772,6 +776,7 @@
 				4705964220F4E624004C6543 /* BNCSQLiteMigratorTest4.m in Sources */,
 				4705963920F4E31E004C6543 /* BNCSQLiteMigrationTestStep4.m in Sources */,
 				4705964420F4E7DE004C6543 /* BNCSQLiteMigrationUnitTest.m in Sources */,
+				47782F222151310A002EEAD6 /* BNCSQLiteORMFindWithReadyConditionUnitTest.m in Sources */,
 				47179F8720EF97D500D11C74 /* BNCSQLiteORMFindWithMulitConditionUnitTest.m in Sources */,
 				4705962A20F4E0F3004C6543 /* BNCSQLiteTestDatabaseV2.m in Sources */,
 				47584C7B20EA075E00173F5F /* BNCSQLiteTestDatabase.m in Sources */,
@@ -974,6 +979,7 @@
 		47584C0E20E6817000173F5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58GTYMQJRP;
 				INFOPLIST_FILE = BNCSQLiteTests/Info.plist;
@@ -984,6 +990,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.debug.BNCSQLiteTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -991,6 +999,7 @@
 		47584C0F20E6817000173F5F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58GTYMQJRP;
 				INFOPLIST_FILE = BNCSQLiteTests/Info.plist;
@@ -1001,6 +1010,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdcoding.debug.BNCSQLiteTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

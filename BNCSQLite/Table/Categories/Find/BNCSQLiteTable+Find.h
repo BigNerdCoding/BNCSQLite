@@ -175,7 +175,7 @@
                                                            error:(NSError *__autoreleasing*)error;
 
 /**
- query all record with where condition with some sorting rules
+ query all record with where condition and some sorting rules
 
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
                            params:(NSDictionary *)conditionParams
@@ -210,9 +210,9 @@
  @return query result
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithCondition:(NSString *)whereCondition
-                                                          params:(NSDictionary *)conditionParams
-                                                           limit:(NSUInteger)limit
-                                                           error:(NSError *__autoreleasing*)error;
+                                                             params:(NSDictionary *)conditionParams
+                                                              limit:(NSUInteger)limit
+                                                              error:(NSError *__autoreleasing*)error;
 
 /**
  query some record with where condition with limited and sorting by some rules
@@ -231,12 +231,63 @@
  @return query result
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithCondition:(NSString *)whereCondition
-                                                          params:(NSDictionary *)conditionParams
-                                                         orderBy:(NSString *)orderBy
-                                                           limit:(NSUInteger)limit
-                                                           error:(NSError *__autoreleasing*)error;
+                                                             params:(NSDictionary *)conditionParams
+                                                            orderBy:(NSString *)orderBy
+                                                              limit:(NSUInteger)limit
+                                                              error:(NSError *__autoreleasing*)error;
+
+#pragma mark - Query with Ready whereCondition
+
+/**
+ query all record with where condition
+
+ @param whereCondition string for WHERE clause like   @"age > 18" 、@" age > 18 AND height > 170"
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithWhere:(NSString *)whereCondition
+                                                       error:(NSError *__autoreleasing*)error;
+
+/**
+ query all record with where condition and sorting by some rules
+
+ @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithWhere:(NSString *)whereCondition
+                                                     orderBy:(NSString *)orderBy
+                                                       error:(NSError *__autoreleasing*)error;
+
+/**
+ query some record with where condition and limition
+ 
+ @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
+ @param limit limition, number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithCondition`
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithWhere:(NSString *)whereCondition
+                                                          limit:(NSUInteger)limit
+                                                          error:(NSError *__autoreleasing*)error;
+
+/**
+ query some record with where condition and sorting by some rules
+
+ @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
+ @param limit limition, number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithCondition`
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithWhere:(NSString *)whereCondition
+                                                        orderBy:(NSString *)orderBy
+                                                          limit:(NSUInteger)limit
+                                                          error:(NSError *__autoreleasing*)error;
 
 #pragma mark - General Table Info Query
+
 
 /**
  return the table record count
@@ -259,6 +310,6 @@
  @return the table record count with where condition
  */
 - (UInt64)countWithCondition:(NSString *)whereCondition
-                          params:(NSDictionary *)whereConditionParams;
+                      params:(NSDictionary *)whereConditionParams;
 
 @end
