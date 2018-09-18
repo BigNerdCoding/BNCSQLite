@@ -301,54 +301,23 @@
 
 #pragma mark - Query with Ready whereCondition
 
-/**
- query all record with where condition
- 
- @param whereCondition string for WHERE clause like   @"age > 18" 、@" age > 18 AND height > 170"
- @param error error if fails
- @return query result
- */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithWhere:(NSString *)whereCondition
                                                        error:(NSError *__autoreleasing*)error {
     return [self findAllWithWhere:whereCondition orderBy:@"" error:error];
 }
 
-/**
- query all record with where condition and sorting by some rules
- 
- @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
- @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
- @param error error if fails
- @return query result
- */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithWhere:(NSString *)whereCondition
                                                      orderBy:(NSString *)orderBy
                                                        error:(NSError *__autoreleasing*)error {
     return [self findRecordWithWhere:whereCondition orderBy:orderBy limit:0 error:error];
 }
 
-/**
- query some record with where condition and limition
- 
- @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
- @param limit limition, number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithCondition`
- @param error error if fails
- @return query result
- */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithWhere:(NSString *)whereCondition
                                                           limit:(NSUInteger)limit
                                                           error:(NSError *__autoreleasing*)error {
     return [self findRecordWithWhere:whereCondition orderBy:@"" limit:limit error:error];
 }
-/**
- query some record with where condition and sorting by some rules
- 
- @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
- @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
- @param limit limition, number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithCondition`
- @param error error if fails
- @return query result
- */
+
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithWhere:(NSString *)whereCondition
                                                         orderBy:(NSString *)orderBy
                                                           limit:(NSUInteger)limit

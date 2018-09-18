@@ -48,7 +48,7 @@
  @return whether the update action is success
  */
 - (BOOL)updateValue:(id)value
-             forColumn:(NSString *)column
+          forColumn:(NSString *)column
           condition:(NSString *)whereCondition
              params:(NSDictionary *)conditionParams
               error:(NSError *__autoreleasing*)error;
@@ -127,6 +127,54 @@
  */
 - (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
                    primaryKey:(NSNumber *)primaryKey
-                     error:(NSError *__autoreleasing*)error;
+                        error:(NSError *__autoreleasing*)error;
+
+/**
+ update value for column without condition
+ 
+ @param value the value to update
+ @param column the column to update
+ @param error error if fails
+ @return whether the update action is success
+ */
+- (BOOL)updateValue:(id)value
+          forColumn:(NSString *)column
+              error:(NSError *__autoreleasing*)error;
+
+/**
+ update value for column without condition
+ 
+ @param value the value to update
+ @param column the column to update
+ @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
+ @param error error if fails
+ @return whether the update action is success
+ */
+- (BOOL)updateValue:(id)value
+          forColumn:(NSString *)column
+     whereCondition:(NSString *)whereCondition
+              error:(NSError *__autoreleasing*)error;
+
+/**
+ update column values of rows
+ 
+ @param columnValueList column-values to updatee
+ @param error error if fails
+ @return whether the update action is success
+ */
+- (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
+                        error:(NSError *__autoreleasing*)error;
+
+/**
+ update column values of rows
+ 
+ @param columnValueList column-values to updatee
+ @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
+ @param error error if fails
+ @return whether the update action is success
+ */
+- (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
+               whereCondition:(NSString *)whereCondition
+                        error:(NSError *__autoreleasing*)error;
 
 @end

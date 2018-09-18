@@ -196,6 +196,85 @@
     XCTAssert([record.name isEqualToString:@"testNameUpdate"]);
 }
 
+- (void)testUpdateValue_forColumn {
+    NSError *error = nil;
+    
+    BOOL isSuccess = [_table updateValue:@(0.1) forColumn:@"progress" error:&error];
+    
+    XCTAssertTrue(isSuccess);
+    XCTAssertNil(error);
+    
+    NSArray *allRecord = [_table findAllWithError:&error];
+    XCTAssertEqual(10, allRecord.count);
+    
+    for (BNCSQLiteTestRecord *record  in allRecord) {
+        XCTAssertEqual(0.1, record.progress);
+    }
+}
+
+- (void)testUpdateValue_forColumn_where {
+    NSError *error = nil;
+    
+    BOOL isSuccess = [_table updateValue:@(0.1) forColumn:@"progress" whereCondition:@"timeStamp = 1001" error:&error];
+    
+    XCTAssertTrue(isSuccess);
+    XCTAssertNil(error);
+    
+    NSArray *allRecord = [_table findAllWithColumn:@"timeStamp" value:@(1001) error:&error];
+    XCTAssertEqual(1, allRecord.count);
+    
+    for (BNCSQLiteTestRecord *record  in allRecord) {
+        XCTAssertEqual(0.1, record.progress);
+    }
+}
+
+- (void)testUpdateColumnValueList {
+    NSError *error = nil;
+    
+    BOOL isSuccess = [_table updateColumnValueList:@{@"progress":@(0.1),
+                                                     @"name":@"testNameUpdate"
+                                                     }
+                                             error:&error];
+    
+    XCTAssertTrue(isSuccess);
+    XCTAssertNil(error);
+    
+    NSArray *allRecord = [_table findAllWithColumn:@"progress" value:@(0.1) error:&error];
+    XCTAssertEqual(10, allRecord.count);
+    XCTAssertNil(error);
+    
+    for (BNCSQLiteTestRecord *record  in allRecord) {
+        XCTAssertEqual(0.1, record.progress);
+        XCTAssert([record.name isEqualToString:@"testNameUpdate"]);
+    }
+}
+
+- (void)testUpdateColumnValueList_where {
+    NSError *error = nil;
+    
+    BOOL isSuccess = [_table updateColumnValueList:@{@"progress":@(0.1),
+                                                     @"name":@"testNameUpdate"
+                                                     }
+                                    whereCondition:@" progress = 0.3 "
+                                             error:&error];
+    
+    XCTAssertTrue(isSuccess);
+    XCTAssertNil(error);
+    
+    NSArray *allRecord = [_table findAllWithColumn:@"progress" value:@(0.1) error:&error];
+    XCTAssertEqual(5, allRecord.count);
+    XCTAssertNil(error);
+    
+    for (BNCSQLiteTestRecord *record  in allRecord) {
+        XCTAssertEqual(0.1, record.progress);
+        XCTAssert([record.name isEqualToString:@"testNameUpdate"]);
+    }
+    
+    allRecord = [_table findAllWithColumn:@"progress" value:@(0.3) error:&error];
+    XCTAssertEqual(0, allRecord.count);
+    XCTAssertNil(error);
+}
+
 - (void)generateTestData {
     
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:10];
