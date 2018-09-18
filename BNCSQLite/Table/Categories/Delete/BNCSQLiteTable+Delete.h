@@ -96,6 +96,15 @@
                           error:(NSError *__autoreleasing*)error;
 
 /**
+ delete some record in table with codition
+
+ @param whereCondition the string for WHERE clause
+ @param error error if delete fails
+ @return whether the delete action is success
+ */
+- (BOOL)deleteRecordWhere:(NSString *)whereCondition error:(NSError *__autoreleasing*)error;
+
+/**
  truncate the table
 
  @return whether the truncate action is success

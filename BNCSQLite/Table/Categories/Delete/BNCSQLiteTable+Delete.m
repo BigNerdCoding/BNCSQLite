@@ -93,7 +93,7 @@
     
     // Generate SQL
     [valueList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *bindKey = [NSString stringWithFormat:@":BNCSQLiteDeleteColum%lu",(unsigned long)idx];
+        NSString *bindKey = [NSString stringWithFormat:@":BNCSQLiteDeleteColumn%lu",(unsigned long)idx];
         [conditionValues addObject:bindKey];
         [conditionValueBindList setObject:obj forKey:bindKey];
     }];
@@ -108,6 +108,12 @@
             [statement bindColumn:key withValue:obj];
         }];
     } rowHandle:nil error:error];
+}
+
+- (BOOL)deleteRecordWhere:(NSString *)whereCondition error:(NSError *__autoreleasing*)error {
+    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@;", self.tableName, whereCondition];
+    
+    return [self.dbConnect executeSQL:sqlString bind:nil rowHandle:nil error:error];
 }
 
 - (BOOL)truncate {

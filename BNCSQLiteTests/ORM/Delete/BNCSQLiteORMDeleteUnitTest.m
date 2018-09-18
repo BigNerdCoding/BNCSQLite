@@ -150,6 +150,24 @@
     XCTAssertEqual(allRecord.count, 6);
 }
 
+- (void)testDeleteRecordWhere {
+    NSError *error = nil;
+    
+    BOOL isSuccess = [_table deleteRecordWhere:@"progress = 0.3 AND age < 4" error:&error];
+    XCTAssertTrue(isSuccess);
+    XCTAssertNil(error);
+    
+    NSArray *allRecord = [_table findAllWithError:&error];
+    XCTAssertEqual(allRecord.count, 8);
+    
+    isSuccess = [_table deleteRecordWhere:@"name = 'testName_2'" error:&error];
+    XCTAssertTrue(isSuccess);
+    XCTAssertNil(error);
+    
+    allRecord = [_table findAllWithError:&error];
+    XCTAssertEqual(allRecord.count, 7);
+}
+
 - (void)testTruncate {
     BOOL isSuccess = [_table truncate];
     XCTAssertTrue(isSuccess);
