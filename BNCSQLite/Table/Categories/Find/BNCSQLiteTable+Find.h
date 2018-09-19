@@ -35,6 +35,28 @@
                                                        error:(NSError *__autoreleasing*)error;
 
 /**
+ query record with limit
+
+ @param limit string for LIMIT clause, if limit is less than 1, the result will be same as `findAllWithError`
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithLimit:(NSUInteger)limit
+                                                          error:(NSError *__autoreleasing*)error;
+
+/**
+ query record with order and limit
+
+ @param orderBy string for ORDER BY clause
+ @param limit string for LIMIT clause if limit is less than 1, the result will be same as `findAllWithOrder`
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithOrder:(NSString *)orderBy
+                                                          limit:(NSUInteger)limit
+                                                          error:(NSError *__autoreleasing*)error;
+
+/**
  query latest record without order
 
  @param error  error if fails

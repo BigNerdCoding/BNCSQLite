@@ -42,6 +42,43 @@
     return results;
 }
 
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithLimit:(NSUInteger)limit
+                                                          error:(NSError *__autoreleasing*)error {
+    return [self findRecordWithOrder:@"" limit:limit error:error];
+}
+
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithOrder:(NSString *)orderBy
+                                                          limit:(NSUInteger)limit
+                                                          error:(NSError *__autoreleasing*)error {
+    NSString *orderClause = @"";
+    
+    if (orderBy && ![orderBy isEqualToString:@""]) {
+        orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
+    }
+    
+    NSString *limitClause = @"";
+    if (limit > 0) {
+        limitClause = [NSString stringWithFormat:@" LIMIT %lu", (unsigned long)limit];
+    }
+    
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM %@ %@ %@;", self.tableName , orderClause, limitClause];
+    
+    // Execute SQL
+    __block NSMutableArray *results = [NSMutableArray array];
+    
+    [self.dbConnect executeSQL:sqlString bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
+        NSDictionary *dictionary = [statement takeAllColumn];
+        id<BNCSQLiteRecordProtocol> record = [[self.recordClass alloc] init];
+        
+        if ([record respondsToSelector:@selector(objectRepresentationWithDictionary:)]) {
+            [record objectRepresentationWithDictionary:dictionary];
+            [results addObject:record];
+        }
+    } error:error];
+    
+    return results;
+}
+
 - (id<BNCSQLiteRecordProtocol>)findLatestRecordWithError:(NSError *__autoreleasing*)error {
     return [[self findAllWithError:error] lastObject];
 }

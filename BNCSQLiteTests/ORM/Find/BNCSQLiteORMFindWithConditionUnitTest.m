@@ -85,6 +85,56 @@
     XCTAssertEqual(record.timeStamp, 1000);
 }
 
+- (void)testFindRecordWithLimit {
+    NSError *error = nil;
+    NSArray *results = [_table findRecordWithLimit:11 error:&error];
+    
+    XCTAssert(results.count == 10);
+    XCTAssertNil(error);
+    
+    results = [_table findRecordWithLimit:9 error:&error];
+    
+    XCTAssert(results.count == 9);
+    XCTAssertNil(error);
+    
+    results = [_table findRecordWithLimit:0 error:&error];
+    
+    XCTAssert(results.count == 10);
+    XCTAssertNil(error);
+}
+
+- (void)testFindRecordWithOrder_limit {
+    NSError *error = nil;
+    NSArray *results = [_table findRecordWithOrder:@"" limit:11 error:&error];
+    
+    XCTAssert(results.count == 10);
+    XCTAssertNil(error);
+    
+    results = [_table findRecordWithOrder:@"age desc" limit:9 error:&error];
+    
+    XCTAssert(results.count == 9);
+    XCTAssertNil(error);
+    
+    BNCSQLiteTestRecord *record = results[0];
+    NSInteger age = record.age;
+    for (NSInteger index = 1; index < results.count; index++) {
+        record = results[index];
+        XCTAssert(age >= record.age);
+    }
+    
+    results = [_table findRecordWithOrder:@"age" limit:0 error:&error];
+    
+    XCTAssert(results.count == 10);
+    XCTAssertNil(error);
+    
+    record = results[0];
+    age = record.age;
+    for (NSInteger index = 1; index < results.count; index++) {
+        record = results[index];
+        XCTAssert(age <= record.age);
+    }
+}
+
 - (void)generateTestData {
     
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:10];
