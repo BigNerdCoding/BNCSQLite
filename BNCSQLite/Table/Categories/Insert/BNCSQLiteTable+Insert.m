@@ -18,14 +18,18 @@
     
     NSString *insertSQL = [self generateInsertSQLWithColumn:recordDic.allKeys];
     
-    return [self.dbConnect executeSQL:insertSQL bind:^(BNCSQLiteDatabaseStatement *statement) {
+    BOOL isSuccess = [self.dbConnect executeSQL:insertSQL bind:^(BNCSQLiteDatabaseStatement *statement) {
         [recordDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NSString *bindKey = [NSString stringWithFormat:@":%@",key];
             [statement bindColumn:bindKey withValue:obj];
         }];
-    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
+    } rowHandle:nil error:error];
+    
+    if (isSuccess && [self.dbConnect latestInsertRowID] > 0) {
         [record setValue:@([self.dbConnect latestInsertRowID]) forKey:self.primaryKeyName];
-    } error:error];
+    }
+    
+    return isSuccess;
 }
 
 - (BOOL)insertRecordList:(NSArray<NSObject <BNCSQLiteRecordProtocol> * > *)recordList
