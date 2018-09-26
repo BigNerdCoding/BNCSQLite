@@ -16,14 +16,14 @@ $ gem install cocoapods
 
 #### Podfile
 
-To integrate AFNetworking into your Xcode project using CocoaPods, specify it in your Podfile:
+To integrate BNCSQLite into your Xcode project using CocoaPods, specify it in your Podfile:
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'BNCSQLite', '~> 1.0.0'
+    pod 'BNCSQLite', '~> 1.1.0'
 end
 ```
 
@@ -47,7 +47,7 @@ $ brew install carthage
 To integrate BNCSQLite into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "BigNerdCoding/BNCSQLite" ~> 1.0.0
+github "BigNerdCoding/BNCSQLite" ~> 1.1.0
 ```
 
 Run carthage to build the framework and drag the built BNCSQLite.framework into your Xcode project.
