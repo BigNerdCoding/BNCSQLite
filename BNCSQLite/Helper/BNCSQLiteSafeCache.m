@@ -28,7 +28,7 @@
 }
 
 -(void)cacheObject:(id)object forKey:(NSString *)key {
-    dispatch_barrier_sync(self.actionQueue, ^{
+    dispatch_barrier_async(self.actionQueue, ^{
         [self.cacheDic setObject:object forKey:key];
     });
 }
@@ -44,13 +44,13 @@
 }
 
 -(void)removeCacheObjectForKey:(NSString *)key {
-    dispatch_barrier_sync(self.actionQueue, ^{
+    dispatch_barrier_async(self.actionQueue, ^{
         [self.cacheDic removeObjectForKey:key];
     });
 }
 
 -(void)removeAllCacheObjects {
-    dispatch_barrier_sync(self.actionQueue, ^{
+    dispatch_barrier_async(self.actionQueue, ^{
         [self.cacheDic removeAllObjects];
     });
 }
@@ -58,7 +58,7 @@
 -(NSArray<NSString *> *)getAllCacheKeys {
     __block NSMutableArray *allKeys = [[NSMutableArray alloc] initWithCapacity:3];
     
-    dispatch_barrier_sync(self.actionQueue, ^{
+    dispatch_sync(self.actionQueue, ^{
         allKeys = [[self.cacheDic allKeys] mutableCopy];
     });
     
