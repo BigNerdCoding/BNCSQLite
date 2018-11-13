@@ -22,7 +22,7 @@
 - (void)setUp {
     [super setUp];
     
-    self.filePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"BNCSQLiteCoreTest.sqlite"];
+    self.filePath = @":memory:";
     
     BNCSQLiteDatabaseConfig *config = [[BNCSQLiteDatabaseConfig alloc] init];
     config.filePath = self.filePath;

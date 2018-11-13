@@ -16,6 +16,7 @@
     if (self) {
         _filePath = nil;
         _latestSchemaVersion = kBNCSQLiteInitVersion;
+        _isReadonly = NO;
         _migrationAction = nil;
     }
     

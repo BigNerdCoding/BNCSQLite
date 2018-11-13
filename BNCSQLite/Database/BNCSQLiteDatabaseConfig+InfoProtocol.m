@@ -16,6 +16,11 @@
     if (self) {
         self.filePath = [infoProtocol databaseFilePath];
         self.latestSchemaVersion = [self latestVersionWithConfig:infoProtocol];
+        
+        if([infoProtocol respondsToSelector:@selector(isReadonly)]) {
+            self.isReadonly = [infoProtocol performSelector:@selector(isReadonly)];
+        }
+        
         self.migrationAction = [self generateMigrationWithConfig:infoProtocol];
     }
     

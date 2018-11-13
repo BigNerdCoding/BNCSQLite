@@ -43,10 +43,10 @@ typedef void(^BindBlock)(BNCSQLiteDatabaseStatement *statement);
 typedef void(^RowHandleBlock)(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum);
 
 // Error Domain
-extern NSString * const kBNCSQLiteErrorDomain;
+static NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
 
 // Database InitVersion
-extern NSInteger const kBNCSQLiteInitVersion;
+static NSInteger const kBNCSQLiteInitVersion = 1;
 
 @interface BNCSQLiteDatabase : NSObject
 

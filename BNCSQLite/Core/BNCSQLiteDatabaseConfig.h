@@ -25,8 +25,13 @@ typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 @property(nonatomic, assign) NSInteger latestSchemaVersion;
 
 /**
+ whether the database is readobly
+ */
+@property(nonatomic, assign) BOOL isReadonly;
+
+/**
  Block that do migration action
  */
 @property(nonatomic, copy) MigrationBlock migrationAction;
-
+ 
 @end

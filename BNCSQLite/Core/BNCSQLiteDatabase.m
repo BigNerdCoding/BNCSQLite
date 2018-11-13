@@ -12,9 +12,6 @@
 #import "BNCSQLiteDatabaseStatement+Bind.h"
 #import "BNCSQLiteDatabaseConfig.h"
 
-NSString * const kBNCSQLiteErrorDomain = @"kBNCSQLiteErrorDomain";
-NSInteger const kBNCSQLiteInitVersion = 1;
-
 @interface BNCSQLiteDatabase()
 
 @property (nonatomic, unsafe_unretained, readwrite) sqlite3 *database;
@@ -43,12 +40,14 @@ NSInteger const kBNCSQLiteInitVersion = 1;
         BOOL isFileExistsBefore = [defaultFileManager fileExistsAtPath:filePath];
         
         const char *path = [_databaseFilePath UTF8String];
-        int result = sqlite3_open_v2(path, &(_database),
-                                     SQLITE_OPEN_CREATE |
-                                     SQLITE_OPEN_READWRITE |
-                                     SQLITE_OPEN_NOMUTEX |
-                                     SQLITE_OPEN_SHAREDCACHE,
-                                     NULL);
+        
+        int flag = SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_NOMUTEX | SQLITE_OPEN_SHAREDCACHE;
+        
+        if ([config isReadonly]) {
+            flag = SQLITE_OPEN_READONLY | SQLITE_OPEN_NOMUTEX | SQLITE_OPEN_SHAREDCACHE;
+        }
+        
+        int result = sqlite3_open_v2(path, &(_database), flag, NULL);
         
         if (result != SQLITE_OK && error) {
             NSString *sqliteErrorString = [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding];
