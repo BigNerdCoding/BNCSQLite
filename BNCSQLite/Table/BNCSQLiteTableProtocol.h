@@ -30,11 +30,11 @@
 - (NSString *)tableName;
 
 /**
- return the table column information
+ return the table all column information
 
- @return the column information
+ @return the all column information
  */
-- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)columnInfo;
+- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)allColumnInfo;
 
 /**
  Class of the record that  corresponding to the table, which must be confrom `BNCSQLiteRecordProtocol`
@@ -45,7 +45,6 @@
 
 /**
  the name of the primary key
-
  @return the name of the primary key
  */
 - (NSString *)primaryKeyName;

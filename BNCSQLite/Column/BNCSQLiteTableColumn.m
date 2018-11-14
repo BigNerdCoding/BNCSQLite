@@ -22,32 +22,66 @@
 
 @implementation BNCSQLiteTableColumn
 
-+ (instancetype)initPrimaryColWithName:(NSString *)columnName {
-    BNCSQLiteTableColumn *column = [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:BNCSQLiteTableColumnTypeInt constraint:^(BNCSQLiteTableColumn *column) {
++ (instancetype)primaryRowIDColWithName:(NSString *)columnName {
+    return [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:BNCSQLiteTableColumnTypeInt constraint:^(BNCSQLiteTableColumn *column) {
         [column settingPrimarykeyConstraint];
         [column settingAutoIncrementConstraint];
     }];
-    
-    return column;
 }
 
-+ (instancetype)initUniqueColWithName:(NSString *)columnName
-                                 type:(BNCSQLiteTableColumnType)columnType {
++ (instancetype)uniqueColWithName:(NSString *)columnName
+                             type:(BNCSQLiteTableColumnType)columnType {
     
-    BNCSQLiteTableColumn *column = [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:columnType constraint:^(BNCSQLiteTableColumn *column) {
+    return [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:columnType constraint:^(BNCSQLiteTableColumn *column) {
         [column settingUniqueConstraint];
     }];
-    
-    return column;
 }
 
-+ (instancetype)initNotNullColWithName:(NSString *)columnName
-                                  type:(BNCSQLiteTableColumnType)columnType {
-    BNCSQLiteTableColumn *column = [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:columnType constraint:^(BNCSQLiteTableColumn *column) {
++ (instancetype)notNullColWithName:(NSString *)columnName
+                              type:(BNCSQLiteTableColumnType)columnType {
+    return [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:columnType constraint:^(BNCSQLiteTableColumn *column) {
         [column settingNotNullConstraint];
     }];
-    
-    return column;
+}
+
++ (instancetype)uniqueNotNullColWithName:(NSString *)columnName
+                                    type:(BNCSQLiteTableColumnType)columnType {
+    return [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:columnType constraint:^(BNCSQLiteTableColumn *column) {
+        [column settingUniqueConstraint];
+        [column settingNotNullConstraint];
+    }];
+}
+
++ (instancetype)intColWithName:(NSString *)columnName {
+    return [BNCSQLiteTableColumn intColWithName:columnName constraint:nil];
+}
+
++ (instancetype)intColWithName:(NSString *)columnName constraint:(void(^)(BNCSQLiteTableColumn *column))constraint {
+    return [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:BNCSQLiteTableColumnTypeInt constraint:constraint];
+}
+
++ (instancetype)realColWithName:(NSString *)columnName {
+    return [BNCSQLiteTableColumn realColWithName:columnName constraint:nil];
+}
+
++ (instancetype)realColWithName:(NSString *)columnName constraint:(void(^)(BNCSQLiteTableColumn *column))constraint {
+    return [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:BNCSQLiteTableColumnTypeReal constraint:constraint];
+}
+
++ (instancetype)textColWithName:(NSString *)columnName {
+    return [BNCSQLiteTableColumn textColWithName:columnName constraint:nil];
+}
+
++ (instancetype)textColWithName:(NSString *)columnName constraint:(void(^)(BNCSQLiteTableColumn *column))constraint {
+    return [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:BNCSQLiteTableColumnTypeText constraint:constraint];
+}
+
++ (instancetype)binaryColWithName:(NSString *)columnName {
+    return [BNCSQLiteTableColumn binaryColWithName:columnName constraint:nil];
+}
+
++ (instancetype)binaryColWithName:(NSString *)columnName constraint:(void(^)(BNCSQLiteTableColumn *column))constraint {
+    return [[BNCSQLiteTableColumn alloc] initWithColName:columnName type:BNCSQLiteTableColumnTypeBinary constraint:constraint];
 }
 
 - (instancetype)initWithColName:(NSString *)columnName type:(BNCSQLiteTableColumnType)columnType constraint:(void(^)(BNCSQLiteTableColumn *column))constraint;{
@@ -117,3 +151,5 @@
 }
 
 @end
+
+

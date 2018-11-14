@@ -23,17 +23,18 @@
     return @"test_table";
 }
 
-- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)columnInfo {
-    BNCSQLiteTableColumn *column = [BNCSQLiteTableColumn initPrimaryColWithName:@"rowID"];
+- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)allColumnInfo {
+    BNCSQLiteTableColumn *column = [BNCSQLiteTableColumn primaryRowIDColWithName:@"rowID"];
     
-    BNCSQLiteTableColumn *column2 = [BNCSQLiteTableColumn initNotNullColWithName:@"name" type:BNCSQLiteTableColumnTypeText];
-    BNCSQLiteTableColumn *column3 = [BNCSQLiteTableColumn initNotNullColWithName:@"age" type:BNCSQLiteTableColumnTypeInt];
+    BNCSQLiteTableColumn *column2 = [BNCSQLiteTableColumn notNullColWithName:@"name" type:BNCSQLiteTableColumnTypeText];
+    BNCSQLiteTableColumn *column3 = [BNCSQLiteTableColumn notNullColWithName:@"age" type:BNCSQLiteTableColumnTypeInt];
     
-    BNCSQLiteTableColumn *column4 = [[BNCSQLiteTableColumn alloc] initWithColName:@"isCelebrity" type:BNCSQLiteTableColumnTypeInt constraint:nil];
+    BNCSQLiteTableColumn *column4 = [BNCSQLiteTableColumn intColWithName:@"isCelebrity"];
     
-    BNCSQLiteTableColumn *column5 = [[BNCSQLiteTableColumn alloc] initWithColName:@"bolbData" type:BNCSQLiteTableColumnTypeBinary constraint:nil];
-    BNCSQLiteTableColumn *column6 = [[BNCSQLiteTableColumn alloc] initWithColName:@"progress" type:BNCSQLiteTableColumnTypeReal constraint:nil];
-    BNCSQLiteTableColumn *column7 = [[BNCSQLiteTableColumn alloc] initWithColName:@"nilText" type:BNCSQLiteTableColumnTypeText constraint:nil];
+    BNCSQLiteTableColumn *column5 = [BNCSQLiteTableColumn binaryColWithName:@"bolbData"];
+    
+    BNCSQLiteTableColumn *column6 = [BNCSQLiteTableColumn realColWithName:@"progress"];
+    BNCSQLiteTableColumn *column7 = [BNCSQLiteTableColumn textColWithName:@"nilText"];
     
     BNCSQLiteTableColumn *column8 = [[BNCSQLiteTableColumn alloc] initWithColName:@"defaultText" type:BNCSQLiteTableColumnTypeText constraint:^(BNCSQLiteTableColumn *column) {
         [column settingDefaultValueConstraint:@" '' "];
@@ -47,7 +48,7 @@
         [column settingDefaultValueConstraint:@" 0.0 "];
     }];
     
-    BNCSQLiteTableColumn *column11 = [BNCSQLiteTableColumn initUniqueColWithName:@"timeStamp" type:BNCSQLiteTableColumnTypeInt];
+    BNCSQLiteTableColumn *column11 = [BNCSQLiteTableColumn uniqueColWithName:@"timeStamp" type:BNCSQLiteTableColumnTypeInt];
     
     return @[column, column2, column3, column4, column5, column6, column7, column8, column9, column10, column11];
 }

@@ -30,7 +30,7 @@
     // Check data
     NSMutableDictionary *dictionaryRepresentation = [[NSMutableDictionary alloc] init];
     
-    for (id<BNCSQLiteTableColumnProtocol> column in table.columnInfo) {
+    for (id<BNCSQLiteTableColumnProtocol> column in table.allColumnInfo) {
         NSString *columnName = [column columnName];
         if (!propertyList[columnName]) {
             continue;

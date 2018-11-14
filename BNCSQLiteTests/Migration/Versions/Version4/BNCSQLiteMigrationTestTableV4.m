@@ -23,8 +23,8 @@
     return @"migration_test_table";
 }
 
-- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)columnInfo {
-    BNCSQLiteTableColumn *column0 = [BNCSQLiteTableColumn initPrimaryColWithName:@"rowID"];
+- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)allColumnInfo {
+    BNCSQLiteTableColumn *column0 = [BNCSQLiteTableColumn primaryRowIDColWithName:@"rowID"];
     
     BNCSQLiteTableColumn *column1 = [[BNCSQLiteTableColumn alloc] initWithColName:@"version1" type:BNCSQLiteTableColumnTypeText constraint:^(BNCSQLiteTableColumn *column) {
         [column settingDefaultValueConstraint:@" '' "];

@@ -17,7 +17,6 @@
  WARNING:
     if you inherit `BNCSQLiteTable` class , you should also implement the `BNCSQLiteTableProtocol` protocol.
  */
-
 @interface BNCSQLiteTable : NSObject <BNCSQLiteTableProtocol>
 
 /**

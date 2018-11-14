@@ -46,7 +46,7 @@
     self.dbConnect = [[BNCSQLiteDatabasePool sharedInstance] databaseWithConfig:config];
     
     // Crate Table
-    NSString *creatTableSQL = [NSString createTable:[self tableName] withColumns:[self columnInfo]];
+    NSString *creatTableSQL = [NSString createTable:[self tableName] withColumns:[self allColumnInfo]];
     [self.dbConnect executeSQL:creatTableSQL bind:nil rowHandle:nil error:nil];
     
     // Crate table index if not exist
@@ -77,8 +77,8 @@
     @throw exception;
 }
 
-- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)columnInfo {
-    NSException *exception =[NSException exceptionWithName:@"BNCSQLiteTableProtocol methods must be override" reason:@"columnInfo must be override" userInfo:nil];
+- (NSArray< id<BNCSQLiteTableColumnProtocol> > *)allColumnInfo {
+    NSException *exception =[NSException exceptionWithName:@"BNCSQLiteTableProtocol methods must be override" reason:@"allColumnInfo must be override" userInfo:nil];
     
     @throw exception;
 }
