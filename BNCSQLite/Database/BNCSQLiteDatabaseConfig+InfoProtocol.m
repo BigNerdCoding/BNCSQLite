@@ -18,7 +18,7 @@
         self.latestSchemaVersion = [self latestVersionWithConfig:infoProtocol];
         
         if([infoProtocol respondsToSelector:@selector(isReadonly)]) {
-            self.isReadonly = [infoProtocol performSelector:@selector(isReadonly)];
+            self.isReadonly = [[infoProtocol performSelector:@selector(isReadonly)] boolValue];
         }
         
         self.migrationAction = [self generateMigrationWithConfig:infoProtocol];
