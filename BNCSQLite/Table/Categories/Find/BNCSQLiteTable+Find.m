@@ -257,7 +257,63 @@
     return results;
 }
 
-#pragma mark - Query without mulit column condition
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
+                                                   likeClause:(NSString *)like
+                                                        error:(NSError *__autoreleasing*)error {
+    return [self findAllWithColumn:column likeClause:like orderBy:@"" error:error];
+}
+
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
+                                                   likeClause:(NSString *)like
+                                                      orderBy:(NSString *)orderBy
+                                                        error:(NSError *__autoreleasing*)error {
+    return [self findRecordWithColumn:column likeClause:like orderBy:orderBy limit:0 error:error];
+}
+
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithColumn:(NSString *)column
+                                                      likeClause:(NSString *)like
+                                                           limit:(NSUInteger)limit
+                                                           error:(NSError *__autoreleasing*)error {
+    return [self findRecordWithColumn:column likeClause:like orderBy:@"" limit:limit error:error];
+}
+
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithColumn:(NSString *)column
+                                                      likeClause:(NSString *)like
+                                                         orderBy:(NSString *)orderBy
+                                                           limit:(NSUInteger)limit
+                                                           error:(NSError *__autoreleasing*)error {
+    NSString *orderClause = @"";
+    
+    if (orderBy && ![orderBy isEqualToString:@""]) {
+        orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
+    }
+    
+    NSString *limitClause = @"";
+    if (limit > 0) {
+        limitClause = [NSString stringWithFormat:@" LIMIT %lu", (unsigned long)limit];
+    }
+    
+    NSString *whereCondition = [NSString stringWithFormat:@" %@ LIKE '%@' ",column,like];
+    
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ %@ %@;", self.tableName, whereCondition, orderClause, limitClause];
+    
+    // Execute SQL
+    __block NSMutableArray *results = [NSMutableArray array];
+    
+    [self.dbConnect executeSQL:sqlString bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowNum) {
+        NSDictionary *dictionary = [statement takeAllColumn];
+        id<BNCSQLiteRecordProtocol> record = [[self.recordClass alloc] init];
+        
+        if ([record respondsToSelector:@selector(objectRepresentationWithDictionary:)]) {
+            [record objectRepresentationWithDictionary:dictionary];
+            [results addObject:record];
+        }
+    } error:error];
+    
+    return results;
+}
+
+#pragma mark - Query with mulit column condition
 
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithCondition:(NSString *)whereCondition
                                                           params:(NSDictionary *)conditionParams

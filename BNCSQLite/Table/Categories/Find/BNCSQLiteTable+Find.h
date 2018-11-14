@@ -187,8 +187,65 @@
                                                             limit:(NSUInteger)limit
                                                             error:(NSError *__autoreleasing*)error;
 
+/**
+ query all record with same column value like 'xxxx'
+ 
+ @param column column name
+ @param like like Clause
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
+                                                   likeClause:(NSString *)like
+                                                        error:(NSError *__autoreleasing*)error;
 
-#pragma mark - Query without mulit column condition
+/**
+ query all record with same column value like 'xxxx'
+ 
+ @param column column name
+ @param like like Clause
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
+                                                   likeClause:(NSString *)like
+                                                      orderBy:(NSString *)orderBy
+                                                        error:(NSError *__autoreleasing*)error;
+
+/**
+ query record with same column value like 'xxxx'
+ 
+ @param column column name
+ @param like like Clause
+ @param limit limition number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithColumn`
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithColumn:(NSString *)column
+                                                      likeClause:(NSString *)like
+                                                           limit:(NSUInteger)limit
+                                                           error:(NSError *__autoreleasing*)error;
+
+/**
+ query record with same column value like 'xxxx'
+ 
+ if there is no limit, use `findAllWithColumn` replace
+ 
+ @param column column name
+ @param like like Clause
+ @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
+ @param limit limition number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithColumn`
+ @param error error if fails
+ @return query result
+ */
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithColumn:(NSString *)column
+                                                        likeClause:(NSString *)like
+                                                         orderBy:(NSString *)orderBy
+                                                           limit:(NSUInteger)limit
+                                                           error:(NSError *__autoreleasing*)error;
+
+#pragma mark - Query with mulit column condition
 /**
  query all record with where condition, but without orderby
 

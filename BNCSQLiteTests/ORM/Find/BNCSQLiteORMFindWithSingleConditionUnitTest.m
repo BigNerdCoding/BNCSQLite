@@ -165,6 +165,78 @@
     }
 }
 
+- (void)testFindAllWithColumn_like {
+    NSError *error = nil;
+    
+    NSArray *result = [_table findAllWithColumn:@"name" likeClause:@"testName%" error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 10);
+    
+    result = [_table findAllWithColumn:@"name" likeClause:@"%testName%" error:&error];
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 10);
+    
+    result = [_table findAllWithColumn:@"name" likeClause:@"_estName%" error:&error];
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 10);
+    
+    result = [_table findAllWithColumn:@"name" likeClause:@"_testName%" error:&error];
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 0);
+}
+
+- (void)testFindAllWithColumn_like_order {
+    NSError *error = nil;
+    
+    NSArray *result = [_table findAllWithColumn:@"name" likeClause:@"testName%" orderBy:@"age" error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 10);
+    
+    BNCSQLiteTestRecord *record = [result firstObject];
+    NSInteger age = record.age;
+    for (NSInteger index = 1; index < result.count; index++) {
+        record = [result objectAtIndex:index];
+        XCTAssert(age <= record.age);
+        age = record.age;
+    }
+}
+
+- (void)testFindAllWithColumn_like_limit {
+    NSError *error = nil;
+    
+    NSArray *result = [_table findRecordWithColumn:@"name" likeClause:@"testName%" limit:5 error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 5);
+    
+    result = [_table findRecordWithColumn:@"name" likeClause:@"testName%" limit:11 error:&error];
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 10);
+    
+    result = [_table findRecordWithColumn:@"name" likeClause:@"_testName%" limit:11 error:&error];
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 0);
+}
+
+- (void)testFindAllWithColumn_like_order_limit {
+    NSError *error = nil;
+    
+    NSArray *result = [_table findRecordWithColumn:@"name" likeClause:@"testName%" orderBy:@"age desc" limit:5 error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertEqual(result.count, 5);
+    
+    BNCSQLiteTestRecord *record = [result firstObject];
+    NSInteger age = record.age;
+    for (NSInteger index = 1; index < result.count; index++) {
+        record = [result objectAtIndex:index];
+        XCTAssert(age >= record.age);
+        age = record.age;
+    }
+}
+
 - (void)generateTestData {
     
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:10];

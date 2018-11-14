@@ -1,5 +1,5 @@
 //
-//  BNCSQLiteORMSelectUnitTest.m
+//  BNCSQLiteORMFindWithoutConditionUnitTest.m
 //  BNCSQLiteTests
 //
 //  Created by Karsa Wu on 2018/7/5.
@@ -13,13 +13,13 @@
 #import "BNCSQLiteTable+Find.h"
 #import "BNCSQLiteTable+Delete.h"
 
-@interface BNCSQLiteORMFindWithConditionUnitTest : XCTestCase
+@interface BNCSQLiteORMFindWithoutConditionUnitTest : XCTestCase
 
 @property(nonatomic,strong) BNCSQLiteTestTable *table;
 
 @end
 
-@implementation BNCSQLiteORMFindWithConditionUnitTest
+@implementation BNCSQLiteORMFindWithoutConditionUnitTest
 
 - (void)setUp {
     [super setUp];
