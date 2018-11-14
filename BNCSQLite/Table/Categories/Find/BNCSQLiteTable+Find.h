@@ -14,7 +14,7 @@
 #pragma mark - Query without condition
 /**
  query all record without order
-
+ 
  @param error error if fails
  @return query result
  */
@@ -22,10 +22,10 @@
 
 /**
  query all record without order
-
+ 
  Example:
-    [table findAllWithOrder:@"score ASC"]
-    [table findAllWithOrder:@"score ASC, price DESC"]
+ [table findAllWithOrder:@"score ASC"]
+ [table findAllWithOrder:@"score ASC, price DESC"]
  
  @param orderBy string for ORDER BY clause
  @param error error if fails
@@ -36,7 +36,7 @@
 
 /**
  query record with limit
-
+ 
  @param limit string for LIMIT clause, if limit is less than 1, the result will be same as `findAllWithError`
  @param error error if fails
  @return query result
@@ -46,7 +46,7 @@
 
 /**
  query record with order and limit
-
+ 
  @param orderBy string for ORDER BY clause
  @param limit string for LIMIT clause if limit is less than 1, the result will be same as `findAllWithOrder`
  @param error error if fails
@@ -58,7 +58,7 @@
 
 /**
  query latest record without order
-
+ 
  @param error  error if fails
  @return query result (may be nil)
  */
@@ -66,9 +66,9 @@
 
 /**
  query latest record with order
-
+ 
  Example:
-    [table findLatestRecordWithOrder:@"score ASC"]
+ [table findLatestRecordWithOrder:@"score ASC"]
  
  @param orderBy string for ORDER BY clause
  @param error error if fails
@@ -91,7 +91,7 @@
 
 /**
  query record with unique column
-
+ 
  @param columuName column name
  @param value column value
  @param error error if fails
@@ -103,7 +103,7 @@
 
 /**
  query all record with same column value
-
+ 
  @param column column name
  @param value column value
  @param error error if fails
@@ -115,7 +115,7 @@
 
 /**
  query all record with same column value and sorting by some rules
-
+ 
  @param column column name
  @param value column value
  @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
@@ -129,7 +129,7 @@
 
 /**
  query all record that column value in `valueList`
-
+ 
  @param column column name
  @param valueList valueList
  @param error error if fails
@@ -141,7 +141,7 @@
 
 /**
  query all record that column value in `valueList` and sorting by some rules
-
+ 
  @param column  column name
  @param valueList valueList
  @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
@@ -157,7 +157,7 @@
  query record that column value equal to `value` with limited
  
  if there is no limit, use `findAllWithColumn` replace
-
+ 
  @param column column name
  @param value column value
  @param limit limition , number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithColumn`
@@ -173,7 +173,7 @@
  query record that column value equal to `value` with limited and sorting by some rules
  
  if there is no limit, use `findAllWithColumn` replace
-
+ 
  @param column column name
  @param value column value
  @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
@@ -183,9 +183,9 @@
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithColumn:(NSString *)column
                                                            value:(id)value
-                                                          orderBy:(NSString *)orderBy
-                                                            limit:(NSUInteger)limit
-                                                            error:(NSError *__autoreleasing*)error;
+                                                         orderBy:(NSString *)orderBy
+                                                           limit:(NSUInteger)limit
+                                                           error:(NSError *__autoreleasing*)error;
 
 /**
  query all record with same column value like 'xxxx'
@@ -240,7 +240,7 @@
  @return query result
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithColumn:(NSString *)column
-                                                        likeClause:(NSString *)like
+                                                      likeClause:(NSString *)like
                                                          orderBy:(NSString *)orderBy
                                                            limit:(NSUInteger)limit
                                                            error:(NSError *__autoreleasing*)error;
@@ -248,10 +248,10 @@
 #pragma mark - Query with mulit column condition
 /**
  query all record with where condition, but without orderby
-
+ 
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
-                           params:(NSDictionary *)conditionParams
-                            error:(NSError *__autoreleasing*)error
+ params:(NSDictionary *)conditionParams
+ error:(NSError *__autoreleasing*)error
  
  for how to use where condition.
  
@@ -266,10 +266,10 @@
 
 /**
  query all record with where condition and some sorting rules
-
+ 
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
-                           params:(NSDictionary *)conditionParams
-                            error:(NSError *__autoreleasing*)error
+ params:(NSDictionary *)conditionParams
+ error:(NSError *__autoreleasing*)error
  
  for how to use where condition.
  
@@ -286,10 +286,10 @@
 
 /**
  query some record with where condition with limited
-
+ 
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
-                           params:(NSDictionary *)conditionParams
-                            error:(NSError *__autoreleasing*)error
+ params:(NSDictionary *)conditionParams
+ error:(NSError *__autoreleasing*)error
  
  for how to use where condition.
  
@@ -306,10 +306,10 @@
 
 /**
  query some record with where condition with limited and sorting by some rules
-
+ 
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
-                           params:(NSDictionary *)conditionParams
-                            error:(NSError *__autoreleasing*)error
+ params:(NSDictionary *)conditionParams
+ error:(NSError *__autoreleasing*)error
  
  for how to use where condition.
  
@@ -330,7 +330,7 @@
 
 /**
  query all record with where condition
-
+ 
  @param whereCondition string for WHERE clause like   @"age > 18" 、@" age > 18 AND height > 170"
  @param error error if fails
  @return query result
@@ -340,7 +340,7 @@
 
 /**
  query all record with where condition and sorting by some rules
-
+ 
  @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
  @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
  @param error error if fails
@@ -364,7 +364,7 @@
 
 /**
  query some record with where condition and sorting by some rules
-
+ 
  @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
  @param orderBy sorting rules, string for ORDER BY clause, like @"price desc"
  @param limit limition, number for LIMIT clause. if limit is less than 1, the result will be same as `findAllWithCondition`
@@ -376,30 +376,5 @@
                                                           limit:(NSUInteger)limit
                                                           error:(NSError *__autoreleasing*)error;
 
-#pragma mark - General Table Info Query
-
-
-/**
- return the table record count
-
- @return the table record count
- */
-- (UInt64)countTotalRecord;
-
-/**
- return the table record count with where condition
-
- @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
-                           params:(NSDictionary *)conditionParams
-                            error:(NSError *__autoreleasing*)error
- 
- for how to use where condition.
- 
- @param whereCondition string for WHERE clause
- @param whereConditionParams the params to bind in to where condition
- @return the table record count with where condition
- */
-- (UInt64)countWithCondition:(NSString *)whereCondition
-                      params:(NSDictionary *)whereConditionParams;
-
 @end
+

@@ -230,7 +230,7 @@
         orderClause = [NSString stringWithFormat:@" ORDER BY %@ ",orderBy];
     }
     
-     NSString *limitClause = @"";
+    NSString *limitClause = @"";
     if (limit > 0) {
         limitClause = [NSString stringWithFormat:@" LIMIT %lu", (unsigned long)limit];
     }
@@ -335,7 +335,7 @@
     NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ %@ ;", self.tableName, whereCondition, orderClause];
     
     __block NSMutableArray *results = [NSMutableArray array];
-
+    
     [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
         [conditionParams enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NSString *bindKey = [NSString stringWithFormat:@":%@",key];
@@ -452,37 +452,5 @@
     return results;
 }
 
-#pragma mark - General Table Info Query
-
-- (UInt64)countTotalRecord {
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT COUNT(*) AS count FROM %@ ;", self.tableName];
-    
-    __block UInt64 nCount = 0;
-    
-    [self.dbConnect executeSQL:sqlString bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
-        nCount = [statement takeIntColumnAt:0];
-    } error:nil];
-    
-    return nCount;
-}
-
-- (UInt64)countWithCondition:(NSString *)whereCondition
-                          params:(NSDictionary *)whereConditionParams {
-    
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT COUNT(*) AS count FROM %@ WHERE %@ ;", self.tableName, whereCondition];
-    
-    __block UInt64 nCount = 0;
-    
-    [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
-        [whereConditionParams enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            NSString *bindKey = [NSString stringWithFormat:@":%@",key];
-            [statement bindColumn:bindKey withValue:obj];
-        }];
-    } rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
-        nCount = [statement takeIntColumnAt:0];
-    } error:nil];
-    
-    return nCount;
-}
-
 @end
+

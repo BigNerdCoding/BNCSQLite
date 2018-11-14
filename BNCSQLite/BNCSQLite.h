@@ -35,6 +35,7 @@ FOUNDATION_EXPORT const unsigned char BNCSQLiteVersionString[];
 #import <BNCSQLite/BNCSQLiteTable+Update.h>
 #import <BNCSQLite/BNCSQLiteTable+Find.h>
 #import <BNCSQLite/BNCSQLiteTable+Insert.h>
+#import <BNCSQLite/BNCSQLiteTable+Function.h>
 
 // Column
 #import <BNCSQLite/BNCSQLiteTableColumnProtocol.h>
