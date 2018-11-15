@@ -56,11 +56,11 @@
 }
 
 #pragma mark - max function
-- (UInt64)maxIntValueOfColumn:(NSString *)column {
+- (SInt64)maxIntValueOfColumn:(NSString *)column {
     return [self maxIntValueOfColumn:column where:@""];
 }
 
-- (UInt64)maxIntValueOfColumn:(NSString *)column
+- (SInt64)maxIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition {
     NSString *whereCaluse = @"";
     
@@ -70,7 +70,7 @@
     
     NSString *sqlString = [NSString stringWithFormat:@"SELECT MAX(%@) AS max FROM %@ %@ ;", column, self.tableName, whereCaluse];
     
-    __block UInt64 nMax = 0;
+    __block SInt64 nMax = 0;
     
     [self.dbConnect executeSQL:sqlString bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
         nMax = [statement takeIntColumnAt:0];
@@ -79,12 +79,12 @@
     return nMax;
 }
 
-- (UInt64)maxIntValueOfColumn:(NSString *)column
+- (SInt64)maxIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition
                        params:(NSDictionary *)whereConditionParams {
     NSString *sqlString = [NSString stringWithFormat:@"SELECT MAX(%@) AS max FROM %@ WHERE %@ ;", column, self.tableName, whereCondition];
     
-    __block UInt64 nMax = 0;
+    __block SInt64 nMax = 0;
     
     [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
         [whereConditionParams enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -141,11 +141,11 @@
 }
 
 #pragma mark - min function
-- (UInt64)minIntValueOfColumn:(NSString *)column {
+- (SInt64)minIntValueOfColumn:(NSString *)column {
     return [self minIntValueOfColumn:column where:@""];
 }
 
-- (UInt64)minIntValueOfColumn:(NSString *)column
+- (SInt64)minIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition {
     NSString *whereCaluse = @"";
     
@@ -155,7 +155,7 @@
     
     NSString *sqlString = [NSString stringWithFormat:@"SELECT MIN(%@) AS max FROM %@ %@ ;", column, self.tableName, whereCaluse];
     
-    __block UInt64 nMin = 0;
+    __block SInt64 nMin = 0;
     
     [self.dbConnect executeSQL:sqlString bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
         nMin = [statement takeIntColumnAt:0];
@@ -164,12 +164,12 @@
     return nMin;
 }
 
-- (UInt64)minIntValueOfColumn:(NSString *)column
+- (SInt64)minIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition
                        params:(NSDictionary *)whereConditionParams {
     NSString *sqlString = [NSString stringWithFormat:@"SELECT MIN(%@) AS min FROM %@ WHERE %@ ;", column, self.tableName, whereCondition];
     
-    __block UInt64 nMin = 0.0;
+    __block SInt64 nMin = 0.0;
     
     [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
         [whereConditionParams enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -226,11 +226,11 @@
 }
 
 #pragma mark - sum function
-- (UInt64)sumIntValueOfColumn:(NSString *)column {
+- (SInt64)sumIntValueOfColumn:(NSString *)column {
     return [self sumIntValueOfColumn:column where:@""];
 }
 
-- (UInt64)sumIntValueOfColumn:(NSString *)column
+- (SInt64)sumIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition {
     NSString *whereCaluse = @"";
     
@@ -240,7 +240,7 @@
     
     NSString *sqlString = [NSString stringWithFormat:@"SELECT TOTAL(%@) AS sum FROM %@ %@ ;", column, self.tableName, whereCaluse];
     
-    __block UInt64 nSum = 0;
+    __block SInt64 nSum = 0;
     
     [self.dbConnect executeSQL:sqlString bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, uint64_t rowNum) {
         nSum = [statement takeIntColumnAt:0];
@@ -249,12 +249,12 @@
     return nSum;
 }
 
-- (UInt64)sumIntValueOfColumn:(NSString *)column
+- (SInt64)sumIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition
                        params:(NSDictionary *)whereConditionParams {
     NSString *sqlString = [NSString stringWithFormat:@"SELECT TOTAL(%@) AS sum FROM %@ WHERE %@ ;", column, self.tableName, whereCondition];
     
-    __block UInt64 nSum = 0;
+    __block SInt64 nSum = 0;
     
     [self.dbConnect executeSQL:sqlString bind:^(BNCSQLiteDatabaseStatement *statement) {
         [whereConditionParams enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -354,4 +354,5 @@
 }
 
 @end
+
 

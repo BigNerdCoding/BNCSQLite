@@ -49,7 +49,7 @@
  @param column column name
  @return the max int value
  */
-- (UInt64)maxIntValueOfColumn:(NSString *)column;
+- (SInt64)maxIntValueOfColumn:(NSString *)column;
 
 /**
  return column max int value
@@ -58,7 +58,7 @@
  @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
  @return the max int value
  */
-- (UInt64)maxIntValueOfColumn:(NSString *)column
+- (SInt64)maxIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition;
 
 /**
@@ -69,7 +69,7 @@
  @param whereConditionParams the params to bind in to where condition
  @return the max int value
  */
-- (UInt64)maxIntValueOfColumn:(NSString *)column
+- (SInt64)maxIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition
                        params:(NSDictionary *)whereConditionParams;
 
@@ -110,7 +110,7 @@
  @param column column name
  @return the min int value
  */
-- (UInt64)minIntValueOfColumn:(NSString *)column;
+- (SInt64)minIntValueOfColumn:(NSString *)column;
 
 /**
  return column min int value
@@ -119,7 +119,7 @@
  @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
  @return the min int value
  */
-- (UInt64)minIntValueOfColumn:(NSString *)column
+- (SInt64)minIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition;
 
 /**
@@ -130,7 +130,7 @@
  @param whereConditionParams the params to bind in to where condition
  @return the min int value
  */
-- (UInt64)minIntValueOfColumn:(NSString *)column
+- (SInt64)minIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition
                        params:(NSDictionary *)whereConditionParams;
 
@@ -171,7 +171,7 @@
  @param column column name
  @return int column value sum
  */
-- (UInt64)sumIntValueOfColumn:(NSString *)column;
+- (SInt64)sumIntValueOfColumn:(NSString *)column;
 
 /**
  return int column value sum
@@ -180,7 +180,7 @@
  @param whereCondition string for WHERE clause like  @"age > 18" 、@" age > 18 AND height > 170"
  @return int column value sum
  */
-- (UInt64)sumIntValueOfColumn:(NSString *)column
+- (SInt64)sumIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition;
 
 /**
@@ -191,7 +191,7 @@
  @param whereConditionParams the params to bind in to where condition
  @return int column value sum
  */
-- (UInt64)sumIntValueOfColumn:(NSString *)column
+- (SInt64)sumIntValueOfColumn:(NSString *)column
                         where:(NSString *)whereCondition
                        params:(NSDictionary *)whereConditionParams;
 
@@ -257,4 +257,6 @@
                           params:(NSDictionary *)whereConditionParams;
 
 @end
+
+
 
