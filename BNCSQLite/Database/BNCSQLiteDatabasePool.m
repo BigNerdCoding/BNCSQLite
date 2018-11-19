@@ -8,6 +8,7 @@
 
 #import "BNCSQLiteDatabasePool.h"
 #import "BNCSQLiteSafeCache.h"
+#import "BNCSQLiteDatabaseInfoProtocol.h"
 
 @interface BNCSQLiteDatabasePool()
 
@@ -43,13 +44,22 @@
 }
 
 - (BNCSQLiteDatabase *)databaseWithConfig:(BNCSQLiteDatabaseConfig *)config {
-
+    if ([config.filePath isEqualToString:kBNCSQLiteTemporaryModePath] || [config.filePath isEqualToString:kBNCSQLiteMemoryModePath]) {
+        return [[BNCSQLiteDatabase alloc] initWithConfig:config error:nil];
+    }
+    
     NSString *key = [NSString stringWithFormat:@"%@ - %@",config.filePath, [NSThread currentThread]];
     
     BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:key];
     
-    if (dbConnect) {
+    NSFileManager *defaultFileManager = [NSFileManager defaultManager];
+    
+    if (dbConnect && [defaultFileManager fileExistsAtPath:config.filePath]) {
         return dbConnect;
+    }
+    
+    if (dbConnect && ![defaultFileManager fileExistsAtPath:config.filePath]) {
+        [self closeDatabase:config.filePath];
     }
     
     NSError *error = nil;
