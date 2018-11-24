@@ -13,8 +13,7 @@
 
 #pragma mark - BNCSQLiteDatabaseInfoProtocol
 - (NSString *)databaseFilePath {
-    return kBNCSQLiteMemoryModePath;
-    
+    return [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"BNCSQLiteMigrationTest.sqlite"];
 }
 
 - (id<BNCSQLiteMigratorProtocol>)databaseMigrator {

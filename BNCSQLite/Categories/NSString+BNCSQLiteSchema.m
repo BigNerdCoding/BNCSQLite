@@ -32,9 +32,7 @@
 + (instancetype)addColumn:(id<BNCSQLiteTableColumnProtocol>)column tableName:(NSString *)tableName {
     NSString *columnDescription = [NSString compileColumnDescriptionAtTableCreate:column];
     
-    [columnDescription stringByReplacingOccurrencesOfString:[column columnName] withString:@""];
-    
-    return [NSString stringWithFormat:@"ALTER TABLE '%@' ADD COLUMN '%@' %@ ;", tableName, [column columnName],columnDescription];
+    return [NSString stringWithFormat:@"ALTER TABLE %@ ADD COLUMN %@ ;", tableName, columnDescription];
 }
 
 + (instancetype)addIndex:(id<BNCSQLiteTableColumnIndexProtocol>)tableIndex tableName:(NSString *)tableName {
