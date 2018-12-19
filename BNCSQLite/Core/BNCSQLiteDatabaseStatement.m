@@ -25,7 +25,7 @@
         _database = database.database;
         
         // Prepare Action
-        int result = sqlite3_prepare_v2(_database, [sqlString UTF8String], (int)sqlString.length, &_statement, NULL);
+        int result = sqlite3_prepare_v2(_database, [sqlString UTF8String], (int)[sqlString lengthOfBytesUsingEncoding:NSUTF8StringEncoding], &_statement, NULL);
         if (result != SQLITE_OK) {
             self.statement = nil;
             NSString *sqlErrorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(_database)];

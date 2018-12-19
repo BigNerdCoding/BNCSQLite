@@ -53,7 +53,6 @@
 }
 
 - (NSString *)generateInsertSQLWithColumn:(NSArray<NSString *> *)columnNames {
-  
     
     NSMutableArray *insertColumns = [NSMutableArray array];
     NSMutableArray *insertValues = [NSMutableArray array];

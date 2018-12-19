@@ -78,6 +78,11 @@
 }
 
 - (void)closeDatabase {
+    
+    if (!_database) {
+        return;
+    }
+    
     if (@available(iOS 8.2, *)) {
         sqlite3_close_v2(_database);
     } else {
