@@ -34,6 +34,8 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     
+    [_db closeDatabase];
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     // 删除文件

@@ -23,7 +23,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 target 'TargetName' do
-    pod 'BNCSQLite', '~> 1.3.6'
+    pod 'BNCSQLite', '~> 1.3.7'
 end
 ```
 
