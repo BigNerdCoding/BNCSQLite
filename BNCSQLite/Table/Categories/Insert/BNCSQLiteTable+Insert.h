@@ -9,12 +9,16 @@
 #import "BNCSQLiteTable.h"
 #import "BNCSQLiteRecordProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteTable (Insert)
 
 - (BOOL)insertRecord:(NSObject<BNCSQLiteRecordProtocol> *)record
-               error:(NSError *__autoreleasing *)error;
+               error:(NSError *__nullable __autoreleasing *)error;
 
 - (BOOL)insertRecordList:(NSArray<NSObject<BNCSQLiteRecordProtocol> * > *)recordList
-                   error:(NSError *__autoreleasing *)error;
+                   error:(NSError *__nullable __autoreleasing *)error;
 
 @end
+
+NS_ASSUME_NONNULL_END

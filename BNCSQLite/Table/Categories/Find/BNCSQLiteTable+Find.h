@@ -9,6 +9,8 @@
 #import "BNCSQLiteTable.h"
 #import "BNCSQLiteRecordProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteTable (Find)
 
 #pragma mark - Query without condition
@@ -18,7 +20,7 @@
  @param error error if fails
  @return query result
  */
-- (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithError:(NSError *__autoreleasing*)error;
+- (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithError:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record without order
@@ -32,7 +34,7 @@
  @return query result
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithOrder:(NSString *)orderBy
-                                                       error:(NSError *__autoreleasing*)error;
+                                                       error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query record with limit
@@ -42,7 +44,7 @@
  @return query result
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithLimit:(NSUInteger)limit
-                                                          error:(NSError *__autoreleasing*)error;
+                                                          error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query record with order and limit
@@ -54,7 +56,7 @@
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithOrder:(NSString *)orderBy
                                                           limit:(NSUInteger)limit
-                                                          error:(NSError *__autoreleasing*)error;
+                                                          error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query latest record without order
@@ -62,7 +64,7 @@
  @param error  error if fails
  @return query result (may be nil)
  */
-- (id<BNCSQLiteRecordProtocol>)findLatestRecordWithError:(NSError *__autoreleasing*)error;
+- (id<BNCSQLiteRecordProtocol>)findLatestRecordWithError:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query latest record with order
@@ -75,7 +77,7 @@
  @return query result (may be nil)
  */
 - (id<BNCSQLiteRecordProtocol>)findLatestRecordWithOrder:(NSString *)orderBy
-                                                   error:(NSError *__autoreleasing*)error;
+                                                   error:(NSError *__nullable __autoreleasing*)error;
 
 #pragma mark - Query with single column equal condition
 
@@ -87,7 +89,7 @@
  @return query result (may be nil)
  */
 - (id<BNCSQLiteRecordProtocol>)findWithPrimaryKey:(NSNumber *)primaryKey
-                                            error:(NSError *__autoreleasing*)error;
+                                            error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query record with unique column
@@ -99,7 +101,7 @@
  */
 - (id<BNCSQLiteRecordProtocol>)findWithUniqueColumn:(NSString *)columuName
                                               value:(id)value
-                                              error:(NSError *__autoreleasing*)error;
+                                              error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record with same column value
@@ -111,7 +113,7 @@
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
                                                         value:(id)value
-                                                        error:(NSError *__autoreleasing*)error;
+                                                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record with same column value and sorting by some rules
@@ -125,7 +127,7 @@
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
                                                         value:(id)value
                                                       orderBy:(NSString *)orderBy
-                                                        error:(NSError *__autoreleasing*)error;
+                                                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record that column value in `valueList`
@@ -137,7 +139,7 @@
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
                                                   inValueList:(NSArray *)valueList
-                                                        error:(NSError *__autoreleasing*)error;
+                                                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record that column value in `valueList` and sorting by some rules
@@ -151,7 +153,7 @@
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
                                                   inValueList:(NSArray *)valueList
                                                       orderBy:(NSString *)orderBy
-                                                        error:(NSError *__autoreleasing*)error;
+                                                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query record that column value equal to `value` with limited
@@ -167,7 +169,7 @@
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithColumn:(NSString *)column
                                                            value:(id)value
                                                            limit:(NSUInteger)limit
-                                                           error:(NSError *__autoreleasing*)error;
+                                                           error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query record that column value equal to `value` with limited and sorting by some rules
@@ -185,7 +187,7 @@
                                                            value:(id)value
                                                          orderBy:(NSString *)orderBy
                                                            limit:(NSUInteger)limit
-                                                           error:(NSError *__autoreleasing*)error;
+                                                           error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record with same column value like 'xxxx'
@@ -197,7 +199,7 @@
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
                                                    likeClause:(NSString *)like
-                                                        error:(NSError *__autoreleasing*)error;
+                                                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record with same column value like 'xxxx'
@@ -211,7 +213,7 @@
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithColumn:(NSString *)column
                                                    likeClause:(NSString *)like
                                                       orderBy:(NSString *)orderBy
-                                                        error:(NSError *__autoreleasing*)error;
+                                                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query record with same column value like 'xxxx'
@@ -225,7 +227,7 @@
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithColumn:(NSString *)column
                                                       likeClause:(NSString *)like
                                                            limit:(NSUInteger)limit
-                                                           error:(NSError *__autoreleasing*)error;
+                                                           error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query record with same column value like 'xxxx'
@@ -243,7 +245,7 @@
                                                       likeClause:(NSString *)like
                                                          orderBy:(NSString *)orderBy
                                                            limit:(NSUInteger)limit
-                                                           error:(NSError *__autoreleasing*)error;
+                                                           error:(NSError *__nullable __autoreleasing*)error;
 
 #pragma mark - Query with mulit column condition
 /**
@@ -251,7 +253,7 @@
  
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
  params:(NSDictionary *)conditionParams
- error:(NSError *__autoreleasing*)error
+ error:(NSError *__nullable __autoreleasing*)error
  
  for how to use where condition.
  
@@ -262,14 +264,14 @@
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithCondition:(NSString *)whereCondition
                                                           params:(NSDictionary *)conditionParams
-                                                           error:(NSError *__autoreleasing*)error;
+                                                           error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record with where condition and some sorting rules
  
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
  params:(NSDictionary *)conditionParams
- error:(NSError *__autoreleasing*)error
+ error:(NSError *__nullable __autoreleasing*)error
  
  for how to use where condition.
  
@@ -282,14 +284,14 @@
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithCondition:(NSString *)whereCondition
                                                           params:(NSDictionary *)conditionParams
                                                          orderBy:(NSString *)orderBy
-                                                           error:(NSError *__autoreleasing*)error;
+                                                           error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query some record with where condition with limited
  
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
  params:(NSDictionary *)conditionParams
- error:(NSError *__autoreleasing*)error
+ error:(NSError *__nullable __autoreleasing*)error
  
  for how to use where condition.
  
@@ -302,14 +304,14 @@
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithCondition:(NSString *)whereCondition
                                                              params:(NSDictionary *)conditionParams
                                                               limit:(NSUInteger)limit
-                                                              error:(NSError *__autoreleasing*)error;
+                                                              error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query some record with where condition with limited and sorting by some rules
  
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
  params:(NSDictionary *)conditionParams
- error:(NSError *__autoreleasing*)error
+ error:(NSError *__nullable __autoreleasing*)error
  
  for how to use where condition.
  
@@ -324,7 +326,7 @@
                                                              params:(NSDictionary *)conditionParams
                                                             orderBy:(NSString *)orderBy
                                                               limit:(NSUInteger)limit
-                                                              error:(NSError *__autoreleasing*)error;
+                                                              error:(NSError *__nullable __autoreleasing*)error;
 
 #pragma mark - Query with Ready whereCondition
 
@@ -336,7 +338,7 @@
  @return query result
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithWhere:(NSString *)whereCondition
-                                                       error:(NSError *__autoreleasing*)error;
+                                                       error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record with where condition and sorting by some rules
@@ -348,7 +350,7 @@
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findAllWithWhere:(NSString *)whereCondition
                                                      orderBy:(NSString *)orderBy
-                                                       error:(NSError *__autoreleasing*)error;
+                                                       error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query some record with where condition and limition
@@ -360,7 +362,7 @@
  */
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithWhere:(NSString *)whereCondition
                                                           limit:(NSUInteger)limit
-                                                          error:(NSError *__autoreleasing*)error;
+                                                          error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query some record with where condition and sorting by some rules
@@ -374,7 +376,8 @@
 - (NSArray <id<BNCSQLiteRecordProtocol> > *)findRecordWithWhere:(NSString *)whereCondition
                                                         orderBy:(NSString *)orderBy
                                                           limit:(NSUInteger)limit
-                                                          error:(NSError *__autoreleasing*)error;
+                                                          error:(NSError *__nullable __autoreleasing*)error;
 
 @end
 
+NS_ASSUME_NONNULL_END

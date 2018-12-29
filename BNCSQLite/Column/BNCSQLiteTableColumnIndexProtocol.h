@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol BNCSQLiteTableColumnIndexProtocol <NSObject>
 
 @required
@@ -34,3 +36,5 @@
 - (NSArray<NSString *> *)indexCloumnFields;
 
 @end
+
+NS_ASSUME_NONNULL_END

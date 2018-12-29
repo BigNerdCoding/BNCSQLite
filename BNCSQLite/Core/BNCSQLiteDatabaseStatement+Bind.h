@@ -8,6 +8,8 @@
 
 #import "BNCSQLiteDatabaseStatement.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteDatabaseStatement (Bind)
 
 #pragma mark - Bind With Position
@@ -101,3 +103,6 @@
 - (void)bindColumn:(NSString *)columnName withValue:(id)bindValue;
 
 @end
+
+
+NS_ASSUME_NONNULL_END

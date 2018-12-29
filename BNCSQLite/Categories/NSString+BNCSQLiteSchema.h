@@ -10,6 +10,8 @@
 #import "BNCSQLiteTableColumnProtocol.h"
 #import "BNCSQLiteTableColumnIndexProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSString (BNCSQLiteSchema)
 
 /**
@@ -64,3 +66,5 @@
 + (instancetype)columnInfoWithTableName:(NSString *)tableName;
 
 @end
+
+NS_ASSUME_NONNULL_END

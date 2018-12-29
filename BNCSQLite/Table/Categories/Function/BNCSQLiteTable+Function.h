@@ -8,6 +8,8 @@
 
 #import "BNCSQLiteTable.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteTable (Function)
 
 #pragma mark - count function
@@ -258,5 +260,6 @@
 
 @end
 
+NS_ASSUME_NONNULL_END
 
 

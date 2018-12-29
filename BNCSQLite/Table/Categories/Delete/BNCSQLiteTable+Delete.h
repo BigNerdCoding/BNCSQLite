@@ -9,6 +9,8 @@
 #import "BNCSQLiteTable.h"
 #import "BNCSQLiteRecordProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteTable (Delete)
 
 /**
@@ -19,7 +21,7 @@
  @return whether the delete action is success
  */
 - (BOOL)deleteRecord:(NSObject<BNCSQLiteRecordProtocol> * )record
-               error:(NSError * __autoreleasing *)error;
+               error:(NSError * __nullable __autoreleasing *)error;
 
 /**
  delete a list of record
@@ -29,7 +31,7 @@
  @return whether the delete action is success
  */
 - (BOOL)deleteRecordList:(NSArray <NSObject<BNCSQLiteRecordProtocol> * > *)recordList
-                   error:(NSError * __autoreleasing*)error;
+                   error:(NSError * __nullable __autoreleasing*)error;
 
 /**
  delete with condition. The "where condition" is a string which will be used in SQL WHERE clause. Can bind params if you have words start with colon.
@@ -49,7 +51,7 @@
  */
 - (BOOL)deleteWithCondition:(NSString *)whereCondition
                      params:(NSDictionary *)conditionParams
-                      error:(NSError *__autoreleasing*)error;
+                      error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  delete record with parimary key
@@ -59,7 +61,7 @@
  @return whether the delete action is success
  */
 - (BOOL)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue
-                       error:(NSError *__autoreleasing*)error;
+                       error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  delete a list record by primary key list
@@ -69,7 +71,7 @@
  @return whether the delete action is success
  */
 - (BOOL)deleteWithPrimaryKeyList:(NSArray <NSNumber *> *)primaryKeyValueList
-                           error:(NSError * __autoreleasing*)error;
+                           error:(NSError * __nullable __autoreleasing*)error;
 
 /**
  delete a record in table where key = value
@@ -81,7 +83,7 @@
  */
 - (BOOL)deleteRecordWhereColumn:(NSString *)column
                           value:(id)value
-                          error:(NSError *__autoreleasing*)error;
+                          error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  delete some record in table where key IN (inValueList)
@@ -93,7 +95,7 @@
  */
 - (BOOL)deleteRecordWhereColumn:(NSString *)column
                     inValueList:(NSArray *)valueList
-                          error:(NSError *__autoreleasing*)error;
+                          error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  delete some record in table with codition
@@ -102,7 +104,7 @@
  @param error error if delete fails
  @return whether the delete action is success
  */
-- (BOOL)deleteRecordWhere:(NSString *)whereCondition error:(NSError *__autoreleasing*)error;
+- (BOOL)deleteRecordWhere:(NSString *)whereCondition error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  truncate the table
@@ -112,3 +114,5 @@
 - (BOOL)truncate;
 
 @end
+
+NS_ASSUME_NONNULL_END

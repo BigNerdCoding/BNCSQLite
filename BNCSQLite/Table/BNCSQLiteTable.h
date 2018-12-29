@@ -17,6 +17,8 @@
  WARNING:
     if you inherit `BNCSQLiteTable` class , you should also implement the `BNCSQLiteTableProtocol` protocol.
  */
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteTable : NSObject <BNCSQLiteTableProtocol>
 
 /**
@@ -25,3 +27,5 @@
 @property(nonatomic, readonly) BNCSQLiteDatabase *dbConnect;
 
 @end
+
+NS_ASSUME_NONNULL_END

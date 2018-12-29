@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteTableProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol BNCSQLiteRecordProtocol <NSObject>
 
 @required
@@ -29,3 +31,5 @@
 - (void)objectRepresentationWithDictionary:(NSDictionary *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

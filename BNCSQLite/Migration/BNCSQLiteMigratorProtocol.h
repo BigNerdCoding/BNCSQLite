@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteMigrationStepProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol BNCSQLiteMigratorProtocol <NSObject>
 
 @required
@@ -28,3 +30,5 @@
 - (NSDictionary<NSNumber *,id<BNCSQLiteMigrationStepProtocol> > *)migrationStepDictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

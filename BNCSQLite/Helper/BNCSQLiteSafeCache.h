@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteSafeCache : NSObject
 
 /**
@@ -46,3 +48,5 @@
 -(NSArray<NSString *> *)getAllCacheKeys;
 
 @end
+
+NS_ASSUME_NONNULL_END

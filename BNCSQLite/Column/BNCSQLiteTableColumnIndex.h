@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteTableColumnIndexProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteTableColumnIndex : NSObject <BNCSQLiteTableColumnIndexProtocol>
 
 /**
@@ -30,3 +32,5 @@
 - (instancetype)initWithUniqueIndexName:(NSString *)indexName fields:(NSArray<NSString *> *)fields;
 
 @end
+
+NS_ASSUME_NONNULL_END

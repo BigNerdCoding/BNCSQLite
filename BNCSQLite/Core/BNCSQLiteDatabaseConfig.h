@@ -10,6 +10,8 @@
 
 @class BNCSQLiteDatabase;
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 
 @interface BNCSQLiteDatabaseConfig : NSObject
@@ -32,6 +34,8 @@ typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 /**
  Block that do migration action
  */
-@property(nonatomic, copy) MigrationBlock migrationAction;
+@property(nonatomic, copy, nullable) MigrationBlock migrationAction;
  
 @end
+
+NS_ASSUME_NONNULL_END

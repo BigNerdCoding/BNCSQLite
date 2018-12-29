@@ -8,6 +8,8 @@
 
 #import "BNCSQLiteDatabaseStatement.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteDatabaseStatement (Take)
 
 #pragma mark - Take With Position
@@ -40,7 +42,7 @@
  @param tValuePosition position of column
  @return String value for column
  */
-- (NSString *)takeTextColumnAt:(int)tValuePosition;
+- (NSString * _Nullable)takeTextColumnAt:(int)tValuePosition;
 
 /**
  get the Binary value for the indicated column
@@ -48,6 +50,8 @@
  @param bValuePosition position of column
  @return Binary value for column
  */
-- (NSData *)takeBinaryColumnAt:(int)bValuePosition;
+- (NSData * _Nullable)takeBinaryColumnAt:(int)bValuePosition;
 
 @end
+
+NS_ASSUME_NONNULL_END

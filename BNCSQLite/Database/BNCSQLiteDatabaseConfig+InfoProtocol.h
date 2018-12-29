@@ -9,6 +9,8 @@
 #import "BNCSQLiteDatabaseConfig.h"
 #import "BNCSQLiteDatabaseInfoProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteDatabaseConfig (InfoProtocol)
 
 /**
@@ -20,3 +22,5 @@
 - (instancetype)initWithProtocol:(id<BNCSQLiteDatabaseInfoProtocol>)infoProtocol;
 
 @end
+
+NS_ASSUME_NONNULL_END

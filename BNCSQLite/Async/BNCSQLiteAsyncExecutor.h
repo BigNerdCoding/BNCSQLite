@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteAsyncExecutor : NSObject
 
 /**
@@ -22,3 +24,5 @@
 - (void)asyncRead:(void (^)(void))readAction;
 
 @end
+
+NS_ASSUME_NONNULL_END

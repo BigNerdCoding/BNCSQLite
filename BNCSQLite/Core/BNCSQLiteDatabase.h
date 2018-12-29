@@ -25,6 +25,8 @@ typedef NS_ENUM(NSUInteger, BNCSQLiteTransactionLockType){
     BNCSQLiteTransactionLockTypeExclusive,
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class BNCSQLiteDatabaseStatement,BNCSQLiteDatabaseConfig;
 
 /**
@@ -53,7 +55,7 @@ static NSInteger const kBNCSQLiteInitVersion = 1;
 /**
 *  The database used for SQLite library,'sqlite3' pointer
 */
-@property (nonatomic, unsafe_unretained, readonly) sqlite3 *database;
+@property (nonatomic, unsafe_unretained, readonly, nullable) sqlite3 *database;
 
 /**
  Connect database with filepath
@@ -63,7 +65,7 @@ static NSInteger const kBNCSQLiteInitVersion = 1;
  @param error the error when create databse fails
  @return an instance of BNCDataBase
  */
-- (instancetype)initWithConfig:(BNCSQLiteDatabaseConfig *)config error:(NSError *__autoreleasing *)error;
+- (instancetype)initWithConfig:(BNCSQLiteDatabaseConfig *)config error:(NSError *__nullable __autoreleasing *)error;
 
 /**
  Close the database connection
@@ -124,6 +126,8 @@ static NSInteger const kBNCSQLiteInitVersion = 1;
  @param error error if fails
  @return NO if fails
  */
-- (BOOL)executeSQL:(NSString *)sqlString bind:(BindBlock)bind rowHandle:(RowHandleBlock)rowHandle error:(NSError *__autoreleasing *)error;
+- (BOOL)executeSQL:(NSString *)sqlString bind:(BindBlock __nullable)bind rowHandle:(RowHandleBlock __nullable)rowHandle error:(NSError *__nullable __autoreleasing *)error;
 
 @end
+
+NS_ASSUME_NONNULL_END

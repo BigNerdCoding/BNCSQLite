@@ -11,6 +11,8 @@
 #import "BNCSQLiteTableColumnIndexProtocol.h"
 #import "BNCSQLiteDatabaseInfoProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol BNCSQLiteTableProtocol <NSObject>
 
 @required
@@ -59,3 +61,5 @@
 - (NSArray< id<BNCSQLiteTableColumnIndexProtocol> > *)indexList;
 
 @end
+
+NS_ASSUME_NONNULL_END

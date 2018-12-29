@@ -83,11 +83,32 @@
         return;
     }
     
-    if (@available(iOS 8.2, *)) {
-        sqlite3_close_v2(_database);
-    } else {
-        sqlite3_close(_database);
-    }
+    int  rc;
+    BOOL retry;
+    BOOL triedFinalizingOpenStatements = NO;
+    
+    do {
+        retry   = NO;
+        if (@available(iOS 8.2, *)) {
+            rc = sqlite3_close_v2(_database);
+        } else {
+            rc = sqlite3_close(_database);
+        }
+
+        if (SQLITE_BUSY == rc || SQLITE_LOCKED == rc) {
+            if (!triedFinalizingOpenStatements) {
+                triedFinalizingOpenStatements = YES;
+                sqlite3_stmt *pStmt;
+                while ((pStmt = sqlite3_next_stmt(_database, nil)) != nil) {
+                    NSLog(@"Closing leaked statement");
+                    sqlite3_finalize(pStmt);
+                    retry = YES;
+                }
+            }
+        } else if (SQLITE_OK != rc) {
+            NSLog(@"error closing!: %d", rc);
+        }
+    } while (retry);
     
     _database = NULL;
     _databaseFilePath = nil;
@@ -163,7 +184,6 @@
     BNCSQLiteDatabaseStatement *sqlStatement = [[BNCSQLiteDatabaseStatement alloc] initWithSQLString:sqlString database:self error:error];
     
     if (!sqlStatement) {
-        [sqlStatement finalizeStatement];
         return NO;
     }
     

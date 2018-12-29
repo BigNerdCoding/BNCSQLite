@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteMigratorProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
 // Database Mode
 static NSString * const kBNCSQLiteMemoryModePath = @":memory:";
 static NSString * const kBNCSQLiteTemporaryModePath = @"";
@@ -44,3 +45,5 @@ static NSString * const kBNCSQLiteTemporaryModePath = @"";
 - (BOOL)isReadonly;
 
 @end
+
+NS_ASSUME_NONNULL_END

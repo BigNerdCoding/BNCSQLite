@@ -10,6 +10,8 @@
 #import "BNCSQLiteDatabase.h"
 #import "BNCSQLiteDatabaseConfig.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteDatabasePool : NSObject
 
 /**
@@ -40,3 +42,5 @@
 - (void)closeAllDatabase;
 
 @end
+
+NS_ASSUME_NONNULL_END

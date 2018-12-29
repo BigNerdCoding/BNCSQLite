@@ -9,6 +9,8 @@
 #import "BNCSQLiteTable.h"
 #import "BNCSQLiteRecordProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteTable (Update)
 
 /**
@@ -19,7 +21,7 @@
  @return whether the update action is success
  */
 - (BOOL)updateRecord:(NSObject<BNCSQLiteRecordProtocol> *)record
-               error:(NSError *__autoreleasing*)error;
+               error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update a list of record
@@ -29,14 +31,14 @@
  @return whether the update action is success
  */
 - (BOOL)updateRecordList:(NSArray <NSObject<BNCSQLiteRecordProtocol> * > *)recordList
-                   error:(NSError *__autoreleasing*)error;
+                   error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update value for column which the row matches whereCondition
 
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
                            params:(NSDictionary *)conditionParams
-                            error:(NSError *__autoreleasing*)error
+                            error:(NSError *__nullable __autoreleasing*)error
  
  for how to use where condition.
  
@@ -51,14 +53,14 @@
           forColumn:(NSString *)column
           condition:(NSString *)whereCondition
              params:(NSDictionary *)conditionParams
-              error:(NSError *__autoreleasing*)error;
+              error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update column values of rows that matches whereCondition
 
  @see - (BOOL)deleteWithCondition:(NSString *)whereCondition
                            params:(NSDictionary *)conditionParams
-                            error:(NSError *__autoreleasing*)error
+                            error:(NSError *__nullable __autoreleasing*)error
  
  for how to use where condition.
  
@@ -71,7 +73,7 @@
 - (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
                     condition:(NSString *)whereCondition
                        params:(NSDictionary *)conditionParams
-                        error:(NSError *__autoreleasing*)error;
+                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update value for column, where column `wherekey` in a list
@@ -87,7 +89,7 @@
           forColumn:(NSString *)column
            whereKey:(NSString *)wherekey
              inList:(NSArray *)valueList
-              error:(NSError *__autoreleasing *)error;
+              error:(NSError *__nullable __autoreleasing *)error;
 
 /**
  update column values of rows, where column `wherekey` in a list
@@ -101,7 +103,7 @@
 - (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
                      whereKey:(NSString *)wherekey
                        inList:(NSArray *)valueList
-                        error:(NSError *__autoreleasing *)error;
+                        error:(NSError *__nullable __autoreleasing *)error;
 
 /**
  update value for column by primary key
@@ -115,7 +117,7 @@
 - (BOOL)updateValue:(id)value
           forColumn:(NSString *)column
          primaryKey:(NSNumber *)primaryKey
-              error:(NSError *__autoreleasing*)error;
+              error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update column values of rows that primaryKey cloumn value equal 'primaryKey'
@@ -127,7 +129,7 @@
  */
 - (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
                    primaryKey:(NSNumber *)primaryKey
-                        error:(NSError *__autoreleasing*)error;
+                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update value for column without condition
@@ -139,7 +141,7 @@
  */
 - (BOOL)updateValue:(id)value
           forColumn:(NSString *)column
-              error:(NSError *__autoreleasing*)error;
+              error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update value for column without condition
@@ -153,7 +155,7 @@
 - (BOOL)updateValue:(id)value
           forColumn:(NSString *)column
      whereCondition:(NSString *)whereCondition
-              error:(NSError *__autoreleasing*)error;
+              error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update column values of rows
@@ -163,7 +165,7 @@
  @return whether the update action is success
  */
 - (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
-                        error:(NSError *__autoreleasing*)error;
+                        error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  update column values of rows
@@ -175,6 +177,8 @@
  */
 - (BOOL)updateColumnValueList:(NSDictionary *)columnValueList
                whereCondition:(NSString *)whereCondition
-                        error:(NSError *__autoreleasing*)error;
+                        error:(NSError *__nullable __autoreleasing*)error;
 
 @end
+
+NS_ASSUME_NONNULL_END

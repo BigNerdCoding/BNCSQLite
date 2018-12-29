@@ -14,7 +14,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _filePath = nil;
+        _filePath = @"";
         _latestSchemaVersion = kBNCSQLiteInitVersion;
         _isReadonly = NO;
         _migrationAction = nil;

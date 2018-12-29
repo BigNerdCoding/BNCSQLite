@@ -23,6 +23,8 @@ typedef NS_ENUM (NSUInteger, BNCSQLiteTableColumnType) {
     BNCSQLiteTableColumnTypeBinary
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol BNCSQLiteTableColumnProtocol <NSObject>
 
 @required
@@ -79,3 +81,5 @@ typedef NS_ENUM (NSUInteger, BNCSQLiteTableColumnType) {
 - (NSString*)defaultValue;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -9,6 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteTableColumnProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+@class BNCSQLiteTableColumn;
+
+/**
+ Block to perform column  constraint setting
+ 
+ @param column instance of BNCSQLiteTableColumn
+ */
+typedef void(^ColumnConstraintBlock)(BNCSQLiteTableColumn *column);
+
+
+
 @interface BNCSQLiteTableColumn : NSObject <BNCSQLiteTableColumnProtocol>
 
 /**
@@ -64,7 +76,7 @@
  @param constraint a callback that setting constraint
  @return integer type column
  */
-+ (instancetype)intColWithName:(NSString *)columnName constraint:(void(^)(BNCSQLiteTableColumn *column))constraint;
++ (instancetype)intColWithName:(NSString *)columnName constraint:(ColumnConstraintBlock __nullable)constraint;
 
 /**
  Crate real type column
@@ -81,7 +93,7 @@
  @param constraint a callback that setting constraint
  @return real type column
  */
-+ (instancetype)realColWithName:(NSString *)columnName constraint:(void(^)(BNCSQLiteTableColumn *column))constraint;
++ (instancetype)realColWithName:(NSString *)columnName constraint:(ColumnConstraintBlock __nullable)constraint;
 
 /**
  Crate text type column
@@ -98,7 +110,7 @@
  @param constraint  a callback that setting constraint
  @return text type column
  */
-+ (instancetype)textColWithName:(NSString *)columnName constraint:(void(^)(BNCSQLiteTableColumn *column))constraint;
++ (instancetype)textColWithName:(NSString *)columnName constraint:(ColumnConstraintBlock __nullable)constraint;
 
 /**
  Create binary type column
@@ -115,7 +127,7 @@
  @param constraint a callback that setting constraint
  @return binary type column
  */
-+ (instancetype)binaryColWithName:(NSString *)columnName constraint:(void(^)(BNCSQLiteTableColumn *column))constraint;
++ (instancetype)binaryColWithName:(NSString *)columnName constraint:(ColumnConstraintBlock __nullable)constraint;
 
 /**
  Create a column
@@ -127,7 +139,7 @@
  */
 - (instancetype)initWithColName:(NSString *)columnName
                            type:(BNCSQLiteTableColumnType)columnType
-                     constraint:(void(^)(BNCSQLiteTableColumn *column))constraint;
+                     constraint:(ColumnConstraintBlock __nullable)constraint;
 
 /**
  setting the column to be primary column
@@ -157,4 +169,6 @@
 - (void)settingDefaultValueConstraint:(NSString *)defaultValue;
 
 @end
+
+NS_ASSUME_NONNULL_END
 

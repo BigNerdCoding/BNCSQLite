@@ -11,17 +11,19 @@
 
 @class BNCSQLiteDatabase;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BNCSQLiteDatabaseStatement : NSObject
 
 /**
  *  A prepared statement object
  */
-@property (nonatomic, unsafe_unretained, readonly) sqlite3_stmt *statement;
+@property (nonatomic, unsafe_unretained, readonly, nullable) sqlite3_stmt *statement;
 
 /**
  *  The database used for SQLite library,'sqlite3' pointer
  */
-@property (nonatomic, unsafe_unretained, readonly) sqlite3 *database;
+@property (nonatomic, unsafe_unretained, readonly, nullable) sqlite3 *database;
 
 /**
  A wrapper a prepared statement object
@@ -31,9 +33,9 @@
  @param error the error when prepared statement fails
  @return a BNCDataBaseStatement instance
  */
-- (instancetype)initWithSQLString:(NSString *)sqlString
-                         database:(BNCSQLiteDatabase *)database
-                            error:(NSError *__autoreleasing *)error;
+- (instancetype _Nullable)initWithSQLString:(NSString *)sqlString
+                                   database:(BNCSQLiteDatabase *)database
+                                      error:(NSError *__nullable __autoreleasing *)error;
 
 /**
  Close the statement.
@@ -54,7 +56,7 @@
  
  @return NO if fails
  */
-- (BOOL)resetStatementWithError:(NSError *__autoreleasing *)error;
+- (BOOL)resetStatementWithError:(NSError *__nullable __autoreleasing *)error;
 
 /**
  Return the number of columns in mthe result set.
@@ -72,3 +74,5 @@
 - (int)queryBindParameterIndex:(NSString *)columnName;
 
 @end
+
+NS_ASSUME_NONNULL_END

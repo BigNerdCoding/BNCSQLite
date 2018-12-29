@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BNCSQLiteDatabase.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol BNCSQLiteMigrationStepProtocol <NSObject>
 
 @required
@@ -24,3 +26,5 @@
 - (BOOL)goUpWithAction:(BNCSQLiteDatabase *)dbConnect;
 
 @end
+
+NS_ASSUME_NONNULL_END
