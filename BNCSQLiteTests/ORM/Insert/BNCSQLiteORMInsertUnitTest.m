@@ -58,6 +58,29 @@
     XCTAssert([record.defaultText isEqualToString:@""]);
 }
 
+- (void)testInsertValidRecordWithRowID {
+    NSError *error = nil;
+    
+    BNCSQLiteTestRecord *record = [[BNCSQLiteTestRecord alloc] init];
+    record.name = @"";
+    record.age = 1;
+    record.rowID = @(100);
+    
+    record.timeStamp = 1000;
+    BOOL isSuccess = [_table insertRecord:record error:&error];
+    XCTAssertTrue(isSuccess);
+    XCTAssertNil(error);
+    
+    NSArray *results = [_table findAllWithError:&error];
+    XCTAssert(results.count == 1);
+    XCTAssertNil(error);
+    
+    record = [results firstObject];
+    XCTAssert(record.defaultInt == 0);
+    XCTAssert(record.defaultReal == 0.0);
+    XCTAssert([record.defaultText isEqualToString:@""]);
+}
+
 
 - (void)testInsertInalidRecord {
     NSError *error = nil;
@@ -85,6 +108,31 @@
         record.name = [NSString stringWithFormat:@"testName_%ld",(long)index];
         record.age = index;
         
+        record.timeStamp = 1000 + index;
+        [arr addObject:record];
+    }
+    
+    NSError *error = nil;
+    
+    BOOL isSuccess =  [_table insertRecordList:arr error:&error];
+    
+    XCTAssertTrue(isSuccess);
+    XCTAssertNil(error);
+    
+    NSArray *results = [_table findAllWithError:&error];
+    
+    XCTAssert(results.count == 10);
+    XCTAssertNil(error);
+}
+
+- (void)testInsertValidRecordListWithRowID {
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:10];
+    
+    for (NSInteger index = 0; index < 10; index++) {
+        BNCSQLiteTestRecord *record = [[BNCSQLiteTestRecord alloc] init];
+        record.name = [NSString stringWithFormat:@"testName_%ld",(long)index];
+        record.age = index;
+        record.rowID = @(index + 100);
         record.timeStamp = 1000 + index;
         [arr addObject:record];
     }
