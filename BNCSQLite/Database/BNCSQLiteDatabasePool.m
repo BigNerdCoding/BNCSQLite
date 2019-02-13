@@ -92,12 +92,13 @@
 }
 
 - (void)closeAllDatabase {
-    for (NSString *key in self.dbCache.getAllCacheKeys) {
+    NSArray *allCacheKeys = self.dbCache.getAllCacheKeys;
+    
+    for (NSString *key in allCacheKeys) {
         BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:key];
         [dbConnect closeDatabase];
+        [self.dbCache removeCacheObjectForKey:key];
     }
-    
-    [self.dbCache removeAllCacheObjects];
 }
 
 

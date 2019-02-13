@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param error  error if fails
  @return query result (may be nil)
  */
-- (id<BNCSQLiteRecordProtocol>)findLatestRecordWithError:(NSError *__nullable __autoreleasing*)error;
+- (id<BNCSQLiteRecordProtocol> __nullable)findLatestRecordWithError:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query latest record with order
@@ -76,8 +76,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param error error if fails
  @return query result (may be nil)
  */
-- (id<BNCSQLiteRecordProtocol>)findLatestRecordWithOrder:(NSString *)orderBy
-                                                   error:(NSError *__nullable __autoreleasing*)error;
+- (id<BNCSQLiteRecordProtocol> __nullable)findLatestRecordWithOrder:(NSString *)orderBy
+                                                              error:(NSError *__nullable __autoreleasing*)error;
 
 #pragma mark - Query with single column equal condition
 
@@ -88,8 +88,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param error error if fails
  @return query result (may be nil)
  */
-- (id<BNCSQLiteRecordProtocol>)findWithPrimaryKey:(NSNumber *)primaryKey
-                                            error:(NSError *__nullable __autoreleasing*)error;
+- (id<BNCSQLiteRecordProtocol> __nullable)findWithPrimaryKey:(NSNumber *)primaryKey
+                                                       error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query record with unique column
@@ -99,9 +99,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param error error if fails
  @return query result (may be nil)
  */
-- (id<BNCSQLiteRecordProtocol>)findWithUniqueColumn:(NSString *)columuName
-                                              value:(id)value
-                                              error:(NSError *__nullable __autoreleasing*)error;
+- (id<BNCSQLiteRecordProtocol> __nullable)findWithUniqueColumn:(NSString *)columuName
+                                                         value:(id)value
+                                                         error:(NSError *__nullable __autoreleasing*)error;
 
 /**
  query all record with same column value
