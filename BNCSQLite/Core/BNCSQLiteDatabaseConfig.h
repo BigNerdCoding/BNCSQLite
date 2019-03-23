@@ -12,6 +12,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ the migration block
+
+ @param dbConnect database connect 
+ */
 typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 
 @interface BNCSQLiteDatabaseConfig : NSObject

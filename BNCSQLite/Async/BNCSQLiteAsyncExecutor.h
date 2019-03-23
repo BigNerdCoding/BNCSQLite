@@ -19,8 +19,18 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (instancetype)sharedInstance;
 
+/**
+ database async write action
+
+ @param writeAction action block
+ */
 - (void)asyncWrite:(void (^)(void))writeAction;
 
+/**
+ database async read action
+
+ @param readAction read block
+ */
 - (void)asyncRead:(void (^)(void))readAction;
 
 @end
