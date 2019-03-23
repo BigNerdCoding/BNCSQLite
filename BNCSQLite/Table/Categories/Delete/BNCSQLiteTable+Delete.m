@@ -35,7 +35,7 @@
         
         return isSuccess;
         
-    } lockType:BNCSQLiteTransactionLockTypeDeferred];
+    } lockType:BNCSQLiteTransactionLockTypeImmediate];
 }
 
 - (BOOL)deleteWithCondition:(NSString *)whereCondition
@@ -73,7 +73,7 @@
         
         return isSuccess;
         
-    } lockType:BNCSQLiteTransactionLockTypeDeferred];
+    } lockType:BNCSQLiteTransactionLockTypeImmediate];
 }
 
 - (BOOL)deleteRecordWhereColumn:(NSString *)column
@@ -144,7 +144,7 @@
         
         return isSuccess;
         
-    } lockType:BNCSQLiteTransactionLockTypeDeferred];
+    } lockType:BNCSQLiteTransactionLockTypeImmediate];
 }
 
 @end

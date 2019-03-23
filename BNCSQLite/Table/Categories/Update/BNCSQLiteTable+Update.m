@@ -35,7 +35,7 @@
         
         return isSuccess;
         
-    } lockType:BNCSQLiteTransactionLockTypeDeferred];
+    } lockType:BNCSQLiteTransactionLockTypeImmediate];
 }
 
 - (BOOL)updateValue:(id)value
