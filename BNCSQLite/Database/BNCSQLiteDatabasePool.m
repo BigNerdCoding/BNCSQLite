@@ -40,7 +40,7 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self closeAllDatabase];
+    [self closeAllDatabaseInCurrentThread];
 }
 
 - (BNCSQLiteDatabase *)databaseWithConfig:(BNCSQLiteDatabaseConfig *)config {
@@ -59,7 +59,7 @@
     }
     
     if (dbConnect && ![defaultFileManager fileExistsAtPath:config.filePath]) {
-        [self closeDatabase:config.filePath];
+        [self closeDatabaseInCurrentThread:config.filePath];
     }
     
     NSError *error = nil;
@@ -75,11 +75,11 @@
     return dbConnect;
 }
 
-- (void)closeDatabase:(NSString *)filePath {
+- (void)closeDatabaseInCurrentThread:(NSString *)filePath{
     NSMutableArray *databaseToClose = [NSMutableArray array];
     
     for (NSString *key in self.dbCache.getAllCacheKeys) {
-        if ([key hasPrefix:[NSString stringWithFormat:@"%@ -",filePath]]) {
+        if ([key containsString:[NSString stringWithFormat:@"%@ - %@",filePath, [NSThread currentThread]]]) {
             [databaseToClose addObject:key];
         }
     }
@@ -91,20 +91,7 @@
     }
 }
 
-- (void)closeAllDatabase {
-    NSArray *allCacheKeys = self.dbCache.getAllCacheKeys;
-    
-    for (NSString *key in allCacheKeys) {
-        BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:key];
-        [dbConnect closeDatabase];
-        [self.dbCache removeCacheObjectForKey:key];
-    }
-}
-
-
-
-#pragma mark - event response
-- (void)didReceiveNSThreadWillExitNotification:(NSNotification *)notification {
+- (void)closeAllDatabaseInCurrentThread {
     NSMutableArray *databaseToClose = [NSMutableArray array];
     
     for (NSString *key in self.dbCache.getAllCacheKeys) {
@@ -118,6 +105,13 @@
         [dbConnect closeDatabase];
         [self.dbCache removeCacheObjectForKey:key];
     }
+}
+
+
+
+#pragma mark - event response
+- (void)didReceiveNSThreadWillExitNotification:(NSNotification *)notification {
+    [self closeAllDatabaseInCurrentThread];
 }
 
 @end

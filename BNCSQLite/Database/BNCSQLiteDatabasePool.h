@@ -30,16 +30,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (BNCSQLiteDatabase *)databaseWithConfig:(BNCSQLiteDatabaseConfig *)config;
 
 /**
- close the database by filePath
+ close the database in current thread by filePath
 
  @param filePath of the database
  */
-- (void)closeDatabase:(NSString *)filePath;
+- (void)closeDatabaseInCurrentThread:(NSString *)filePath;
 
 /**
- close all database connection
+ close all database connection in current thread
  */
-- (void)closeAllDatabase;
+- (void)closeAllDatabaseInCurrentThread;
 
 @end
 

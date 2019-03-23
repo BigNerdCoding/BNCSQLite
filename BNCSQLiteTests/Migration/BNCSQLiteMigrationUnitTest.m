@@ -55,7 +55,7 @@
     XCTAssert(allColumn.count == 2);
     
     // Close DB Connect
-    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabase];
+    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabaseInCurrentThread];
     
     // V2 Table
     BNCSQLiteMigrationTestTableV2 *v2Table = [[BNCSQLiteMigrationTestTableV2 alloc] init];
@@ -88,7 +88,7 @@
     XCTAssert(allColumn.count == 2);
     
     // Close DB Connect
-    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabase];
+    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabaseInCurrentThread];
     
     // V2 Table
     BNCSQLiteMigrationTestTableV3 *v3Table = [[BNCSQLiteMigrationTestTableV3 alloc] init];
@@ -120,7 +120,7 @@
     XCTAssert(allColumn.count == 2);
     
     // Close DB Connect
-    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabase];
+    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabaseInCurrentThread];
     
     // V2 Table
     BNCSQLiteMigrationTestTableV4 *v4Table = [[BNCSQLiteMigrationTestTableV4 alloc] init];
@@ -152,7 +152,7 @@
     XCTAssert(allColumn.count == 3);
     
     // Close DB Connect
-    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabase];
+    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabaseInCurrentThread];
     
     // V2 Table
     BNCSQLiteMigrationTestTableV3 *v3Table = [[BNCSQLiteMigrationTestTableV3 alloc] init];
@@ -184,7 +184,7 @@
     XCTAssert(allColumn.count == 3);
     
     // Close DB Connect
-    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabase];
+    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabaseInCurrentThread];
     
     // V2 Table
     BNCSQLiteMigrationTestTableV4 *v4Table = [[BNCSQLiteMigrationTestTableV4 alloc] init];
@@ -216,7 +216,7 @@
     XCTAssert(allColumn.count == 4);
     
     // Close DB Connect
-    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabase];
+    [[BNCSQLiteDatabasePool sharedInstance] closeAllDatabaseInCurrentThread];
     
     // V2 Table
     BNCSQLiteMigrationTestTableV4 *v4Table = [[BNCSQLiteMigrationTestTableV4 alloc] init];
