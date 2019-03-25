@@ -44,6 +44,13 @@ static NSString * const kBNCSQLiteTemporaryModePath = @"";
  */
 - (BOOL)isReadonly;
 
+/**
+ whether the database activate wal mode unless readonly
+ 
+ @return whether the database wal mode is activate
+ */
+- (BOOL)isWALModeOn;
+
 @end
 
 NS_ASSUME_NONNULL_END

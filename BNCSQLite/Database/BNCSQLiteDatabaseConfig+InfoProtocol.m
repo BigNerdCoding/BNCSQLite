@@ -21,6 +21,10 @@
             self.isReadonly = [[infoProtocol performSelector:@selector(isReadonly)] boolValue];
         }
         
+        if([infoProtocol respondsToSelector:@selector(isWALModeOn)]) {
+            self.isWALModeOn = [[infoProtocol performSelector:@selector(isWALModeOn)] boolValue];
+        }
+        
         self.migrationAction = [self generateMigrationWithConfig:infoProtocol];
     }
     
