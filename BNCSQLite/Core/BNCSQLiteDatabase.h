@@ -25,6 +25,23 @@ typedef NS_ENUM(NSUInteger, BNCSQLiteTransactionLockType){
     BNCSQLiteTransactionLockTypeExclusive,
 };
 
+/**
+ specify the checkpoint mode when checkpoint action run
+ 
+ see detail at https://www.sqlite.org/c3ref/wal_checkpoint_v2.html
+
+ - BNCSQLiteCheckpointModePassive: SQLITE_CHECKPOINT_PASSIVE
+ - BNCSQLiteCheckpointModeFull: SQLITE_CHECKPOINT_FULL
+ - BNCSQLiteCheckpointModeRestart: SQLITE_CHECKPOINT_RESTART
+ - BNCSQLiteCheckpointModeTruncate: SQLITE_CHECKPOINT_TRUNCATE
+ */
+typedef NS_ENUM(NSUInteger, BNCSQLiteCheckpointMode) {
+    BNCSQLiteCheckpointModePassive  = 0, // SQLITE_CHECKPOINT_PASSIVE,
+    BNCSQLiteCheckpointModeFull     = 1, // SQLITE_CHECKPOINT_FULL,
+    BNCSQLiteCheckpointModeRestart  = 2, // SQLITE_CHECKPOINT_RESTART,
+    BNCSQLiteCheckpointModeTruncate = 3  // SQLITE_CHECKPOINT_TRUNCATE
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class BNCSQLiteDatabaseStatement,BNCSQLiteDatabaseConfig;
@@ -127,6 +144,37 @@ static NSInteger const kBNCSQLiteInitVersion = 1;
  @return NO if fails
  */
 - (BOOL)executeSQL:(NSString *)sqlString bind:(BindBlock __nullable)bind rowHandle:(RowHandleBlock __nullable)rowHandle error:(NSError *__nullable __autoreleasing *)error;
+
+/**
+ Performs a WAL checkpoint
+
+ @param checkpointMode checkpointMode The checkpoint mode for sqlite3_wal_checkpoint_v2
+ @param error The NSError corresponding to the error, if any.
+ @return YES on success, otherwise NO.
+ */
+- (BOOL)checkpoint:(BNCSQLiteCheckpointMode)checkpointMode error:(NSError * _Nullable *)error;
+
+/**
+ Performs a WAL checkpoint
+ 
+ @param checkpointMode The checkpoint mode for sqlite3_wal_checkpoint_v2
+ @param name The db name for sqlite3_wal_checkpoint_v2
+ @param error The NSError corresponding to the error, if any.
+ @return YES on success, otherwise NO.
+ */
+- (BOOL)checkpoint:(BNCSQLiteCheckpointMode)checkpointMode name:(NSString * _Nullable)name error:(NSError * _Nullable *)error;
+
+/**
+ Performs a WAL checkpoint
+ 
+ @param checkpointMode The checkpoint mode for sqlite3_wal_checkpoint_v2
+ @param name The db name for sqlite3_wal_checkpoint_v2
+ @param error The NSError corresponding to the error, if any.
+ @param logFrameCount If not NULL, then this is set to the total number of frames in the log file or to -1 if the checkpoint could not run because of an error or because the database is not in WAL mode.
+ @param checkpointCount If not NULL, then this is set to the total number of checkpointed frames in the log file (including any that were already checkpointed before the function was called) or to -1 if the checkpoint could not run due to an error or because the database is not in WAL mode.
+ @return YES on success, otherwise NO.
+ */
+- (BOOL)checkpoint:(BNCSQLiteCheckpointMode)checkpointMode name:(NSString * _Nullable)name logFrameCount:(int * _Nullable)logFrameCount checkpointCount:(int * _Nullable)checkpointCount error:(NSError * _Nullable *)error;
 
 @end
 

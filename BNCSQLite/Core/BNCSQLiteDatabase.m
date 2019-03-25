@@ -244,4 +244,30 @@
     return YES;
 }
 
+- (BOOL)checkpoint:(BNCSQLiteCheckpointMode)checkpointMode error:(NSError * _Nullable *)error {
+    return [self checkpoint:checkpointMode name:nil error:error];
+}
+
+- (BOOL)checkpoint:(BNCSQLiteCheckpointMode)checkpointMode name:(NSString * _Nullable)name error:(NSError * _Nullable *)error {
+    return [self checkpoint:checkpointMode name:name logFrameCount:NULL checkpointCount:NULL error:error];
+}
+
+- (BOOL)checkpoint:(BNCSQLiteCheckpointMode)checkpointMode name:(NSString * _Nullable)name logFrameCount:(int * _Nullable)logFrameCount checkpointCount:(int * _Nullable)checkpointCount error:(NSError * _Nullable *)error {
+    const char* dbName = [name UTF8String];
+#if SQLITE_VERSION_NUMBER >= 3007006
+    int result = sqlite3_wal_checkpoint_v2(_database, dbName, checkpointMode, logFrameCount, checkpointCount);
+#else
+    NSLog(@"sqlite3_wal_checkpoint_v2 unavailable before sqlite 3.7.6. Ignoring checkpoint mode: %d", mode);
+    int result = sqlite3_wal_checkpoint(_db, dbName);
+#endif
+    if(result != SQLITE_OK) {
+        NSString *sqliteErrorString = [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding];
+        
+        *error = [NSError errorWithDomain:kBNCSQLiteErrorDomain code:result userInfo:@{NSLocalizedDescriptionKey:sqliteErrorString}];
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 @end
