@@ -49,7 +49,7 @@
         
         return isSuccess;
         
-    } lockType:BNCSQLiteTransactionLockTypeImmediate];
+    } lockType:BNCSQLiteTransactionLockTypeDeferred];
 }
 
 - (NSString *)generateInsertSQLWithColumn:(NSArray<NSString *> *)columnNames {
