@@ -37,6 +37,11 @@ typedef void (^MigrationBlock)(BNCSQLiteDatabase *dbConnect);
 @property(nonatomic, assign) BOOL isReadonly;
 
 /**
+ whether the database activate wal mode unless readonly
+ */
+@property(nonatomic, assign) BOOL isWALModeOn;
+
+/**
  Block that do migration action
  */
 @property(nonatomic, copy, nullable) MigrationBlock migrationAction;

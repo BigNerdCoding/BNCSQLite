@@ -68,6 +68,28 @@
             // Do Migration
             config.migrationAction(self);
         }
+        
+        // Whethere activate wal mode
+        if (config.isReadonly || !config.isWALModeOn) {
+            return self;
+        }
+        
+        NSString *sql = @"PRAGMA journal_mode = WAL";
+        __block NSString *journalMode = @"";
+        [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowID) {
+            journalMode = [statement takeTextColumnAt:0];
+        } error:error];
+        
+        if (![journalMode isEqualToString:@"wal"]) {
+            NSString *sqliteErrorString = [NSString stringWithFormat:@"could not activate WAL Mode at path:%@", config.filePath];
+            
+            *error = [NSError errorWithDomain:kBNCSQLiteErrorDomain code:[*error code] userInfo:@{NSLocalizedDescriptionKey:sqliteErrorString}];
+            
+            return nil;
+        }
+        
+        sql = @"PRAGMA synchronous = NORMAL";
+        [self executeSQL:sql bind:nil rowHandle:nil error:nil];
     }
     
     return self;

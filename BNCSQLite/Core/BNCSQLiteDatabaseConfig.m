@@ -17,6 +17,7 @@
         _filePath = @"";
         _latestSchemaVersion = kBNCSQLiteInitVersion;
         _isReadonly = NO;
+        _isWALModeOn = NO;
         _migrationAction = nil;
     }
     
