@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BNCSQLiteDatabase *)databaseWithConfig:(BNCSQLiteDatabaseConfig *)config;
 
+#pragma mark - close database connect action
+
 /**
  close the database in current thread by filePath
 
@@ -40,6 +42,22 @@ NS_ASSUME_NONNULL_BEGIN
  close all database connection in current thread
  */
 - (void)closeAllDatabaseInCurrentThread;
+
+/**
+ close the database using filePath
+
+ this action may cause mulit thread illegal access
+ 
+ @param filePath path of the database
+ */
+- (void)closeDatabase:(NSString *)filePath;
+
+/**
+ close all database connection
+ 
+ this action may cause mulit thread illegal access 
+ */
+- (void)closeAllDatabase;
 
 @end
 

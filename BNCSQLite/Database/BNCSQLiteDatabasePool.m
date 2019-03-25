@@ -59,7 +59,7 @@
     }
     
     if (dbConnect && ![defaultFileManager fileExistsAtPath:config.filePath]) {
-        [self closeDatabaseInCurrentThread:config.filePath];
+        [self closeDatabase:config.filePath];
     }
     
     NSError *error = nil;
@@ -75,10 +75,13 @@
     return dbConnect;
 }
 
+#pragma mark - close database connect action
 - (void)closeDatabaseInCurrentThread:(NSString *)filePath{
     NSMutableArray *databaseToClose = [NSMutableArray array];
     
-    for (NSString *key in self.dbCache.getAllCacheKeys) {
+    NSArray *allCacheKeys = self.dbCache.getAllCacheKeys;
+    
+    for (NSString *key in allCacheKeys) {
         if ([key containsString:[NSString stringWithFormat:@"%@ - %@",filePath, [NSThread currentThread]]]) {
             [databaseToClose addObject:key];
         }
@@ -94,7 +97,9 @@
 - (void)closeAllDatabaseInCurrentThread {
     NSMutableArray *databaseToClose = [NSMutableArray array];
     
-    for (NSString *key in self.dbCache.getAllCacheKeys) {
+    NSArray *allCacheKeys = self.dbCache.getAllCacheKeys;
+    
+    for (NSString *key in allCacheKeys) {
         if ([key containsString:[NSString stringWithFormat:@"%@", [NSThread currentThread]]]) {
             [databaseToClose addObject:key];
         }
@@ -107,7 +112,47 @@
     }
 }
 
+- (void)closeDatabase:(NSString *)filePath {
+    NSMutableArray *databaseToClose = [NSMutableArray array];
+    
+    NSArray *allCacheKeys = self.dbCache.getAllCacheKeys;
+    
+    for (NSString *cacheKey in allCacheKeys) {
+        if ([cacheKey containsString:[NSString stringWithFormat:@"%@ -", filePath]]) {
+            [databaseToClose addObject:cacheKey];
+        }
+    }
+    
+    // this action may cause mulit thread illegal access, catch this exception but do nothing
+    @try {
+        for (NSString *cacheKey in databaseToClose) {
+            BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:cacheKey];
+            [dbConnect closeDatabase];
+            [self.dbCache removeCacheObjectForKey:cacheKey];
+        }
+    } @catch (NSException *exception) {
+        // catch this exception but do nothing
+    } @finally {
+        
+    }
+}
 
+- (void)closeAllDatabase {
+    NSArray *allCacheKeys = self.dbCache.getAllCacheKeys;
+    
+    // this action may cause mulit thread illegal access, catch this exception but do nothing
+    @try {
+        for (NSString *cacheKey in allCacheKeys) {
+            BNCSQLiteDatabase *dbConnect = [self.dbCache getCacheForKey:cacheKey];
+            [dbConnect closeDatabase];
+            [self.dbCache removeCacheObjectForKey:cacheKey];
+        }
+    } @catch (NSException *exception) {
+        // catch this exception but do nothing
+    } @finally {
+        
+    }
+}
 
 #pragma mark - event response
 - (void)didReceiveNSThreadWillExitNotification:(NSNotification *)notification {
