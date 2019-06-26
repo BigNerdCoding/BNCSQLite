@@ -42,7 +42,10 @@
                     strValue = [NSString stringWithCString:value encoding:NSUTF8StringEncoding];
                 }
                 
-                [result setObject:strValue forKey:columnName];
+                if (strValue) {
+                    [result setObject:strValue forKey:columnName];
+                }
+                
                 break;
             }
                 
@@ -71,7 +74,10 @@
                     strValue = [NSString stringWithCString:value encoding:NSUTF8StringEncoding];
                 }
                 
-                [result setObject:strValue forKey:columnName];
+                if (strValue) {
+                    [result setObject:strValue forKey:columnName];
+                }
+                
                 break;
             }
         }

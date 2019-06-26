@@ -83,7 +83,9 @@
         if (![journalMode isEqualToString:@"wal"]) {
             NSString *sqliteErrorString = [NSString stringWithFormat:@"could not activate WAL Mode at path:%@", config.filePath];
             
-            *error = [NSError errorWithDomain:kBNCSQLiteErrorDomain code:[*error code] userInfo:@{NSLocalizedDescriptionKey:sqliteErrorString}];
+            if (error != NULL) {
+                *error = [NSError errorWithDomain:kBNCSQLiteErrorDomain code:result userInfo:@{NSLocalizedDescriptionKey:sqliteErrorString}];
+            }
             
             return nil;
         }
@@ -263,7 +265,9 @@
     if(result != SQLITE_OK) {
         NSString *sqliteErrorString = [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding];
         
-        *error = [NSError errorWithDomain:kBNCSQLiteErrorDomain code:result userInfo:@{NSLocalizedDescriptionKey:sqliteErrorString}];
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:kBNCSQLiteErrorDomain code:result userInfo:@{NSLocalizedDescriptionKey:sqliteErrorString}];
+        }
         return NO;
     } else {
         return YES;
