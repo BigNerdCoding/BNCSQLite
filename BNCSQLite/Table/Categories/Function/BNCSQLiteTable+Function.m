@@ -2,8 +2,8 @@
 //  BNCSQLiteTable+Function.m
 //  BNCSQLite
 //
-//  Created by Karsa Wu on 2018/11/14.
-//  Copyright © 2018 Karsa Wu. All rights reserved.
+//  Created by Jax Wu on 2018/11/14.
+//  Copyright © 2018 Jax Wu. All rights reserved.
 //
 
 #import "BNCSQLiteTable+Function.h"

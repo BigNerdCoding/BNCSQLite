@@ -2,8 +2,8 @@
 //  BNCSQLiteORMFindWithoutConditionUnitTest.m
 //  BNCSQLiteTests
 //
-//  Created by Karsa Wu on 2018/7/5.
-//  Copyright © 2018年 Karsa Wu. All rights reserved.
+//  Created by Jax Wu on 2018/7/5.
+//  Copyright © 2018年 Jax Wu. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
