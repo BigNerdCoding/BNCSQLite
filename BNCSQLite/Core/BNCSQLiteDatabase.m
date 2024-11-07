@@ -58,6 +58,13 @@
             return nil;
         }
         
+        NSString *sql = @"PRAGMA SQLITE_THREADSAFE = 2";
+        if (![self executeSQL:sql bind:nil rowHandle:nil error:error]) {
+            [self closeDatabase];
+            return nil;
+        }
+        
+        
         // Setting latestVsersion
         if (!isFileExistsBefore) {
             [self updateSchemaVersion:config.latestSchemaVersion];
@@ -74,7 +81,7 @@
             return self;
         }
         
-        NSString *sql = @"PRAGMA journal_mode = WAL";
+        sql = @"PRAGMA journal_mode = WAL";
         __block NSString *journalMode = @"";
         [self executeSQL:sql bind:nil rowHandle:^(BNCSQLiteDatabaseStatement *statement, UInt64 rowID) {
             journalMode = [statement takeTextColumnAt:0];
@@ -86,12 +93,15 @@
             if (error != NULL) {
                 *error = [NSError errorWithDomain:kBNCSQLiteErrorDomain code:result userInfo:@{NSLocalizedDescriptionKey:sqliteErrorString}];
             }
-            
+            [self closeDatabase];
             return nil;
         }
         
         sql = @"PRAGMA synchronous = NORMAL";
-        [self executeSQL:sql bind:nil rowHandle:nil error:nil];
+        if (![self executeSQL:sql bind:nil rowHandle:nil error:error]) {
+            [self closeDatabase];
+            return nil;
+        }
     }
     
     return self;
